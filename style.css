@@ -58,3 +58,4 @@ dl{display:grid;grid-template-columns:140px 1fr;gap:10px 16px;margin:20px 0;padd
 @media(max-width:860px){.fcols{grid-template-columns:1fr 1fr}}@media(max-width:520px){.fcols{grid-template-columns:1fr}}
 [hidden]{display:none!important}
 .navt:focus-visible+.burger{outline:2px solid var(--blue)}
+.callout{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-color:#bfe3d6;background:linear-gradient(135deg,#fff,#eef8f4);margin:8px 0 18px}.callout>div{flex:1;min-width:240px}.callout strong{font-size:17px}.callout p{margin:6px 0 0}

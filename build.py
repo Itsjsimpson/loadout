@@ -23,7 +23,7 @@ def nav(r):
     return (f'<a class="skip" href="#main">Skip to content</a><header class="top"><div class="wrap bar"><a class="logo" href="{r}index.html"><span class="mark">L</span>Loadout</a>'
      f'<div class="mnav"><input type="checkbox" id="navt" class="sr navt"><label for="navt" class="burger" aria-label="Menu"><span></span><span></span><span></span></label><nav aria-label="Main">'
      f'<details class="dd"><summary>Categories</summary><div class="ddm">{cl}</div></details>'
-     f'<a href="{r}index.html#picks">Use cases</a><a href="{r}categories/sports.html">Sports AI</a><a href="{r}index.html#new">New</a><a href="{r}index.html#tools">Directory</a>'
+     f'<a href="{r}index.html#picks">Use cases</a><a href="{r}categories/sports.html">Sports AI</a><a href="{r}index.html#new">New</a><a href="{r}index.html#tools">Directory</a><a href="{r}prepsheet/">PrepSheet</a>'
      f'<a class="btn btn-sm" href="{r}advertise.html">Advertise</a></nav></div></div></header>')
 def crumbs(r,items):
     if not items:return ""
@@ -34,7 +34,7 @@ def footer(r,extra=""):
     ul="".join(f'<li><a href="{r}use-cases/{slug(u["question"])}.html">{E(u["question"])}</a></li>' for u in D["useCases"][:6])
     return (f'<footer class="foot"><div class="wrap fcols"><div><a class="logo" href="{r}index.html"><span class="mark">L</span>Loadout</a><p class="muted">AI tools for vibe coders and builders, ranked by what you are trying to ship.</p></div>'
      f'<div><h4>Categories</h4><ul>{cl}</ul></div><div><h4>Popular use cases</h4><ul>{ul}</ul></div>'
-     f'<div><h4>Loadout</h4><ul><li><a href="{r}index.html#tools">Full directory</a></li><li></li><li><a href="{r}advertise.html">Advertise</a></li><li><a href="{r}tools.json">tools.json</a></li><li><a href="{r}llms.txt">llms.txt</a></li><li><a href="mailto:loadout@mail.grokbot.com">loadout@mail.grokbot.com</a></li></ul></div></div>'
+     f'<div><h4>Loadout</h4><ul><li><a href="{r}index.html#tools">Full directory</a></li><li></li><li><a href="{r}prepsheet/">PrepSheet</a></li><li><a href="{r}advertise.html">Advertise</a></li><li><a href="{r}tools.json">tools.json</a></li><li><a href="{r}llms.txt">llms.txt</a></li><li><a href="mailto:loadout@mail.grokbot.com">loadout@mail.grokbot.com</a></li></ul></div></div>'
      f'<div class="wrap fbase muted">Loadout · data updated {D["updated"]}{extra}</div></footer>')
 def page(path,title,desc,body,ld=None,depth=0,foot="",bc=None):
     r="../"*depth;url=f"{BASE_URL}/{path}".replace("index.html","")
@@ -46,6 +46,7 @@ def page(path,title,desc,body,ld=None,depth=0,foot="",bc=None):
 <main id="main" class="wrap page">{crumbs(r,bc)}{body}</main>
 {footer(r,foot)}<script src="{r}app.js" defer></script></body></html>"""
     os.makedirs(os.path.dirname(path) or ".",exist_ok=True);open(path,"w").write(h);pages.append(path)
+PSCALL='<aside class="card callout"><div><span class="tag sponsored">Presale</span><strong>PrepSheet: daily show-prep brief for sports podcasters</strong><p>A one-page brief every morning before you record: stats, injuries, odds moves and talking points for the teams you cover, every item sourced. $9 founding member presale; full refund if it doesn\'t launch.</p></div><a class="btn" href="{r}prepsheet/">See PrepSheet →</a></aside>'
 def chips(cur,r="../"):
     return '<nav class="chips" aria-label="Categories">'+"".join(f'<a class="chip{" on" if c==cur else ""}" href="{r}categories/{c}.html"{" aria-current=page" if c==cur else ""}>{E(n)} <span>{sum(t["category"]==c for t in D["tools"])}</span></a>' for c,n in cat.items())+'</nav>'
 def related(t):
@@ -64,7 +65,7 @@ for t in D["tools"]:
 for cid,cn in cat.items():
     ts=sorted([t for t in D["tools"] if t["category"]==cid],key=lambda t:not is_featured(t))
     ld={"@context":"https://schema.org","@type":"ItemList","name":cn,"itemListElement":[{"@type":"ListItem","position":i+1,"name":t["name"],"url":f"{BASE_URL}/tools/{t['id']}.html"} for i,t in enumerate(ts)]}
-    page(f"categories/{cid}.html",f"Best {cn} for vibe coders (2026) | Loadout",f"{len(ts)} {cn.lower()} for vibe coders and builders, with pricing and what each is best for.",f'<h1>{E(cn)}</h1><p class="lead">{len(ts)} tools, with pricing and what each is best for.</p>'+chips(cid)+f'<div class="filterbar"><label class="sr" for="cf">Filter tools in this category</label><input id="cf" type="search" data-filter=".grid > article" placeholder="Filter {len(ts)} tools…"><span class="muted" data-count></span></div><section class="grid">{"".join(card(t) for t in ts)}</section>',ld,1,bc=[("Categories","../index.html#categories"),(cn,None)])
+    page(f"categories/{cid}.html",f"Best {cn} for vibe coders (2026) | Loadout",f"{len(ts)} {cn.lower()} for vibe coders and builders, with pricing and what each is best for.",f'<h1>{E(cn)}</h1><p class="lead">{len(ts)} tools, with pricing and what each is best for.</p>'+chips(cid)+(PSCALL.replace("{r}","../") if cid=="sports" else "")+f'<div class="filterbar"><label class="sr" for="cf">Filter tools in this category</label><input id="cf" type="search" data-filter=".grid > article" placeholder="Filter {len(ts)} tools…"><span class="muted" data-count></span></div><section class="grid">{"".join(card(t) for t in ts)}</section>',ld,1,bc=[("Categories","../index.html#categories"),(cn,None)])
 for u in D["useCases"]:
     s=slug(u["question"]);u["slug"]=s;ts=[by[p] for p in u["picks"]]
     ld={"@context":"https://schema.org","@type":"ItemList","name":u["question"],"itemListOrder":"https://schema.org/ItemListOrderAscending","itemListElement":[{"@type":"ListItem","position":i+1,"name":t["name"],"url":f"{BASE_URL}/tools/{t['id']}.html"} for i,t in enumerate(ts)]}
@@ -93,7 +94,7 @@ tpl=open("index.tpl.html").read()
 if FEAT_HTML:
     a=tpl.index('<section id="featured"');b=tpl.index('</section>',a)+10;tpl=tpl[:a]+FEAT_HTML+tpl[b:]
 BLURB={'editors': 'Editors and IDEs with built-in AI and agents.', 'builders': 'Describe an app and get a working one.', 'agents': 'Agents that take on multi-step tasks in your repo.', 'frameworks': 'Libraries for building your own agents.', 'backend': 'Hosting, databases and serverless.', 'design': 'Turn designs into front-end code.', 'models': 'Model APIs to power your app.', 'sports': 'Data, clipping and editing tools for sports shows.'}
-tpl=tpl.replace("<!--HEADER-->",nav("")).replace("<!--FOOTER-->",footer("")).replace("<!--CATGRID-->","".join(f'<a class="catcard" href="categories/{c}.html"><strong>{E(n)}</strong><span class="muted">{E(BLURB.get(c,""))}</span><span class="count">{sum(t["category"]==c for t in D["tools"])} tools →</span></a>' for c,n in cat.items()))
+tpl=tpl.replace("<!--PSCALL-->",PSCALL.replace("{r}","")).replace("<!--HEADER-->",nav("")).replace("<!--FOOTER-->",footer("")).replace("<!--CATGRID-->","".join(f'<a class="catcard" href="categories/{c}.html"><strong>{E(n)}</strong><span class="muted">{E(BLURB.get(c,""))}</span><span class="count">{sum(t["category"]==c for t in D["tools"])} tools →</span></a>' for c,n in cat.items()))
 open("index.html","w").write(tpl.replace("<!--STATIC-->","".join(f'<li><a href="tools/{t["id"]}.html">{E(t["name"])}</a> — {E(t["description"])}</li>' for t in D["tools"])).replace("<!--UCLINKS-->","".join(f'<li><a href="use-cases/{u["slug"]}.html">{E(u["question"])}</a></li>' for u in D["useCases"])).replace("<!--CATLINKS-->","".join(f'<li><a href="categories/{c}.html">{E(n)}</a></li>' for c,n in cat.items())))
 pages.append("index.html")
 open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f'<url><loc>{BASE_URL}/{p.replace("index.html","")}</loc><lastmod>{D["updated"]}</lastmod></url>' for p in pages)+"</urlset>\n")
