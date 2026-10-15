@@ -21,4 +21,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://loadout-olive.vercel.app/sitemap.xml
+Sitemap: https://loadoutweekly.com/sitemap.xml
