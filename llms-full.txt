@@ -54,6 +54,16 @@
 - **OpenRouter** (freemium) — Single API to access hundreds of models from many providers. Best for: Swapping models behind one key. https://openrouter.ai (verified: 2026-10-15)
 - **Groq** (freemium) — Fast inference cloud for open models, built on its LPU hardware. Best for: Low-latency responses. https://groq.com (verified: no)
 
+## Sports AI Tools
+- **BALLDONTLIE** (freemium) — Sports data API for 20+ leagues (NBA, NFL, MLB, NHL, soccer, esports and more) with odds, an OpenAPI spec built for AI assistants, and a free tier. Best for: Stats and odds data for sports shows and apps. https://www.balldontlie.io (verified: 2026-10-15)
+- **API-Sports** (freemium) — REST sports data APIs covering 2,000+ competitions with live scores, odds and free widgets; free plan of 100 requests/day per API, paid from $10/month. Best for: Cheap live scores and stats across many sports. https://api-sports.io (verified: 2026-10-15)
+- **StoryStats** (freemium) — Automated sports writer that turns game data into ready-to-publish stories for NBA, WNBA, MLB, NHL, NFL and soccer; free start, $30/month per sport. Best for: Auto-written game previews and recaps. https://www.storystats.ai (verified: 2026-10-15)
+- **Castmagic** (paid) — AI that turns podcast audio and video into show notes, clips, posts and other content. Best for: Repurposing each episode into posts and show notes. https://www.castmagic.io (verified: 2026-10-15)
+- **OpusClip** (freemium) — AI video clipping tool that turns long videos into short clips with captions, reframing and a social scheduler. Best for: Turning episodes into shorts. https://www.opus.pro (verified: 2026-10-15)
+- **Descript** (freemium) — Text-based video and audio editor with multitrack podcast editing, remote recording, transcription and captions. Best for: Editing and recording podcast episodes. https://www.descript.com (verified: 2026-10-15)
+- **Magnifi** (paid) — AI video tagging and automated sports highlights platform, now part of Sportz Interactive; demo-based sales. Best for: Media teams automating highlight production. https://magnifi.ai (verified: 2026-10-15)
+- **WSC Sports** (paid) — AI platform for creating, managing and distributing sports highlights, used by 650 teams, leagues and broadcasters; demo-based sales. Best for: Leagues and broadcasters scaling highlights. https://www.wsc-sports.com (verified: 2026-10-15)
+
 ## Which tool should I use
 - I can't code but want to ship a web app: Lovable > Bolt.new > Replit
 - I code daily and want an AI editor: Cursor > Devin Desktop (formerly Windsurf) > GitHub Copilot
@@ -64,6 +74,7 @@
 - I'm building my own AI agent: Agent-Native > Vercel AI SDK > Mastra
 - I want to turn a design into code: Figma Make > Builder.io > Locofy
 - Which model API should power my app?: Anthropic API (Claude) > OpenAI API > Google Gemini API
+- I run a sports podcast or channel: Descript > OpusClip > Castmagic > BALLDONTLIE
 
 ## New releases
 - 2026-10-13 **OpenCode 2.0** — Open-source, model-agnostic coding agent with native TUI and multi-session support. #2 on Product Hunt's Oct 13 daily leaderboard (313 upvotes when checked). Source: https://www.producthunt.com/leaderboard/daily/2026/10/13

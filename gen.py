@@ -1,5 +1,5 @@
 import json
-C={"editors":"AI Code Editors & IDEs","builders":"App Builders (Prompt-to-App)","agents":"Coding Agents","frameworks":"Agent Frameworks","backend":"Deploy, Hosting & Backend","design":"Design-to-Code","models":"AI APIs & Models"}
+C={"editors":"AI Code Editors & IDEs","builders":"App Builders (Prompt-to-App)","agents":"Coding Agents","frameworks":"Agent Frameworks","backend":"Deploy, Hosting & Backend","design":"Design-to-Code","models":"AI APIs & Models","sports":"Sports AI Tools"}
 T=[
 ("Cursor","editors","AI code editor and coding agent platform; hand off tasks to agents or code alongside them.","Day-to-day coding with an agent inside your editor","freemium","https://cursor.com"),
 ("Devin Desktop (formerly Windsurf)","editors","Cognition's IDE (Windsurf renamed June 2026) with an Agent Command Center for managing local and cloud agents.","Managing multiple agents from a full IDE","freemium","https://devin.ai/desktop"),
@@ -42,6 +42,14 @@ T=[
 ("Google Gemini API","models","Gemini models via Google AI Studio with long context and a free tier.","Long context and generous free tier","freemium","https://ai.google.dev"),
 ("OpenRouter","models","Single API to access hundreds of models from many providers.","Swapping models behind one key","freemium","https://openrouter.ai"),
 ("Groq","models","Fast inference cloud for open models, built on its LPU hardware.","Low-latency responses","freemium","https://groq.com"),
+("BALLDONTLIE","sports","Sports data API for 20+ leagues (NBA, NFL, MLB, NHL, soccer, esports and more) with odds, an OpenAPI spec built for AI assistants, and a free tier.","Stats and odds data for sports shows and apps","freemium","https://www.balldontlie.io"),
+("API-Sports","sports","REST sports data APIs covering 2,000+ competitions with live scores, odds and free widgets; free plan of 100 requests/day per API, paid from $10/month.","Cheap live scores and stats across many sports","freemium","https://api-sports.io"),
+("StoryStats","sports","Automated sports writer that turns game data into ready-to-publish stories for NBA, WNBA, MLB, NHL, NFL and soccer; free start, $30/month per sport.","Auto-written game previews and recaps","freemium","https://www.storystats.ai"),
+("Castmagic","sports","AI that turns podcast audio and video into show notes, clips, posts and other content.","Repurposing each episode into posts and show notes","paid","https://www.castmagic.io"),
+("OpusClip","sports","AI video clipping tool that turns long videos into short clips with captions, reframing and a social scheduler.","Turning episodes into shorts","freemium","https://www.opus.pro"),
+("Descript","sports","Text-based video and audio editor with multitrack podcast editing, remote recording, transcription and captions.","Editing and recording podcast episodes","freemium","https://www.descript.com"),
+("Magnifi","sports","AI video tagging and automated sports highlights platform, now part of Sportz Interactive; demo-based sales.","Media teams automating highlight production","paid","https://magnifi.ai"),
+("WSC Sports","sports","AI platform for creating, managing and distributing sports highlights, used by 650 teams, leagues and broadcasters; demo-based sales.","Leagues and broadcasters scaling highlights","paid","https://www.wsc-sports.com"),
 ]
 UNV={"locofy","groq","firebase-studio"}
 tools=[dict(id=n.lower().replace(' ','-').replace('(','').replace(')','').replace('.','-'),name=n,category=c,description=d,bestFor=b,pricing=p,url=u,affiliateUrl="",featured=False,verified=None if n.lower() in UNV else "2026-10-15") for n,c,d,b,p,u in T]
@@ -54,7 +62,8 @@ usecases=[
 {"question":"I want to deploy my app","picks":["vercel","netlify","cloudflare-workers"]},
 {"question":"I'm building my own AI agent","picks":["agent-native","vercel-ai-sdk","mastra"]},
 {"question":"I want to turn a design into code","picks":["figma-make","builder-io","locofy"]},
-{"question":"Which model API should power my app?","picks":["anthropic-api-claude","openai-api","google-gemini-api"]}]
+{"question":"Which model API should power my app?","picks":["anthropic-api-claude","openai-api","google-gemini-api"]},
+{"question":"I run a sports podcast or channel","picks":["descript","opusclip","castmagic","balldontlie"]}]
 rel=[
 {"name":"OpenCode 2.0","date":"2026-10-13","summary":"Open-source, model-agnostic coding agent with native TUI and multi-session support. #2 on Product Hunt's Oct 13 daily leaderboard (313 upvotes when checked).","url":"https://opencode.ai","source":"https://www.producthunt.com/leaderboard/daily/2026/10/13"},
 {"name":"Tiden","date":"2026-10-14","summary":"Verifies coding agents built what you asked for by checking changes against requirements and tests. Works with Claude Code, Cursor, Codex, Copilot.","url":"https://tiden.ai","source":"https://www.producthunt.com/leaderboard/daily/2026/10/14"},

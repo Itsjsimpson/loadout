@@ -29,6 +29,10 @@
   {
    "id": "models",
    "name": "AI APIs & Models"
+  },
+  {
+   "id": "sports",
+   "name": "Sports AI Tools"
   }
  ],
  "tools": [
@@ -511,6 +515,102 @@
    "affiliateUrl": "",
    "featured": false,
    "verified": null
+  },
+  {
+   "id": "balldontlie",
+   "name": "BALLDONTLIE",
+   "category": "sports",
+   "description": "Sports data API for 20+ leagues (NBA, NFL, MLB, NHL, soccer, esports and more) with odds, an OpenAPI spec built for AI assistants, and a free tier.",
+   "bestFor": "Stats and odds data for sports shows and apps",
+   "pricing": "freemium",
+   "url": "https://www.balldontlie.io",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "api-sports",
+   "name": "API-Sports",
+   "category": "sports",
+   "description": "REST sports data APIs covering 2,000+ competitions with live scores, odds and free widgets; free plan of 100 requests/day per API, paid from $10/month.",
+   "bestFor": "Cheap live scores and stats across many sports",
+   "pricing": "freemium",
+   "url": "https://api-sports.io",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "storystats",
+   "name": "StoryStats",
+   "category": "sports",
+   "description": "Automated sports writer that turns game data into ready-to-publish stories for NBA, WNBA, MLB, NHL, NFL and soccer; free start, $30/month per sport.",
+   "bestFor": "Auto-written game previews and recaps",
+   "pricing": "freemium",
+   "url": "https://www.storystats.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "castmagic",
+   "name": "Castmagic",
+   "category": "sports",
+   "description": "AI that turns podcast audio and video into show notes, clips, posts and other content.",
+   "bestFor": "Repurposing each episode into posts and show notes",
+   "pricing": "paid",
+   "url": "https://www.castmagic.io",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "opusclip",
+   "name": "OpusClip",
+   "category": "sports",
+   "description": "AI video clipping tool that turns long videos into short clips with captions, reframing and a social scheduler.",
+   "bestFor": "Turning episodes into shorts",
+   "pricing": "freemium",
+   "url": "https://www.opus.pro",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "descript",
+   "name": "Descript",
+   "category": "sports",
+   "description": "Text-based video and audio editor with multitrack podcast editing, remote recording, transcription and captions.",
+   "bestFor": "Editing and recording podcast episodes",
+   "pricing": "freemium",
+   "url": "https://www.descript.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "magnifi",
+   "name": "Magnifi",
+   "category": "sports",
+   "description": "AI video tagging and automated sports highlights platform, now part of Sportz Interactive; demo-based sales.",
+   "bestFor": "Media teams automating highlight production",
+   "pricing": "paid",
+   "url": "https://magnifi.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "wsc-sports",
+   "name": "WSC Sports",
+   "category": "sports",
+   "description": "AI platform for creating, managing and distributing sports highlights, used by 650 teams, leagues and broadcasters; demo-based sales.",
+   "bestFor": "Leagues and broadcasters scaling highlights",
+   "pricing": "paid",
+   "url": "https://www.wsc-sports.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
   }
  ],
  "useCases": [
@@ -584,6 +684,15 @@
     "anthropic-api-claude",
     "openai-api",
     "google-gemini-api"
+   ]
+  },
+  {
+   "question": "I run a sports podcast or channel",
+   "picks": [
+    "descript",
+    "opusclip",
+    "castmagic",
+    "balldontlie"
    ]
   }
  ],

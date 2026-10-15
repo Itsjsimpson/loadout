@@ -9,6 +9,7 @@
 - [Deploy, Hosting & Backend](https://loadout-olive.vercel.app/categories/backend.html)
 - [Design-to-Code](https://loadout-olive.vercel.app/categories/design.html)
 - [AI APIs & Models](https://loadout-olive.vercel.app/categories/models.html)
+- [Sports AI Tools](https://loadout-olive.vercel.app/categories/sports.html)
 
 ## Use cases
 - [I can't code but want to ship a web app](https://loadout-olive.vercel.app/use-cases/i-can-t-code-but-want-to-ship-a-web-app.html)
@@ -20,6 +21,7 @@
 - [I'm building my own AI agent](https://loadout-olive.vercel.app/use-cases/i-m-building-my-own-ai-agent.html)
 - [I want to turn a design into code](https://loadout-olive.vercel.app/use-cases/i-want-to-turn-a-design-into-code.html)
 - [Which model API should power my app?](https://loadout-olive.vercel.app/use-cases/which-model-api-should-power-my-app.html)
+- [I run a sports podcast or channel](https://loadout-olive.vercel.app/use-cases/i-run-a-sports-podcast-or-channel.html)
 
 ## Data
 - [tools.json](https://loadout-olive.vercel.app/tools.json): categories, tools (id, name, category, description, bestFor, pricing, url, verified), useCases, newReleases
