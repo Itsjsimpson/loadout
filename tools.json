@@ -1,0 +1,596 @@
+{
+ "name": "Loadout",
+ "updated": "2026-10-15",
+ "categories": [
+  {
+   "id": "editors",
+   "name": "AI Code Editors & IDEs"
+  },
+  {
+   "id": "builders",
+   "name": "App Builders (Prompt-to-App)"
+  },
+  {
+   "id": "agents",
+   "name": "Coding Agents"
+  },
+  {
+   "id": "frameworks",
+   "name": "Agent Frameworks"
+  },
+  {
+   "id": "backend",
+   "name": "Deploy, Hosting & Backend"
+  },
+  {
+   "id": "design",
+   "name": "Design-to-Code"
+  },
+  {
+   "id": "models",
+   "name": "AI APIs & Models"
+  }
+ ],
+ "tools": [
+  {
+   "id": "cursor",
+   "name": "Cursor",
+   "category": "editors",
+   "description": "AI code editor and coding agent platform; hand off tasks to agents or code alongside them.",
+   "bestFor": "Day-to-day coding with an agent inside your editor",
+   "pricing": "freemium",
+   "url": "https://cursor.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "devin-desktop-formerly-windsurf",
+   "name": "Devin Desktop (formerly Windsurf)",
+   "category": "editors",
+   "description": "Cognition's IDE (Windsurf renamed June 2026) with an Agent Command Center for managing local and cloud agents.",
+   "bestFor": "Managing multiple agents from a full IDE",
+   "pricing": "freemium",
+   "url": "https://devin.ai/desktop",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "github-copilot",
+   "name": "GitHub Copilot",
+   "category": "editors",
+   "description": "AI pair programmer in VS Code, JetBrains and GitHub, with chat and agent mode.",
+   "bestFor": "Teams already living on GitHub",
+   "pricing": "freemium",
+   "url": "https://github.com/features/copilot",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "zed",
+   "name": "Zed",
+   "category": "editors",
+   "description": "Fast, Rust-built collaborative code editor with built-in AI assistance.",
+   "bestFor": "Speed-focused devs who want AI without bloat",
+   "pricing": "freemium",
+   "url": "https://zed.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "jetbrains-air",
+   "name": "JetBrains Air",
+   "category": "editors",
+   "description": "JetBrains' agentic development environment for running Claude Agent, Codex, Junie, Copilot and ACP agents, in IDEs, browser or CLI.",
+   "bestFor": "JetBrains users orchestrating coding agents",
+   "pricing": "freemium",
+   "url": "https://www.jetbrains.com/air/",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "kiro",
+   "name": "Kiro",
+   "category": "editors",
+   "description": "AWS's agentic IDE built around spec-driven development.",
+   "bestFor": "Turning a spec into structured code",
+   "pricing": "freemium",
+   "url": "https://kiro.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "lovable",
+   "name": "Lovable",
+   "category": "builders",
+   "description": "Build full-stack web apps by chatting, with Supabase integration.",
+   "bestFor": "Non-coders shipping a real web app",
+   "pricing": "freemium",
+   "url": "https://lovable.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "bolt-new",
+   "name": "Bolt.new",
+   "category": "builders",
+   "description": "StackBlitz's in-browser prompt-to-app builder that runs code in WebContainers.",
+   "bestFor": "Fast prototypes in the browser",
+   "pricing": "freemium",
+   "url": "https://bolt.new",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "v0",
+   "name": "v0",
+   "category": "builders",
+   "description": "Vercel's generative UI and app builder producing React/Next.js code.",
+   "bestFor": "Next.js UIs you can deploy to Vercel",
+   "pricing": "freemium",
+   "url": "https://v0.app",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "replit",
+   "name": "Replit",
+   "category": "builders",
+   "description": "Cloud IDE with Replit Agent that builds and deploys apps from prompts.",
+   "bestFor": "Build-and-host in one place",
+   "pricing": "freemium",
+   "url": "https://replit.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "base44",
+   "name": "Base44",
+   "category": "builders",
+   "description": "No-code AI app builder that generates apps with built-in backend.",
+   "bestFor": "Internal tools and simple apps, no setup",
+   "pricing": "freemium",
+   "url": "https://base44.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "claude-code",
+   "name": "Claude Code",
+   "category": "agents",
+   "description": "Anthropic's agentic coding tool for the terminal and IDEs.",
+   "bestFor": "Large, multi-step coding tasks from the terminal",
+   "pricing": "paid",
+   "url": "https://www.anthropic.com/claude-code",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "openai-codex",
+   "name": "OpenAI Codex",
+   "category": "agents",
+   "description": "OpenAI's coding agent across ChatGPT, CLI, IDE extension and cloud; included in ChatGPT plans.",
+   "bestFor": "Delegating tasks and automated PR review",
+   "pricing": "paid",
+   "url": "https://openai.com/codex/",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "opencode",
+   "name": "OpenCode",
+   "category": "agents",
+   "description": "Open-source, model-agnostic coding agent with terminal, desktop and web apps.",
+   "bestFor": "Open-source agent with any model",
+   "pricing": "free",
+   "url": "https://opencode.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "cline",
+   "name": "Cline",
+   "category": "agents",
+   "description": "Open-source autonomous coding agent for VS Code; bring your own model.",
+   "bestFor": "Transparent agent inside VS Code",
+   "pricing": "free",
+   "url": "https://cline.bot",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "aider",
+   "name": "Aider",
+   "category": "agents",
+   "description": "Open-source AI pair programming in your terminal with git integration.",
+   "bestFor": "Git-native terminal pair programming",
+   "pricing": "free",
+   "url": "https://aider.chat",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "devin",
+   "name": "Devin",
+   "category": "agents",
+   "description": "Cognition's autonomous coding agent running parallel cloud agents.",
+   "bestFor": "Hands-off async engineering tasks",
+   "pricing": "freemium",
+   "url": "https://devin.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "jules",
+   "name": "Jules",
+   "category": "agents",
+   "description": "Google's asynchronous coding agent that works on your GitHub repos.",
+   "bestFor": "Background fixes on GitHub repos",
+   "pricing": "freemium",
+   "url": "https://jules.google",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "amp",
+   "name": "Amp",
+   "category": "agents",
+   "description": "Sourcegraph's agentic coding tool for terminal and editors.",
+   "bestFor": "Frontier-model agent work",
+   "pricing": "freemium",
+   "url": "https://ampcode.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "langgraph",
+   "name": "LangGraph",
+   "category": "frameworks",
+   "description": "Framework from LangChain for building stateful, multi-step agent graphs.",
+   "bestFor": "Controllable production agents",
+   "pricing": "free",
+   "url": "https://www.langchain.com/langgraph",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "crewai",
+   "name": "CrewAI",
+   "category": "frameworks",
+   "description": "Open-source multi-agent framework plus a paid hosted platform.",
+   "bestFor": "Multi-agent teams quickly",
+   "pricing": "freemium",
+   "url": "https://www.crewai.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "openai-agents-sdk",
+   "name": "OpenAI Agents SDK",
+   "category": "frameworks",
+   "description": "Lightweight SDK for building agents with tools, handoffs and guardrails.",
+   "bestFor": "Agents on OpenAI models",
+   "pricing": "free",
+   "url": "https://openai.github.io/openai-agents-python/",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "mastra",
+   "name": "Mastra",
+   "category": "frameworks",
+   "description": "TypeScript framework for AI agents, workflows and RAG.",
+   "bestFor": "JS/TS developers building agents",
+   "pricing": "free",
+   "url": "https://mastra.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "vercel-ai-sdk",
+   "name": "Vercel AI SDK",
+   "category": "frameworks",
+   "description": "TypeScript toolkit for building AI apps and agents across model providers.",
+   "bestFor": "AI features in Next.js/React apps",
+   "pricing": "free",
+   "url": "https://ai-sdk.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "vercel",
+   "name": "Vercel",
+   "category": "backend",
+   "description": "Frontend cloud for deploying Next.js and other web apps.",
+   "bestFor": "Deploying frontends in one click",
+   "pricing": "freemium",
+   "url": "https://vercel.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "netlify",
+   "name": "Netlify",
+   "category": "backend",
+   "description": "Platform for deploying and hosting web apps and sites.",
+   "bestFor": "Static and Jamstack sites",
+   "pricing": "freemium",
+   "url": "https://www.netlify.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "supabase",
+   "name": "Supabase",
+   "category": "backend",
+   "description": "Open-source Postgres backend with auth, storage and edge functions.",
+   "bestFor": "Backend for vibe-coded apps",
+   "pricing": "freemium",
+   "url": "https://supabase.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "convex",
+   "name": "Convex",
+   "category": "backend",
+   "description": "Reactive backend platform with database and server functions in TypeScript; open source.",
+   "bestFor": "Realtime apps in TypeScript",
+   "pricing": "freemium",
+   "url": "https://www.convex.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "cloudflare-workers",
+   "name": "Cloudflare Workers",
+   "category": "backend",
+   "description": "Serverless platform for running code at the edge, including agents.",
+   "bestFor": "Cheap global serverless + agents",
+   "pricing": "freemium",
+   "url": "https://workers.cloudflare.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "railway",
+   "name": "Railway",
+   "category": "backend",
+   "description": "Deploy apps, databases and services from a repo with minimal config.",
+   "bestFor": "Hosting backends without DevOps",
+   "pricing": "freemium",
+   "url": "https://railway.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "figma-make",
+   "name": "Figma Make",
+   "category": "design",
+   "description": "Figma's prompt-to-app tool that turns designs and prompts into working prototypes.",
+   "bestFor": "Designers turning ideas into prototypes",
+   "pricing": "freemium",
+   "url": "https://www.figma.com/make/",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "builder-io",
+   "name": "Builder.io",
+   "category": "design",
+   "description": "Visual development platform that converts Figma designs to code.",
+   "bestFor": "Figma-to-production code",
+   "pricing": "freemium",
+   "url": "https://www.builder.io",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "locofy",
+   "name": "Locofy",
+   "category": "design",
+   "description": "Converts Figma/Penpot designs into frontend code.",
+   "bestFor": "Design handoff to React/HTML",
+   "pricing": "freemium",
+   "url": "https://www.locofy.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": null
+  },
+  {
+   "id": "anthropic-api-claude",
+   "name": "Anthropic API (Claude)",
+   "category": "models",
+   "description": "API access to Claude models, strong at coding and agentic work.",
+   "bestFor": "Powering coding agents",
+   "pricing": "paid",
+   "url": "https://www.anthropic.com/api",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "openai-api",
+   "name": "OpenAI API",
+   "category": "models",
+   "description": "API for GPT models, embeddings, images and realtime voice.",
+   "bestFor": "General-purpose AI features",
+   "pricing": "paid",
+   "url": "https://platform.openai.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "google-gemini-api",
+   "name": "Google Gemini API",
+   "category": "models",
+   "description": "Gemini models via Google AI Studio with long context and a free tier.",
+   "bestFor": "Long context and generous free tier",
+   "pricing": "freemium",
+   "url": "https://ai.google.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "openrouter",
+   "name": "OpenRouter",
+   "category": "models",
+   "description": "Single API to access hundreds of models from many providers.",
+   "bestFor": "Swapping models behind one key",
+   "pricing": "freemium",
+   "url": "https://openrouter.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "groq",
+   "name": "Groq",
+   "category": "models",
+   "description": "Fast inference cloud for open models, built on its LPU hardware.",
+   "bestFor": "Low-latency responses",
+   "pricing": "freemium",
+   "url": "https://groq.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": null
+  }
+ ],
+ "useCases": [
+  {
+   "question": "I can't code but want to ship a web app",
+   "picks": [
+    "lovable",
+    "bolt-new",
+    "replit"
+   ]
+  },
+  {
+   "question": "I code daily and want an AI editor",
+   "picks": [
+    "cursor",
+    "devin-desktop-formerly-windsurf",
+    "github-copilot"
+   ]
+  },
+  {
+   "question": "I want an agent to handle big tasks in my repo",
+   "picks": [
+    "claude-code",
+    "openai-codex",
+    "opencode"
+   ]
+  },
+  {
+   "question": "I want a free/open-source coding agent",
+   "picks": [
+    "opencode",
+    "cline",
+    "aider"
+   ]
+  },
+  {
+   "question": "I need a backend + database fast",
+   "picks": [
+    "supabase",
+    "convex",
+    "railway"
+   ]
+  },
+  {
+   "question": "I want to deploy my app",
+   "picks": [
+    "vercel",
+    "netlify",
+    "cloudflare-workers"
+   ]
+  },
+  {
+   "question": "I'm building my own AI agent",
+   "picks": [
+    "vercel-ai-sdk",
+    "langgraph",
+    "mastra"
+   ]
+  },
+  {
+   "question": "I want to turn a design into code",
+   "picks": [
+    "figma-make",
+    "builder-io",
+    "locofy"
+   ]
+  },
+  {
+   "question": "Which model API should power my app?",
+   "picks": [
+    "anthropic-api-claude",
+    "openai-api",
+    "google-gemini-api"
+   ]
+  }
+ ],
+ "newReleases": [
+  {
+   "name": "OpenCode 2.0",
+   "date": "2026-10-13",
+   "summary": "Open-source, model-agnostic coding agent with native TUI and multi-session support. #2 on Product Hunt's Oct 13 daily leaderboard (313 upvotes when checked).",
+   "url": "https://opencode.ai",
+   "source": "https://www.producthunt.com/leaderboard/daily/2026/10/13"
+  },
+  {
+   "name": "Tiden",
+   "date": "2026-10-14",
+   "summary": "Verifies coding agents built what you asked for by checking changes against requirements and tests. Works with Claude Code, Cursor, Codex, Copilot.",
+   "url": "https://tiden.ai",
+   "source": "https://www.producthunt.com/leaderboard/daily/2026/10/14"
+  },
+  {
+   "name": "Reason",
+   "date": "2026-10-14",
+   "summary": "Cost-efficient coding agent that writes code, runs tests and opens PRs, from Mac app, terminal, web or Slack.",
+   "url": "https://reasonmachines.com",
+   "source": "https://www.producthunt.com/leaderboard/daily/2026/10/14"
+  },
+  {
+   "name": "Exodus for Google Cloud Run",
+   "date": "2026-10-14",
+   "summary": "Free tool with an open-source CLI: your coding agent (Claude Code, Codex, Cursor) audits your app, compares current cost vs Cloud Run, and migrates it task by task using 50+ playbooks. #8 on launch day.",
+   "url": "https://exodus.elim.io/",
+   "source": "https://www.producthunt.com/products/exodus-by-elim-io"
+  }
+ ]
+}

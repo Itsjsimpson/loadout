@@ -1,0 +1,70 @@
+# Loadout — full content
+
+## AI Code Editors & IDEs
+- **Cursor** (freemium) — AI code editor and coding agent platform; hand off tasks to agents or code alongside them. Best for: Day-to-day coding with an agent inside your editor. https://cursor.com (verified: 2026-10-15)
+- **Devin Desktop (formerly Windsurf)** (freemium) — Cognition's IDE (Windsurf renamed June 2026) with an Agent Command Center for managing local and cloud agents. Best for: Managing multiple agents from a full IDE. https://devin.ai/desktop (verified: 2026-10-15)
+- **GitHub Copilot** (freemium) — AI pair programmer in VS Code, JetBrains and GitHub, with chat and agent mode. Best for: Teams already living on GitHub. https://github.com/features/copilot (verified: 2026-10-15)
+- **Zed** (freemium) — Fast, Rust-built collaborative code editor with built-in AI assistance. Best for: Speed-focused devs who want AI without bloat. https://zed.dev (verified: 2026-10-15)
+- **JetBrains Air** (freemium) — JetBrains' agentic development environment for running Claude Agent, Codex, Junie, Copilot and ACP agents, in IDEs, browser or CLI. Best for: JetBrains users orchestrating coding agents. https://www.jetbrains.com/air/ (verified: 2026-10-15)
+- **Kiro** (freemium) — AWS's agentic IDE built around spec-driven development. Best for: Turning a spec into structured code. https://kiro.dev (verified: 2026-10-15)
+
+## App Builders (Prompt-to-App)
+- **Lovable** (freemium) — Build full-stack web apps by chatting, with Supabase integration. Best for: Non-coders shipping a real web app. https://lovable.dev (verified: 2026-10-15)
+- **Bolt.new** (freemium) — StackBlitz's in-browser prompt-to-app builder that runs code in WebContainers. Best for: Fast prototypes in the browser. https://bolt.new (verified: 2026-10-15)
+- **v0** (freemium) — Vercel's generative UI and app builder producing React/Next.js code. Best for: Next.js UIs you can deploy to Vercel. https://v0.app (verified: 2026-10-15)
+- **Replit** (freemium) — Cloud IDE with Replit Agent that builds and deploys apps from prompts. Best for: Build-and-host in one place. https://replit.com (verified: 2026-10-15)
+- **Base44** (freemium) — No-code AI app builder that generates apps with built-in backend. Best for: Internal tools and simple apps, no setup. https://base44.com (verified: 2026-10-15)
+
+## Coding Agents
+- **Claude Code** (paid) — Anthropic's agentic coding tool for the terminal and IDEs. Best for: Large, multi-step coding tasks from the terminal. https://www.anthropic.com/claude-code (verified: 2026-10-15)
+- **OpenAI Codex** (paid) — OpenAI's coding agent across ChatGPT, CLI, IDE extension and cloud; included in ChatGPT plans. Best for: Delegating tasks and automated PR review. https://openai.com/codex/ (verified: 2026-10-15)
+- **OpenCode** (free) — Open-source, model-agnostic coding agent with terminal, desktop and web apps. Best for: Open-source agent with any model. https://opencode.ai (verified: 2026-10-15)
+- **Cline** (free) — Open-source autonomous coding agent for VS Code; bring your own model. Best for: Transparent agent inside VS Code. https://cline.bot (verified: 2026-10-15)
+- **Aider** (free) — Open-source AI pair programming in your terminal with git integration. Best for: Git-native terminal pair programming. https://aider.chat (verified: 2026-10-15)
+- **Devin** (freemium) — Cognition's autonomous coding agent running parallel cloud agents. Best for: Hands-off async engineering tasks. https://devin.ai (verified: 2026-10-15)
+- **Jules** (freemium) — Google's asynchronous coding agent that works on your GitHub repos. Best for: Background fixes on GitHub repos. https://jules.google (verified: 2026-10-15)
+- **Amp** (freemium) — Sourcegraph's agentic coding tool for terminal and editors. Best for: Frontier-model agent work. https://ampcode.com (verified: 2026-10-15)
+
+## Agent Frameworks
+- **LangGraph** (free) — Framework from LangChain for building stateful, multi-step agent graphs. Best for: Controllable production agents. https://www.langchain.com/langgraph (verified: 2026-10-15)
+- **CrewAI** (freemium) — Open-source multi-agent framework plus a paid hosted platform. Best for: Multi-agent teams quickly. https://www.crewai.com (verified: 2026-10-15)
+- **OpenAI Agents SDK** (free) — Lightweight SDK for building agents with tools, handoffs and guardrails. Best for: Agents on OpenAI models. https://openai.github.io/openai-agents-python/ (verified: 2026-10-15)
+- **Mastra** (free) — TypeScript framework for AI agents, workflows and RAG. Best for: JS/TS developers building agents. https://mastra.ai (verified: 2026-10-15)
+- **Vercel AI SDK** (free) — TypeScript toolkit for building AI apps and agents across model providers. Best for: AI features in Next.js/React apps. https://ai-sdk.dev (verified: 2026-10-15)
+
+## Deploy, Hosting & Backend
+- **Vercel** (freemium) — Frontend cloud for deploying Next.js and other web apps. Best for: Deploying frontends in one click. https://vercel.com (verified: 2026-10-15)
+- **Netlify** (freemium) — Platform for deploying and hosting web apps and sites. Best for: Static and Jamstack sites. https://www.netlify.com (verified: 2026-10-15)
+- **Supabase** (freemium) — Open-source Postgres backend with auth, storage and edge functions. Best for: Backend for vibe-coded apps. https://supabase.com (verified: 2026-10-15)
+- **Convex** (freemium) — Reactive backend platform with database and server functions in TypeScript; open source. Best for: Realtime apps in TypeScript. https://www.convex.dev (verified: 2026-10-15)
+- **Cloudflare Workers** (freemium) — Serverless platform for running code at the edge, including agents. Best for: Cheap global serverless + agents. https://workers.cloudflare.com (verified: 2026-10-15)
+- **Railway** (freemium) — Deploy apps, databases and services from a repo with minimal config. Best for: Hosting backends without DevOps. https://railway.com (verified: 2026-10-15)
+
+## Design-to-Code
+- **Figma Make** (freemium) — Figma's prompt-to-app tool that turns designs and prompts into working prototypes. Best for: Designers turning ideas into prototypes. https://www.figma.com/make/ (verified: 2026-10-15)
+- **Builder.io** (freemium) — Visual development platform that converts Figma designs to code. Best for: Figma-to-production code. https://www.builder.io (verified: 2026-10-15)
+- **Locofy** (freemium) — Converts Figma/Penpot designs into frontend code. Best for: Design handoff to React/HTML. https://www.locofy.ai (verified: no)
+
+## AI APIs & Models
+- **Anthropic API (Claude)** (paid) — API access to Claude models, strong at coding and agentic work. Best for: Powering coding agents. https://www.anthropic.com/api (verified: 2026-10-15)
+- **OpenAI API** (paid) — API for GPT models, embeddings, images and realtime voice. Best for: General-purpose AI features. https://platform.openai.com (verified: 2026-10-15)
+- **Google Gemini API** (freemium) — Gemini models via Google AI Studio with long context and a free tier. Best for: Long context and generous free tier. https://ai.google.dev (verified: 2026-10-15)
+- **OpenRouter** (freemium) — Single API to access hundreds of models from many providers. Best for: Swapping models behind one key. https://openrouter.ai (verified: 2026-10-15)
+- **Groq** (freemium) — Fast inference cloud for open models, built on its LPU hardware. Best for: Low-latency responses. https://groq.com (verified: no)
+
+## Which tool should I use
+- I can't code but want to ship a web app: Lovable > Bolt.new > Replit
+- I code daily and want an AI editor: Cursor > Devin Desktop (formerly Windsurf) > GitHub Copilot
+- I want an agent to handle big tasks in my repo: Claude Code > OpenAI Codex > OpenCode
+- I want a free/open-source coding agent: OpenCode > Cline > Aider
+- I need a backend + database fast: Supabase > Convex > Railway
+- I want to deploy my app: Vercel > Netlify > Cloudflare Workers
+- I'm building my own AI agent: Vercel AI SDK > LangGraph > Mastra
+- I want to turn a design into code: Figma Make > Builder.io > Locofy
+- Which model API should power my app?: Anthropic API (Claude) > OpenAI API > Google Gemini API
+
+## New releases
+- 2026-10-13 **OpenCode 2.0** — Open-source, model-agnostic coding agent with native TUI and multi-session support. #2 on Product Hunt's Oct 13 daily leaderboard (313 upvotes when checked). Source: https://www.producthunt.com/leaderboard/daily/2026/10/13
+- 2026-10-14 **Tiden** — Verifies coding agents built what you asked for by checking changes against requirements and tests. Works with Claude Code, Cursor, Codex, Copilot. Source: https://www.producthunt.com/leaderboard/daily/2026/10/14
+- 2026-10-14 **Reason** — Cost-efficient coding agent that writes code, runs tests and opens PRs, from Mac app, terminal, web or Slack. Source: https://www.producthunt.com/leaderboard/daily/2026/10/14
+- 2026-10-14 **Exodus for Google Cloud Run** — Free tool with an open-source CLI: your coding agent (Claude Code, Codex, Cursor) audits your app, compares current cost vs Cloud Run, and migrates it task by task using 50+ playbooks. #8 on launch day. Source: https://www.producthunt.com/products/exodus-by-elim-io

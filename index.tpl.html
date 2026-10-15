@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Loadout — AI tools for vibe coders & builders</title>
+<meta name="description" content="Loadout is a directory of AI tools for vibe coders and builders: coding agents, AI editors, app builders, backends and models, ranked by use case.">
+<link rel="canonical" href="https://itsjsimpson.github.io/loadout/"><meta property="og:type" content="website"><meta property="og:title" content="Loadout — AI tools for vibe coders & builders"><meta property="og:description" content="Pick your AI loadout: tools ranked by what you're trying to ship."><meta property="og:site_name" content="Loadout"><meta name="twitter:card" content="summary">
+<link rel="icon" href="data:,"><link rel="stylesheet" href="style.css"><link rel="alternate" type="application/json" href="tools.json" title="Loadout data"></head><body>
+<header><div class="wrap"><a class="logo" href="index.html">▣ Loadout</a><nav><a href="#picks">Picks</a><a href="#new">New</a><a href="#tools">Directory</a><a href="advertise.html">Advertise</a></nav></div></header>
+<main>
+<section class="hero wrap"><h1>Pick your <span>loadout</span>.</h1><p>The AI tools vibe coders and builders actually need — ranked by what you're trying to ship.</p>
+<form class="signup" onsubmit="event.preventDefault();this.querySelector('p').textContent='Thanks! Newsletter launches soon.'"><label for="email">Weekly new-tools email</label><div><input id="email" type="email" required placeholder="you@domain.com"><button>Subscribe</button></div><p class="muted">Placeholder — no emails are collected yet.</p></form></section>
+<section id="featured" class="wrap" aria-label="Featured"><div class="card sponsor"><span class="tag">Featured</span><h2 class="h3">Your tool here</h2><p>Reach vibe coders and builders. Clearly labelled sponsored slot.</p><a href="advertise.html">Advertise →</a></div></section>
+<section id="picks" class="wrap"><h2>Which tool should I use for…</h2><div id="uc" class="grid"></div></section>
+<section id="new" class="wrap"><h2>New releases</h2><div id="rel" class="grid"></div></section>
+<section id="tools" class="wrap"><h2>Directory</h2><label class="sr" for="q">Search tools</label><input id="q" placeholder="Search tools…"><div id="cats"></div><div id="list" class="grid"></div>
+<noscript><ul><!--STATIC--></ul></noscript>
+<nav aria-label="Browse" class="browse"><h2>Browse</h2><div class="grid"><div><h3>Categories</h3><ul><!--CATLINKS--></ul></div><div><h3>Use cases</h3><ul><!--UCLINKS--></ul></div></div></nav></section>
+</main>
+<footer class="wrap"><p>Loadout · data updated <span id="upd"></span> · <a href="tools.json">Public API: tools.json</a> · <a href="llms.txt">llms.txt</a> · <a href="advertise.html">Advertise</a></p></footer><script src="app.js"></script></body></html>
