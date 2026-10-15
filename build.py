@@ -13,11 +13,16 @@ def is_featured(t):
     f=t.get("featured")
     return bool(f) and (t.get("featuredUntil") or "9999") >= TODAY
 FEAT=[t for t in D["tools"] if is_featured(t)]
+def meta_desc(s,n=155):
+    s=" ".join((s or "").split())
+    if len(s)<=n:return s
+    cut=s[:n-1].rsplit(" ",1)[0].rstrip(" ,.;:")
+    return (cut or s[:n-1])+"…"
 def page(path,title,desc,body,ld=None,depth=0,foot=""):
     r="../"*depth;url=f"{BASE_URL}/{path}".replace("index.html","")
     h=f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{E(title)}</title><meta name="description" content="{E(desc)}"><link rel="canonical" href="{url}">
-<meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{url}"><meta property="og:site_name" content="Loadout"><meta name="twitter:card" content="summary">
+<title>{E(title)}</title><meta name="description" content="{E(meta_desc(desc))}"><link rel="canonical" href="{url}">
+<meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(meta_desc(desc))}"><meta property="og:url" content="{url}"><meta property="og:site_name" content="Loadout"><meta name="twitter:card" content="summary">
 <link rel="icon" href="data:,"><link rel="stylesheet" href="{r}style.css">{'<script type="application/ld+json">'+json.dumps(ld)+'</script>' if ld else ''}</head><body>
 <header><div class="wrap"><a class="logo" href="{r}index.html">▣ Loadout</a><nav><a href="{r}index.html#picks">Picks</a><a href="{r}index.html#new">New</a><a href="{r}index.html#tools">Directory</a><a href="{r}advertise.html">Advertise</a></nav></div></header>
 <main class="wrap">{body}</main>
