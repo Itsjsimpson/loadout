@@ -24,6 +24,7 @@
 - **Devin** (freemium) — Cognition's autonomous coding agent running parallel cloud agents. Best for: Hands-off async engineering tasks. https://devin.ai (verified: 2026-10-15)
 - **Jules** (freemium) — Google's asynchronous coding agent that works on your GitHub repos. Best for: Background fixes on GitHub repos. https://jules.google (verified: 2026-10-15)
 - **Amp** (freemium) — Sourcegraph's agentic coding tool for terminal and editors. Best for: Frontier-model agent work. https://ampcode.com (verified: 2026-10-15)
+- **Reason** (freemium) — Cost-efficient coding agent that writes code, runs tests and opens PRs from Mac, terminal, web or Slack. Best for: Cost-efficient autonomous coding and PRs. https://reasonmachines.com (verified: 2026-10-15)
 
 ## Agent Frameworks
 - **LangGraph** (free) — Framework from LangChain for building stateful, multi-step agent graphs. Best for: Controllable production agents. https://www.langchain.com/langgraph (verified: 2026-10-15)
@@ -31,6 +32,7 @@
 - **OpenAI Agents SDK** (free) — Lightweight SDK for building agents with tools, handoffs and guardrails. Best for: Agents on OpenAI models. https://openai.github.io/openai-agents-python/ (verified: 2026-10-15)
 - **Mastra** (free) — TypeScript framework for AI agents, workflows and RAG. Best for: JS/TS developers building agents. https://mastra.ai (verified: 2026-10-15)
 - **Vercel AI SDK** (free) — TypeScript toolkit for building AI apps and agents across model providers. Best for: AI features in Next.js/React apps. https://ai-sdk.dev (verified: 2026-10-15)
+- **Agent-Native** (free) — Builder.io's open-source TypeScript framework for agentic apps where agent and UI share actions, data and state. Best for: Building agentic apps with a real UI. https://www.agent-native.com (verified: 2026-10-15)
 
 ## Deploy, Hosting & Backend
 - **Vercel** (freemium) — Frontend cloud for deploying Next.js and other web apps. Best for: Deploying frontends in one click. https://vercel.com (verified: 2026-10-15)
@@ -59,7 +61,7 @@
 - I want a free/open-source coding agent: OpenCode > Cline > Aider
 - I need a backend + database fast: Supabase > Convex > Railway
 - I want to deploy my app: Vercel > Netlify > Cloudflare Workers
-- I'm building my own AI agent: Vercel AI SDK > LangGraph > Mastra
+- I'm building my own AI agent: Agent-Native > Vercel AI SDK > Mastra
 - I want to turn a design into code: Figma Make > Builder.io > Locofy
 - Which model API should power my app?: Anthropic API (Claude) > OpenAI API > Google Gemini API
 
@@ -68,3 +70,6 @@
 - 2026-10-14 **Tiden** — Verifies coding agents built what you asked for by checking changes against requirements and tests. Works with Claude Code, Cursor, Codex, Copilot. Source: https://www.producthunt.com/leaderboard/daily/2026/10/14
 - 2026-10-14 **Reason** — Cost-efficient coding agent that writes code, runs tests and opens PRs, from Mac app, terminal, web or Slack. Source: https://www.producthunt.com/leaderboard/daily/2026/10/14
 - 2026-10-14 **Exodus for Google Cloud Run** — Free tool with an open-source CLI: your coding agent (Claude Code, Codex, Cursor) audits your app, compares current cost vs Cloud Run, and migrates it task by task using 50+ playbooks. #8 on launch day. Source: https://www.producthunt.com/products/exodus-by-elim-io
+- 2026-10-14 **Agent-Native** — Builder.io open-source TypeScript framework for agentic apps: agent and UI share the same actions, data and state, with MCP and A2A built in. Beta launched Oct 14. Source: https://www.builder.io/blog/introducing-agent-native
+- 2026-10-14 **Epherem** — Free security scanner for AI-built apps (Lovable, Bolt, v0, Cursor, Claude Code). Finds auth, DB, secret and package issues, with fix prompts for your coding agent. Source: https://www.producthunt.com/leaderboard/daily/2026/10/14
+- 2026-10-14 **VS Code 1.142** — Stable release adds agent canvases (preview), move chats across folders/worktrees, Copilot harness as default for new sessions, and enterprise agent permission controls. Source: https://code.visualstudio.com/updates/v1_142

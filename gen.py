@@ -21,11 +21,13 @@ T=[
 ("Devin","agents","Cognition's autonomous coding agent running parallel cloud agents.","Hands-off async engineering tasks","freemium","https://devin.ai"),
 ("Jules","agents","Google's asynchronous coding agent that works on your GitHub repos.","Background fixes on GitHub repos","freemium","https://jules.google"),
 ("Amp","agents","Sourcegraph's agentic coding tool for terminal and editors.","Frontier-model agent work","freemium","https://ampcode.com"),
+("Reason","agents","Cost-efficient coding agent that writes code, runs tests and opens PRs from Mac, terminal, web or Slack.","Cost-efficient autonomous coding and PRs","freemium","https://reasonmachines.com"),
 ("LangGraph","frameworks","Framework from LangChain for building stateful, multi-step agent graphs.","Controllable production agents","free","https://www.langchain.com/langgraph"),
 ("CrewAI","frameworks","Open-source multi-agent framework plus a paid hosted platform.","Multi-agent teams quickly","freemium","https://www.crewai.com"),
 ("OpenAI Agents SDK","frameworks","Lightweight SDK for building agents with tools, handoffs and guardrails.","Agents on OpenAI models","free","https://openai.github.io/openai-agents-python/"),
 ("Mastra","frameworks","TypeScript framework for AI agents, workflows and RAG.","JS/TS developers building agents","free","https://mastra.ai"),
 ("Vercel AI SDK","frameworks","TypeScript toolkit for building AI apps and agents across model providers.","AI features in Next.js/React apps","free","https://ai-sdk.dev"),
+("Agent-Native","frameworks","Builder.io's open-source TypeScript framework for agentic apps where agent and UI share actions, data and state.","Building agentic apps with a real UI","free","https://www.agent-native.com"),
 ("Vercel","backend","Frontend cloud for deploying Next.js and other web apps.","Deploying frontends in one click","freemium","https://vercel.com"),
 ("Netlify","backend","Platform for deploying and hosting web apps and sites.","Static and Jamstack sites","freemium","https://www.netlify.com"),
 ("Supabase","backend","Open-source Postgres backend with auth, storage and edge functions.","Backend for vibe-coded apps","freemium","https://supabase.com"),
@@ -50,14 +52,17 @@ usecases=[
 {"question":"I want a free/open-source coding agent","picks":["opencode","cline","aider"]},
 {"question":"I need a backend + database fast","picks":["supabase","convex","railway"]},
 {"question":"I want to deploy my app","picks":["vercel","netlify","cloudflare-workers"]},
-{"question":"I'm building my own AI agent","picks":["vercel-ai-sdk","langgraph","mastra"]},
+{"question":"I'm building my own AI agent","picks":["agent-native","vercel-ai-sdk","mastra"]},
 {"question":"I want to turn a design into code","picks":["figma-make","builder-io","locofy"]},
 {"question":"Which model API should power my app?","picks":["anthropic-api-claude","openai-api","google-gemini-api"]}]
 rel=[
 {"name":"OpenCode 2.0","date":"2026-10-13","summary":"Open-source, model-agnostic coding agent with native TUI and multi-session support. #2 on Product Hunt's Oct 13 daily leaderboard (313 upvotes when checked).","url":"https://opencode.ai","source":"https://www.producthunt.com/leaderboard/daily/2026/10/13"},
 {"name":"Tiden","date":"2026-10-14","summary":"Verifies coding agents built what you asked for by checking changes against requirements and tests. Works with Claude Code, Cursor, Codex, Copilot.","url":"https://tiden.ai","source":"https://www.producthunt.com/leaderboard/daily/2026/10/14"},
 {"name":"Reason","date":"2026-10-14","summary":"Cost-efficient coding agent that writes code, runs tests and opens PRs, from Mac app, terminal, web or Slack.","url":"https://reasonmachines.com","source":"https://www.producthunt.com/leaderboard/daily/2026/10/14"},
-{"name":"Exodus for Google Cloud Run","date":"2026-10-14","summary":"Free tool with an open-source CLI: your coding agent (Claude Code, Codex, Cursor) audits your app, compares current cost vs Cloud Run, and migrates it task by task using 50+ playbooks. #8 on launch day.","url":"https://exodus.elim.io/","source":"https://www.producthunt.com/products/exodus-by-elim-io"}]
+{"name":"Exodus for Google Cloud Run","date":"2026-10-14","summary":"Free tool with an open-source CLI: your coding agent (Claude Code, Codex, Cursor) audits your app, compares current cost vs Cloud Run, and migrates it task by task using 50+ playbooks. #8 on launch day.","url":"https://exodus.elim.io/","source":"https://www.producthunt.com/products/exodus-by-elim-io"},
+{"name":"Agent-Native","date":"2026-10-14","summary":"Builder.io open-source TypeScript framework for agentic apps: agent and UI share the same actions, data and state, with MCP and A2A built in. Beta launched Oct 14.","url":"https://www.agent-native.com","source":"https://www.builder.io/blog/introducing-agent-native"},
+{"name":"Epherem","date":"2026-10-14","summary":"Free security scanner for AI-built apps (Lovable, Bolt, v0, Cursor, Claude Code). Finds auth, DB, secret and package issues, with fix prompts for your coding agent.","url":"https://epherem.com","source":"https://www.producthunt.com/leaderboard/daily/2026/10/14"},
+{"name":"VS Code 1.142","date":"2026-10-14","summary":"Stable release adds agent canvases (preview), move chats across folders/worktrees, Copilot harness as default for new sessions, and enterprise agent permission controls.","url":"https://code.visualstudio.com/updates/v1_142","source":"https://code.visualstudio.com/updates/v1_142"}]
 json.dump({"name":"Loadout","updated":"2026-10-15","categories":[{"id":k,"name":v} for k,v in C.items()],"tools":tools,"useCases":usecases,"newReleases":rel},open("tools.json","w"),indent=1)
 ids={t["id"] for t in tools}; assert all(p in ids for u in usecases for p in u["picks"]),[p for u in usecases for p in u["picks"] if p not in ids]
 print(len(tools))

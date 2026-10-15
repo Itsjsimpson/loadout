@@ -261,6 +261,18 @@
    "verified": "2026-10-15"
   },
   {
+   "id": "reason",
+   "name": "Reason",
+   "category": "agents",
+   "description": "Cost-efficient coding agent that writes code, runs tests and opens PRs from Mac, terminal, web or Slack.",
+   "bestFor": "Cost-efficient autonomous coding and PRs",
+   "pricing": "freemium",
+   "url": "https://reasonmachines.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
    "id": "langgraph",
    "name": "LangGraph",
    "category": "frameworks",
@@ -316,6 +328,18 @@
    "bestFor": "AI features in Next.js/React apps",
    "pricing": "free",
    "url": "https://ai-sdk.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "agent-native",
+   "name": "Agent-Native",
+   "category": "frameworks",
+   "description": "Builder.io's open-source TypeScript framework for agentic apps where agent and UI share actions, data and state.",
+   "bestFor": "Building agentic apps with a real UI",
+   "pricing": "free",
+   "url": "https://www.agent-native.com",
    "affiliateUrl": "",
    "featured": false,
    "verified": "2026-10-15"
@@ -541,8 +565,8 @@
   {
    "question": "I'm building my own AI agent",
    "picks": [
+    "agent-native",
     "vercel-ai-sdk",
-    "langgraph",
     "mastra"
    ]
   },
@@ -591,6 +615,27 @@
    "summary": "Free tool with an open-source CLI: your coding agent (Claude Code, Codex, Cursor) audits your app, compares current cost vs Cloud Run, and migrates it task by task using 50+ playbooks. #8 on launch day.",
    "url": "https://exodus.elim.io/",
    "source": "https://www.producthunt.com/products/exodus-by-elim-io"
+  },
+  {
+   "name": "Agent-Native",
+   "date": "2026-10-14",
+   "summary": "Builder.io open-source TypeScript framework for agentic apps: agent and UI share the same actions, data and state, with MCP and A2A built in. Beta launched Oct 14.",
+   "url": "https://www.agent-native.com",
+   "source": "https://www.builder.io/blog/introducing-agent-native"
+  },
+  {
+   "name": "Epherem",
+   "date": "2026-10-14",
+   "summary": "Free security scanner for AI-built apps (Lovable, Bolt, v0, Cursor, Claude Code). Finds auth, DB, secret and package issues, with fix prompts for your coding agent.",
+   "url": "https://epherem.com",
+   "source": "https://www.producthunt.com/leaderboard/daily/2026/10/14"
+  },
+  {
+   "name": "VS Code 1.142",
+   "date": "2026-10-14",
+   "summary": "Stable release adds agent canvases (preview), move chats across folders/worktrees, Copilot harness as default for new sessions, and enterprise agent permission controls.",
+   "url": "https://code.visualstudio.com/updates/v1_142",
+   "source": "https://code.visualstudio.com/updates/v1_142"
   }
  ]
 }
