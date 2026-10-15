@@ -1,6 +1,6 @@
 """Build static SEO pages from tools.json. Run: python3 gen.py && python3 build.py"""
 import json,os,html,shutil
-BASE_URL=os.environ.get("LOADOUT_BASE_URL","https://itsjsimpson.github.io/loadout")  # TODO: set real domain
+BASE_URL=os.environ.get("LOADOUT_BASE_URL","https://loadout-olive.vercel.app")  # Vercel production
 D=json.load(open("tools.json"));E=html.escape
 cat={c["id"]:c["name"] for c in D["categories"]};by={t["id"]:t for t in D["tools"]}
 def slug(s):return "".join(ch if ch.isalnum() else "-" for ch in s.lower()).strip("-").replace("--","-")

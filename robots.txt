@@ -21,4 +21,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://itsjsimpson.github.io/loadout/sitemap.xml
+Sitemap: https://loadout-olive.vercel.app/sitemap.xml
