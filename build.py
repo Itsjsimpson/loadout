@@ -7,7 +7,7 @@ def slug(s):return "".join(ch if ch.isalnum() else "-" for ch in s.lower()).stri
 pages=[]
 TODAY=datetime.date.today().isoformat()
 # Paste Whop checkout links here once products are live; empty = "coming soon".
-CHECKOUT={"featured":os.environ.get("LOADOUT_CHECKOUT_FEATURED",""),"newsletter":os.environ.get("LOADOUT_CHECKOUT_NEWSLETTER","")}
+CHECKOUT={"featured":os.environ.get("LOADOUT_CHECKOUT_FEATURED","https://whop.com/checkout/plan_66QiAqtZDPzii"),"newsletter":os.environ.get("LOADOUT_CHECKOUT_NEWSLETTER","https://whop.com/checkout/plan_IgcYDAAIortKU")}
 PRICE={"featured":"$29 / 30 days","newsletter":"$25 / issue"}
 def is_featured(t):
     f=t.get("featured")
