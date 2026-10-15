@@ -30,7 +30,7 @@ for p in pages:
         try:json.loads(m)
         except Exception as e:fails.append(f"{p}: bad JSON-LD {e}")
     for l in x.links:
-        if l.startswith(("http","mailto:","#","${","data:")):continue
+        if l.startswith(("http","mailto:","#","${","data:","/_vercel")):continue
         tgt=os.path.normpath(os.path.join(os.path.dirname(p),urllib.parse.urlparse(l).path))
         if not os.path.exists(tgt):fails.append(f"{p}: broken link {l}")
 for f in("sitemap.xml","robots.txt","llms.txt","llms-full.txt","tools.json"):
