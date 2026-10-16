@@ -745,6 +745,34 @@
    "summary": "Stable release adds agent canvases (preview), move chats across folders/worktrees, Copilot harness as default for new sessions, and enterprise agent permission controls.",
    "url": "https://code.visualstudio.com/updates/v1_142",
    "source": "https://code.visualstudio.com/updates/v1_142"
+  },
+  {
+   "name": "Navige",
+   "date": "2026-10-16",
+   "summary": "Sits between your AI agents and the models/tools they pay for: caching, context trimming, loop guards and smart routing to cut agent costs. Free Watchtower plan; paid plans charge a share of savings.",
+   "url": "https://navige.ai/",
+   "source": "https://www.producthunt.com/products/navige"
+  },
+  {
+   "name": "withHuman",
+   "date": "2026-10-16",
+   "summary": "Open-source approval layer for AI agents: intercepts consequential tool calls and routes them through rules or a human reviewer. Hooks for coding agents and an MCP gateway. Open source free; cloud Scale plan $20/user/mo.",
+   "url": "https://withhuman.ai",
+   "source": "https://withhuman.ai"
+  },
+  {
+   "name": "Polylane",
+   "date": "2026-10-16",
+   "summary": "Production issue agent: maps your clouds, code and telemetry, catches pull requests that would break production, finds root causes and writes fixes. Works with Claude Code, Cursor, Codex. Free plan; paid from $80/mo.",
+   "url": "https://polylane.com",
+   "source": "https://polylane.com/pricing"
+  },
+  {
+   "name": "AI Sandboxes by Buddy",
+   "date": "2026-10-16",
+   "summary": "Real Linux VMs for running AI-generated code and the apps it becomes, controlled via CLI, SDK, YAML or MCP, with snapshots and public endpoints.",
+   "url": "https://buddy.works/sandboxes",
+   "source": "https://www.producthunt.com/products/buddy/launches/ai-sandboxes-by-buddy"
   }
  ]
 }
