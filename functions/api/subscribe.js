@@ -1,5 +1,7 @@
 // Cloudflare Pages Function: POST /api/subscribe {email, website(honeypot)}
-// Env (Pages → Settings → Environment variables): RESEND_API_KEY, RESEND_SEGMENT_ID
+// Env (Pages → Settings → Environment variables):
+//   BEEHIIV_API_KEY + BEEHIIV_PUBLICATION_ID (primary, if set)
+//   RESEND_API_KEY, RESEND_SEGMENT_ID (fallback / mirror)
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,255}\.[a-z]{2,}$/i;
 
 export async function onRequestPost(context) {
@@ -19,6 +21,18 @@ export async function onRequestPost(context) {
   const email = String(body.email || "").trim().toLowerCase();
   if (!EMAIL.test(email) || email.length > 254) {
     return Response.json({ ok: false, error: "Please enter a valid email." }, { status: 400 });
+  }
+  const bk = env.BEEHIIV_API_KEY, pub = env.BEEHIIV_PUBLICATION_ID;
+  if (bk && pub) {
+    const b = await fetch(`https://api.beehiiv.com/v2/publications/${pub}/subscriptions`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${bk}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ email, reactivate_existing: false, send_welcome_email: true,
+        utm_source: "loadoutweekly.com", referring_site: request.headers.get("referer") || "loadoutweekly.com" }),
+    });
+    if (b.ok) return Response.json({ ok: true });
+    console.error("beehiiv", b.status, await b.text());
+    if (!env.RESEND_API_KEY) return Response.json({ ok: false, error: "Could not subscribe right now. Try again later." }, { status: 502 });
   }
   const key = env.RESEND_API_KEY, seg = env.RESEND_SEGMENT_ID;
   if (!key) return Response.json({ ok: false, error: "Signup not configured yet." }, { status: 503 });
