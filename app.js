@@ -15,4 +15,4 @@ document.querySelectorAll('[data-filter]').forEach(i=>{const items=[...document.
 document.querySelectorAll('details.dd').forEach(d=>document.addEventListener('click',e=>{if(!d.contains(e.target))d.open=false}));
 document.getElementById('signup')?.addEventListener('submit',async e=>{e.preventDefault();const f=e.target,m=f.querySelector('[role=status]');m.textContent='Subscribing…';
 try{const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:f.email.value,website:f.website.value})});
-if(r.status===404){m.textContent='Newsletter launches soon — check back!';return}const j=await r.json();m.textContent=j.ok?"You're in! Watch your inbox for the next Loadout Weekly.":j.error}catch{m.textContent='Something went wrong. Try again.'}});
+if(r.status===404){m.textContent='Newsletter launches soon — check back!';return}const j=await r.json();if(j.redirect){location.href=j.redirect;return}m.textContent=j.ok?"You're in! Watch your inbox for the next Loadout Weekly.":j.error}catch{m.textContent='Something went wrong. Try again.'}});
