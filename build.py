@@ -20,7 +20,7 @@ def meta_desc(s,n=155):
     return (cut or s[:n-1])+"…"
 def nav(r):
     cl="".join(f'<a href="{r}categories/{c}.html">{E(n)}</a>' for c,n in cat.items())
-    return (f'<a class="skip" href="#main">Skip to content</a><header class="top"><div class="wrap bar"><a class="logo" href="{r}index.html"><span class="mark">L</span>Loadout</a>'
+    return (f'<a class="skip" href="#main">Skip to content</a><div class="psbanner"><div class="wrap"><strong>PrepSheet founding presale: $9.</strong> Daily show-prep brief for sports podcasters. Full refund if it doesn\'t launch. <a href="{r}prepsheet/">See PrepSheet →</a></div></div><header class="top"><div class="wrap bar"><a class="logo" href="{r}index.html"><span class="mark">L</span>Loadout</a>'
      f'<div class="mnav"><input type="checkbox" id="navt" class="sr navt"><label for="navt" class="burger" aria-label="Menu"><span></span><span></span><span></span></label><nav aria-label="Main">'
      f'<details class="dd"><summary>Categories</summary><div class="ddm">{cl}</div></details>'
      f'<a href="{r}index.html#picks">Use cases</a><a href="{r}categories/sports.html">Sports AI</a><a href="{r}index.html#new">New</a><a href="{r}index.html#tools">Directory</a><a href="{r}prepsheet/">PrepSheet</a>'
@@ -46,7 +46,7 @@ def page(path,title,desc,body,ld=None,depth=0,foot="",bc=None):
 <main id="main" class="wrap page">{crumbs(r,bc)}{body}</main>
 {footer(r,foot)}<script src="{r}app.js" defer></script></body></html>"""
     os.makedirs(os.path.dirname(path) or ".",exist_ok=True);open(path,"w").write(h);pages.append(path)
-PSCALL='<aside class="card callout"><div><span class="tag sponsored">Presale</span><strong>PrepSheet: daily show-prep brief for sports podcasters</strong><p>A one-page brief every morning before you record: stats, injuries, odds moves and talking points for the teams you cover, every item sourced. $9 founding member presale; full refund if it doesn\'t launch.</p></div><a class="btn" href="{r}prepsheet/">See PrepSheet →</a></aside>'
+PSCALL='<aside class="card callout"><div><span class="tag sponsored">Presale</span><strong>PrepSheet: daily show-prep brief for sports podcasters</strong><p>A one-page brief every morning before you record: stats, injuries, odds moves and talking points for the teams you cover, every item sourced. $9 founding member presale; full refund if it doesn\'t launch.</p></div><div class="psbtns"><a class="btn" href="'+os.environ.get("PREPSHEET_CHECKOUT","https://whop.com/checkout/plan_HesQSWaUF81Cq")+'" rel="noopener">Join for $9 →</a> <a href="{r}prepsheet/">See PrepSheet</a></div></aside>'
 def chips(cur,r="../"):
     return '<nav class="chips" aria-label="Categories">'+"".join(f'<a class="chip{" on" if c==cur else ""}" href="{r}categories/{c}.html"{" aria-current=page" if c==cur else ""}>{E(n)} <span>{sum(t["category"]==c for t in D["tools"])}</span></a>' for c,n in cat.items())+'</nav>'
 def related(t):

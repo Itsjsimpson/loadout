@@ -59,3 +59,5 @@ dl{display:grid;grid-template-columns:140px 1fr;gap:10px 16px;margin:20px 0;padd
 [hidden]{display:none!important}
 .navt:focus-visible+.burger{outline:2px solid var(--blue)}
 .callout{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-color:#bfe3d6;background:linear-gradient(135deg,#fff,#eef8f4);margin:8px 0 18px}.callout>div{flex:1;min-width:240px}.callout strong{font-size:17px}.callout p{margin:6px 0 0}
+
+.psbanner{background:#0f3d2e;color:#fff;font-size:14px;padding:8px 0;text-align:center}.psbanner a{color:#9ff0c9;font-weight:600;margin-left:6px}.psbtns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
