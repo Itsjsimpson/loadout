@@ -4,6 +4,67 @@ BASE_URL=os.environ.get("LOADOUT_BASE_URL","https://loadoutweekly.com")  # Verce
 D=json.load(open("tools.json"));E=html.escape
 cat={c["id"]:c["name"] for c in D["categories"]};by={t["id"]:t for t in D["tools"]}
 def slug(s):return "".join(ch if ch.isalnum() else "-" for ch in s.lower()).strip("-").replace("--","-")
+# Editorial comparisons. Sentences are assembled only from tools.json fields.
+COMPARES=[{"a":"cursor","b":"devin-desktop-formerly-windsurf","year":"2026","kind":"AI IDE","use_case":"I code daily and want an AI editor"}]
+COMP_OUT=[]
+def short_name(t):
+    n=t["name"];i=n.find(" (");return n[:i] if i!=-1 else n
+def lower_first(s):return (s[:1].lower()+s[1:]) if s else s
+def compare_slug(c):return f"{slug(short_name(by[c['a']]))}-vs-{slug(short_name(by[c['b']]))}"
+def compare_label(c):return f"Compare {short_name(by[c['a']])} vs {short_name(by[c['b']])}"
+def tool_compare_link(tid):
+    return "".join(f'<p><a href="../compare/{compare_slug(c)}.html">{E(compare_label(c))} →</a></p>' for c in COMPARES if tid in (c["a"],c["b"]))
+def cat_compare_links(cid):
+    return "".join(f'<p><a href="../compare/{compare_slug(c)}.html">{E(compare_label(c))} →</a></p>' for c in COMPARES if by[c["a"]]["category"]==cid and by[c["b"]]["category"]==cid)
+def compare_card(t):
+    return (f'<article class="card"><h3><a href="../tools/{t["id"]}.html">{E(t["name"])}</a></h3>'
+     f'<span class="tag">{E(cat[t["category"]])}</span><span class="tag {t["pricing"]}">{t["pricing"]}</span>'
+     f'<p>{E(t["description"])}</p><p class="muted">Best for: {E(t["bestFor"])}</p>'
+     f'<p class="muted">Last verified: {E(t["verified"] or "not yet verified")}</p>'
+     f'<p><a class="btn" href="{E(t["url"])}" rel="noopener">Visit {E(t["name"])} →</a></p></article>')
+def emit_compares():
+    for c in COMPARES:
+        a,b=by[c["a"]],by[c["b"]]
+        sa,sb=short_name(a),short_name(b)
+        h1=f"{sa} vs {sb} ({c['year']})"
+        uc=next((u for u in D["useCases"] if u["question"]==c["use_case"]),None)
+        if not uc or "slug" not in uc:raise SystemExit(f"compare {compare_slug(c)}: use case missing")
+        same=a["pricing"]==b["pricing"]
+        desc=(f"Both {a['pricing']}. {sa}: {lower_first(a['bestFor'])}. {sb}: {lower_first(b['bestFor'])}." if same
+              else f"{sa} ({a['pricing']}): {lower_first(a['bestFor'])}. {sb} ({b['pricing']}): {lower_first(b['bestFor'])}.")
+        if len(desc)>155:raise SystemExit(f"compare {compare_slug(c)}: meta description is {len(desc)} chars")
+        title=f"{h1}: which {c['kind']}? | Loadout"
+        lead=f"{E(a['name'])} is for {E(lower_first(a['bestFor']))}. {E(b['name'])} is for {E(lower_first(b['bestFor']))}."
+        rules=[f"Choose {E(sa)} for {E(lower_first(a['bestFor']))}. {E(a['name'])}: {E(a['description'])}",
+               f"Choose {E(sb)} for {E(lower_first(b['bestFor']))}. {E(b['name'])}: {E(b['description'])}"]
+        rules.append(f"Both are {E(a['pricing'])}. Pick the best-for line that matches the work. This page does not score either tool." if same
+                     else f"{E(sa)} is {E(a['pricing'])}. {E(sb)} is {E(b['pricing'])}. Pick the best-for line that matches the work. This page does not score either tool.")
+        faqs=[(f"What is {a['name']} best for?", a["bestFor"] if a["bestFor"].endswith(".") else a["bestFor"]+"."),
+              (f"What is {b['name']} best for?", b["bestFor"] if b["bestFor"].endswith(".") else b["bestFor"]+"."),
+              (f"What is {a['name']}?", a["description"]),
+              (f"What is {b['name']}?", b["description"]),
+              (f"What pricing does Loadout list for {sa} and {sb}?", f"Both are {a['pricing']}." if same else f"{a['name']} is {a['pricing']}. {b['name']} is {b['pricing']}.")]
+        ctx=""
+        if "devin-desktop-formerly-windsurf" in (a["id"],b["id"]) and "devin" in by:
+            desk=a if a["id"]=="devin-desktop-formerly-windsurf" else b
+            note=f"No. {short_name(desk)} is {desk['description']} Devin is the separate cloud agent product."
+            ctx=f'<p>{E(short_name(desk))} is {E(desk["description"])} <a href="../tools/devin.html">{E(by["devin"]["name"])}</a> is the separate cloud agent product.</p>'
+            faqs.append(("Is Devin Desktop the same product as Devin?", note))
+        path=f"compare/{compare_slug(c)}.html"
+        url=f"{BASE_URL}/{path}"
+        ld={"@context":"https://schema.org","@graph":[
+            {"@type":"WebPage","name":h1,"description":meta_desc(desc),"url":url},
+            {"@type":"ItemList","name":h1,"itemListElement":[{"@type":"ListItem","position":i+1,"name":t["name"],"url":f"{BASE_URL}/tools/{t['id']}.html"} for i,t in enumerate((a,b))]},
+            {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":ans}} for q,ans in faqs]}]}
+        faq_html="".join(f"<h3>{E(q)}</h3><p>{E(ans)}</p>" for q,ans in faqs)
+        body=(f'<h1>{E(h1)}</h1><p class="lead">{lead}</p>'
+              f'<section><h2>Side by side</h2><div class="grid">{compare_card(a)}{compare_card(b)}</div></section>'
+              f'<section><h2>Which should you pick?</h2><ul>{"".join(f"<li>{r}</li>" for r in rules)}</ul>{ctx}'
+              f'<p class="muted">Editorial comparison. Rankings and picks on Loadout are never sold.</p></section>'
+              f'<section><h2>Questions</h2>{faq_html}</section>'
+              f'<p>See <a href="../categories/{a["category"]}.html">{E(cat[a["category"]])}</a> and the use case <a href="../use-cases/{uc["slug"]}.html">{E(uc["question"])}</a>.</p>')
+        page(path,title,desc,body,ld,1,bc=[(cat[a["category"]],f"../categories/{a['category']}.html"),(h1,None)])
+        COMP_OUT.append((h1,path,f"{a['name']} ({a['pricing']}) — {a['description']} Best for: {a['bestFor']}. {b['name']} ({b['pricing']}) — {b['description']} Best for: {b['bestFor']}. Editorial comparison; rankings and picks are never sold."))
 pages=[]
 TODAY=datetime.date.today().isoformat()
 # Paste Whop checkout links here once products are live; empty = "coming soon".
@@ -56,20 +117,21 @@ def card(t,r="../"):
     v=t["verified"] or "unverified";u=t["affiliateUrl"] or t["url"]
     sp=is_featured(t);badge='<span class="tag sponsored">Featured · Sponsored</span>' if sp else ''
     return f'<article class="card{" sponsor" if sp else ""}">{badge}<h3><a href="{r}tools/{t["id"]}.html">{E(t["name"])}</a></h3><span class="tag">{E(cat[t["category"]])}</span><span class="tag {t["pricing"]}">{t["pricing"]}</span><p>{E(t["description"])}</p><p class="muted">Best for: {E(t["bestFor"])}</p></article>'
-for d in("tools","categories","use-cases"):shutil.rmtree(d,ignore_errors=True)
+for d in("tools","categories","use-cases","compare"):shutil.rmtree(d,ignore_errors=True)
 for t in D["tools"]:
     rel=t.get("affiliateUrl") and ' rel="sponsored noopener"' or ' rel="noopener"'
     ld={"@context":"https://schema.org","@type":"SoftwareApplication","name":t["name"],"description":t["description"],"applicationCategory":"DeveloperApplication","url":t["url"],"offers":{"@type":"Offer","description":t["pricing"]}}
     page(f"tools/{t['id']}.html",f"{t['name']} — {cat[t['category']]} | Loadout",f"{t['name']}: {t['description']} Best for: {t['bestFor']}. Pricing: {t['pricing']}.",
-     f'<article class="detail card">{'<span class="tag sponsored">Featured · Sponsored</span>' if is_featured(t) else ''}<h1>{E(t["name"])}</h1><p class="lead">{E(t["description"])}</p><dl><dt>Category</dt><dd><a href="../categories/{t["category"]}.html">{E(cat[t["category"]])}</a></dd><dt>Best for</dt><dd>{E(t["bestFor"])}</dd><dt>Pricing</dt><dd>{t["pricing"]}</dd><dt>Last verified</dt><dd>{t["verified"] or "not yet verified"}</dd></dl><p><a class="btn" href="{E(t["affiliateUrl"] or t["url"])}"{rel}>Visit {E(t["name"])} →</a></p></article>'+related(t),ld,1,bc=[(cat[t["category"]],f"../categories/{t['category']}.html"),(t["name"],None)])
+     f'<article class="detail card">{'<span class="tag sponsored">Featured · Sponsored</span>' if is_featured(t) else ''}<h1>{E(t["name"])}</h1><p class="lead">{E(t["description"])}</p><dl><dt>Category</dt><dd><a href="../categories/{t["category"]}.html">{E(cat[t["category"]])}</a></dd><dt>Best for</dt><dd>{E(t["bestFor"])}</dd><dt>Pricing</dt><dd>{t["pricing"]}</dd><dt>Last verified</dt><dd>{t["verified"] or "not yet verified"}</dd></dl><p><a class="btn" href="{E(t["affiliateUrl"] or t["url"])}"{rel}>Visit {E(t["name"])} →</a></p>{tool_compare_link(t["id"])}</article>'+related(t),ld,1,bc=[(cat[t["category"]],f"../categories/{t['category']}.html"),(t["name"],None)])
 for cid,cn in cat.items():
     ts=sorted([t for t in D["tools"] if t["category"]==cid],key=lambda t:not is_featured(t))
     ld={"@context":"https://schema.org","@type":"ItemList","name":cn,"itemListElement":[{"@type":"ListItem","position":i+1,"name":t["name"],"url":f"{BASE_URL}/tools/{t['id']}.html"} for i,t in enumerate(ts)]}
-    page(f"categories/{cid}.html",f"Best {cn} for vibe coders (2026) | Loadout",f"{len(ts)} {cn.lower()} for vibe coders and builders, with pricing and what each is best for.",f'<h1>{E(cn)}</h1><p class="lead">{len(ts)} tools, with pricing and what each is best for.</p>'+chips(cid)+(PSCALL.replace("{r}","../") if cid=="sports" else "")+f'<div class="filterbar"><label class="sr" for="cf">Filter tools in this category</label><input id="cf" type="search" data-filter=".grid > article" placeholder="Filter {len(ts)} tools…"><span class="muted" data-count></span></div><section class="grid">{"".join(card(t) for t in ts)}</section>',ld,1,bc=[("Categories","../index.html#categories"),(cn,None)])
+    page(f"categories/{cid}.html",f"Best {cn} for vibe coders (2026) | Loadout",f"{len(ts)} {cn.lower()} for vibe coders and builders, with pricing and what each is best for.",f'<h1>{E(cn)}</h1><p class="lead">{len(ts)} tools, with pricing and what each is best for.</p>'+cat_compare_links(cid)+chips(cid)+(PSCALL.replace("{r}","../") if cid=="sports" else "")+f'<div class="filterbar"><label class="sr" for="cf">Filter tools in this category</label><input id="cf" type="search" data-filter=".grid > article" placeholder="Filter {len(ts)} tools…"><span class="muted" data-count></span></div><section class="grid">{"".join(card(t) for t in ts)}</section>',ld,1,bc=[("Categories","../index.html#categories"),(cn,None)])
 for u in D["useCases"]:
     s=slug(u["question"]);u["slug"]=s;ts=[by[p] for p in u["picks"]]
     ld={"@context":"https://schema.org","@type":"ItemList","name":u["question"],"itemListOrder":"https://schema.org/ItemListOrderAscending","itemListElement":[{"@type":"ListItem","position":i+1,"name":t["name"],"url":f"{BASE_URL}/tools/{t['id']}.html"} for i,t in enumerate(ts)]}
     page(f"use-cases/{s}.html",f"{u['question']} — top picks | Loadout",f"Ranked picks for \"{u['question']}\": "+", ".join(t["name"] for t in ts)+".",f'<h1>{E(u["question"])}</h1><ol class="ranked">'+"".join(f'<li>{card(dict(t,featured=False))}</li>' for t in ts)+'</ol>'+'<p class="muted">Rankings are editorial and never sold. <a href="../index.html#picks">See all use cases →</a></p>',ld,1,bc=[("Use cases","../index.html#picks"),(u["question"],None)])
+emit_compares()
 HUB_CHECKOUT=[("Standard hub",os.environ.get("HUB_STANDARD_CHECKOUT","https://whop.com/checkout/plan_wnhElC4Sjff7d")),("Coding Agents hub",os.environ.get("HUB_CODING_CHECKOUT","https://whop.com/checkout/plan_3SUe1fdbB7mQ4")),("Deploy & Backend hub",os.environ.get("HUB_DEPLOY_CHECKOUT","https://whop.com/checkout/plan_SkJgqwSdHPqUT"))]
 ADV=('<h1>Advertise on Loadout</h1><p class="lead">Put your tool in front of vibe coders and builders. Launch pricing while we grow; early sponsors keep their rate.</p><section class="grid">'
  +f'<article class="card sponsor"><span class="tag">Featured</span><h3>Featured listing</h3><p>30 days in the homepage Featured slot, pinned to the top of your category page with a Featured badge. Always labelled as sponsored.</p><p><strong>{PRICE["featured"]}</strong> · launch pricing</p>'+(f'<p><a class="btn" href="{E(CHECKOUT["featured"])}" rel="noopener">Buy now →</a></p>' if CHECKOUT["featured"] else '<p class="muted">Checkout opening soon</p>')+'</article>'
@@ -108,12 +170,15 @@ open("robots.txt","w").write("User-agent: *\nAllow: /\n\n# AI crawlers welcome\n
 L=[f"# Loadout\n\n> Directory of AI tools for vibe coders and builders, ranked by use case. Updated {D['updated']}. Machine-readable data: {BASE_URL}/tools.json (public, free to use with attribution).\n"]
 L.append("## Categories\n"+"".join(f"- [{n}]({BASE_URL}/categories/{c}.html)\n" for c,n in cat.items()))
 L.append("\n## Use cases\n"+"".join(f"- [{u['question']}]({BASE_URL}/use-cases/{u['slug']}.html)\n" for u in D["useCases"]))
+if COMP_OUT:L.append("\n## Comparisons\n"+"".join(f"- [{h}]({BASE_URL}/{p})\n" for h,p,_ in COMP_OUT))
 L.append("\n## Data\n- [tools.json]("+BASE_URL+"/tools.json): categories, tools (id, name, category, description, bestFor, pricing, url, verified), useCases, newReleases\n- [llms-full.txt]("+BASE_URL+"/llms-full.txt): full content in one file\n")
 open("llms.txt","w").write("".join(L))
 F=["# Loadout — full content\n"]
 for cid,cn in cat.items():
     F.append(f"\n## {cn}\n");F+= [f"- **{t['name']}** ({t['pricing']}) — {t['description']} Best for: {t['bestFor']}. {t['url']} (verified: {t['verified'] or 'no'})\n" for t in D["tools"] if t["category"]==cid]
 F.append("\n## Which tool should I use\n");F+=[f"- {u['question']}: "+" > ".join(by[p]["name"] for p in u["picks"])+"\n" for u in D["useCases"]]
+if COMP_OUT:
+    F.append("\n## Comparisons\n");F+=[f"- **{h}** — {s} {BASE_URL}/{p}\n" for h,p,s in COMP_OUT]
 F.append("\n## New releases\n");F+=[f"- {r['date']} **{r['name']}** — {r['summary']} Source: {r['source']}\n" for r in D["newReleases"]]
 open("llms-full.txt","w").write("".join(F))
 print(len(pages),"pages")

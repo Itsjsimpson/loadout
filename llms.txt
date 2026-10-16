@@ -23,6 +23,9 @@
 - [Which model API should power my app?](https://loadoutweekly.com/use-cases/which-model-api-should-power-my-app.html)
 - [I run a sports podcast or channel](https://loadoutweekly.com/use-cases/i-run-a-sports-podcast-or-channel.html)
 
+## Comparisons
+- [Cursor vs Devin Desktop (2026)](https://loadoutweekly.com/compare/cursor-vs-devin-desktop.html)
+
 ## Data
 - [tools.json](https://loadoutweekly.com/tools.json): categories, tools (id, name, category, description, bestFor, pricing, url, verified), useCases, newReleases
 - [llms-full.txt](https://loadoutweekly.com/llms-full.txt): full content in one file

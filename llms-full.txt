@@ -76,6 +76,9 @@
 - Which model API should power my app?: Anthropic API (Claude) > OpenAI API > Google Gemini API
 - I run a sports podcast or channel: Descript > OpusClip > Castmagic > BALLDONTLIE
 
+## Comparisons
+- **Cursor vs Devin Desktop (2026)** — Cursor (freemium) — AI code editor and coding agent platform; hand off tasks to agents or code alongside them. Best for: Day-to-day coding with an agent inside your editor. Devin Desktop (formerly Windsurf) (freemium) — Cognition's IDE (Windsurf renamed June 2026) with an Agent Command Center for managing local and cloud agents. Best for: Managing multiple agents from a full IDE. Editorial comparison; rankings and picks are never sold. https://loadoutweekly.com/compare/cursor-vs-devin-desktop.html
+
 ## New releases
 - 2026-10-13 **OpenCode 2.0** — Open-source, model-agnostic coding agent with native TUI and multi-session support. #2 on Product Hunt's Oct 13 daily leaderboard (313 upvotes when checked). Source: https://www.producthunt.com/leaderboard/daily/2026/10/13
 - 2026-10-14 **Tiden** — Verifies coding agents built what you asked for by checking changes against requirements and tests. Works with Claude Code, Cursor, Codex, Copilot. Source: https://www.producthunt.com/leaderboard/daily/2026/10/14
