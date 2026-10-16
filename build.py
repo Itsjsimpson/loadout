@@ -34,7 +34,7 @@ def footer(r,extra=""):
     ul="".join(f'<li><a href="{r}use-cases/{slug(u["question"])}.html">{E(u["question"])}</a></li>' for u in D["useCases"][:6])
     return (f'<footer class="foot"><div class="wrap fcols"><div><a class="logo" href="{r}index.html"><span class="mark">L</span>Loadout</a><p class="muted">AI tools for vibe coders and builders, ranked by what you are trying to ship.</p></div>'
      f'<div><h4>Categories</h4><ul>{cl}</ul></div><div><h4>Popular use cases</h4><ul>{ul}</ul></div>'
-     f'<div><h4>Loadout</h4><ul><li><a href="{r}index.html#tools">Full directory</a></li><li></li><li><a href="{r}prepsheet/">PrepSheet</a></li><li><a href="{r}advertise.html">Advertise</a></li><li><a href="{r}tools.json">tools.json</a></li><li><a href="{r}llms.txt">llms.txt</a></li><li><a href="mailto:loadout@loadoutweekly.com">loadout@loadoutweekly.com</a></li></ul></div></div>'
+     f'<div><h4>Loadout</h4><ul><li><a href="{r}index.html#tools">Full directory</a></li><li><a href="{r}prepsheet/">PrepSheet</a></li><li><a href="{r}advertise.html">Advertise</a></li><li><a href="{r}tools.json">tools.json</a></li><li><a href="{r}llms.txt">llms.txt</a></li><li><a href="mailto:loadout@loadoutweekly.com">loadout@loadoutweekly.com</a></li></ul></div></div>'
      f'<div class="wrap fbase muted">Loadout · data updated {D["updated"]}{extra}</div></footer>')
 def page(path,title,desc,body,ld=None,depth=0,foot="",bc=None):
     r="../"*depth;url=f"{BASE_URL}/{path}".replace("index.html","")
