@@ -1,2 +1,5 @@
 /*
   X-Content-Type-Options: nosniff
+
+/rankroom/*
+  X-Robots-Tag: noindex, nofollow
