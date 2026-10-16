@@ -36,3 +36,11 @@ body[data-theme=nerd-sesh] .wrap>h1,body[data-theme=nerd-sesh] .wrap>.crumb,body
 body[data-theme=nerd-sesh] h1{font-style:italic;font-size:34px}body[data-theme=nerd-sesh] .tabs button{border-radius:999px}body[data-theme=nerd-sesh] .btn{border-radius:999px}body[data-theme=nerd-sesh] .tier .lab{font-family:'Righteous',sans-serif}body[data-theme=nerd-sesh] .chip small,body[data-theme=nerd-sesh] .stat{font-family:'Space Mono',monospace}
 
 body[data-theme=nerd-sesh] .tier .lab{text-transform:uppercase}
+.tq{list-style:none;margin:10px 0;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:10px}ol.tvl{padding:0}fieldset{border:0;margin:0;padding:0}legend{font-weight:700;padding:0;margin-bottom:6px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px}.opt{display:flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:8px;padding:8px;cursor:pointer;background:var(--bg)}.opt:has(input:checked){border-color:var(--accent);background:var(--soft)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;background:var(--ink);color:var(--surface)}.tag.hot{background:var(--down);color:#fff}
+.src{font-size:12px;color:var(--muted);margin:6px 0 0}.src a{color:var(--accent-ink)}
+.res{display:grid;grid-template-columns:1fr 160px 44px;gap:8px;align-items:center;font-size:14px;padding:3px 0}.res.ok .rl{font-weight:800;color:var(--up)}.bar.wide{width:100%;height:12px}.res.ok .bar i{background:var(--up)}.pc{text-align:right;font-family:'Space Mono',monospace}
+.tq.hard{border:2px solid var(--down)}
+.scoreline{display:flex;gap:16px;align-items:center;justify-content:center;background:var(--ink);color:#fff;border-radius:12px;padding:14px;margin:12px 0;flex-wrap:wrap}.scoreline div{text-align:center}.scoreline span{display:block;font-size:12px;color:#f3a806}.scoreline b{font-size:30px;font-family:var(--font-head)}.scoreline .vs{color:#f3a806;font-family:var(--font-head)}
+.tv-link{display:inline-block;margin:4px 0}
