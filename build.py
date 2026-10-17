@@ -100,6 +100,70 @@ PS=('<h1>PrepSheet: show prep for sports podcasters</h1><p class="lead">A one-pa
  +'<p><strong>Talking points</strong></p><ul><li>Is the Hawks\' win streak real or a soft schedule?</li><li>What the questionable tag means for the rotation tonight.</li></ul></article>'
  +'<h2>Questions</h2><p>Email <a href="mailto:loadout@loadoutweekly.com?subject=PrepSheet">loadout@loadoutweekly.com</a>. PrepSheet is a project from Loadout.</p>')
 page("prepsheet/index.html","PrepSheet: daily show prep for sports podcasters | Loadout","PrepSheet presale: a daily one-page brief for sports podcasters with sourced stats, injuries, odds moves and talking points. $9 founding member, full refund if it doesn't launch.",PS,None,1,bc=[("Sports AI Tools","../categories/sports.html"),("PrepSheet",None)])
+# Guide: Best AI coding tool for your first SaaS. Prices only from official pricing pages, checked Oct 17, 2026.
+# Public X replies are paraphrased without handles or names. Body internal links are clean (no .html).
+GCHK="checked Oct 17, 2026"
+GSRC={"codex":"https://learn.chatgpt.com/docs/pricing","claude":"https://claude.com/pricing","cursor":"https://cursor.com/pricing","lovable":"https://lovable.dev/pricing","bolt":"https://bolt.new/pricing","replit":"https://replit.com/pricing","v0":"https://v0.app/pricing"}
+GSUB="https://jojos-newsletter-38aad3.beehiiv.com/subscribe?utm_source=loadoutweekly&utm_medium=website&utm_campaign=first-saas-page"
+def gsrc(k,label="official pricing"):return f'<a href="{GSRC[k]}" rel="noopener">{label}</a>'
+def gtool(tid,label=None):return f'<a href="../tools/{tid}">{E(label or by[tid]["name"])}</a>'
+GROWS=[  # tool, what it is, free option, entry paid, next step, source key
+ (gtool("openai-codex","Codex")+" (OpenAI)","Coding agent. On Plus: on the web, in the terminal (CLI), in your editor (IDE extension) and on iOS","Yes. Free plan includes Codex, $0/month","Go $8/month; Plus $20/month","Pro from $100/month (plans at $100, $200 or $500)","codex"),
+ (gtool("claude-code","Claude Code")+" (Anthropic)","Coding agent, included with Claude paid plans","No. Claude Code isn't on the Free plan","Pro $20/month billed monthly ($17/month with annual billing, $200 up front)","Max from $100/month","claude"),
+ (gtool("cursor","Cursor"),"Code editor with an AI agent","Free $0/month (limited agent requests)","Plus $8/month (only Grok models on this plan)","Premium $30/month; Super $100/month; Ultra $200/month. Third-party models billed separately by usage","cursor"),
+ (gtool("lovable","Lovable"),"Chat-to-app builder with hosting","Free $0/month: 5 daily build credits (up to 30 a month) plus 20 monthly Cloud credits","Pro $25/month (100 monthly credits, billed monthly)","Business $50/month (100 monthly credits)","lovable"),
+ (gtool("bolt-new","Bolt"),"Chat-to-app builder with hosting","Free $0: 300K tokens daily limit, 1M tokens a month","Pro $25/month billed monthly (starts at 10M tokens a month). Yearly price: check pricing page","Teams $30 per member/month billed monthly","bolt"),
+ (gtool("replit","Replit"),"Browser workspace with an AI agent, database and hosting","Check pricing page","Core $20/month ($18/month billed annually)","Pro $100/month ($90/month billed annually)","replit"),
+ (gtool("v0","v0")+" (Vercel)","AI front-end and app builder that deploys to Vercel","Free $0/month, 7 messages a day","Plus $30/user/month (shown next to a crossed-out $90)","Business $100/user/month","v0"),
+]
+GFAQ=[
+ ("Do I need to pay for another tool if I already have ChatGPT?",f"Not to start. OpenAI says Codex is included in ChatGPT Free, Go, Plus, Pro, Business, Edu and Enterprise plans. Try it before you buy anything else.","codex"),
+ ("Is Claude Code free?","No. Claude Code is included in Claude's paid plans (Pro and up) and isn't on the Free plan.","claude"),
+ ("Can I start in Lovable or Bolt and switch later?","Yes. Several builders suggested exactly that: build a clickable version first, then move the code to GitHub and keep going in a code tool when you need login, payments and a database. Moving takes work, so do it once, on purpose.",None),
+ ("What's the one habit that saves beginners the most pain?","Save your work with git after every step that works. When the AI breaks something, you can go back in seconds.",None),
+ ("Which tech stack should I pick?","One builder's advice: pick a boring, popular stack such as Next.js with Postgres, because the AI has lots of examples of it to learn from.",None),
+ ("How often do these prices change?","Often. Every price on this page links to the official pricing page and shows the date we checked it (Oct 17, 2026).",None),
+ ("Does Loadout get paid to rank tools?","No. Loadout rankings are never for sale. This page contains no affiliate links.",None),
+]
+GUIDE=('<article class="guide"><h1>Best AI coding tool for your first SaaS</h1>'
+ +f'<p class="muted">By Loadout Team · Prices {GCHK} from official pricing pages</p>'
+ +'<aside class="card callout disclosure" role="note" aria-label="Affiliate disclosure"><div><strong>Disclosure</strong><p>Rankings and picks on Loadout are editorial and <strong>never sold</strong>. <strong>This page contains no affiliate links</strong> and no paid placements. No tool on this page paid to be included or to be placed. If that ever changes, the link will be labelled &quot;Affiliate&quot; or &quot;Sponsored&quot; right next to it.</p></div></aside>'
+ +'<p class="lead">A plain-English guide to Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 for first-time builders, using official prices and advice from builders who have shipped.</p>'
+ +'<h2 id="quick-answer">Quick answer</h2>'
+ +f'<p><strong>Already paying for ChatGPT? Start with Codex. It&#39;s already in your plan.</strong> OpenAI says Codex is included in ChatGPT Free, Go, Plus, Pro, Business, Edu and Enterprise. On Plus ($20/month) you get it on the web, in the terminal (CLI), in your code editor (IDE extension) and on iOS ({gsrc("codex","OpenAI pricing")}, {GCHK}).</p>'
+ +'<ul><li><strong>Want to read and own your code?</strong> Codex, Claude Code or Cursor.</li><li><strong>Can&#39;t code at all and want a clickable app fast?</strong> Lovable or Bolt. Plan to move to a code tool once you add login, payments and a database.</li><li><strong>The most repeated tip from builders:</strong> pick one tool, save your work with git often, and don&#39;t switch until version 1 ships.</li></ul>'
+ +'<p>That last tip came up again and again when a first-time builder asked this exact question on X. He already paid for ChatGPT, kept seeing Cursor, Claude Code, Lovable, Bolt and Replit everywhere, and was building by pasting code from ChatGPT into VS Code by hand. If that sounds like you, the biggest step up is a tool that edits the files for you, so you stop copying and pasting.</p>'
+ +'<h2 id="by-situation">Pick by situation</h2>'
+ +f'<section class="grid">'
+ +f'<article class="card"><h3>&quot;I already pay for ChatGPT and I&#39;m on a budget.&quot;</h3><p><strong>Codex.</strong> It&#39;s in your plan already, so you pay nothing extra to start. Plus is $20/month. If you hit limits, Pro starts at $100/month.</p><p class="muted">{gsrc("codex")} · {GCHK}</p></article>'
+ +f'<article class="card"><h3>&quot;I want to understand and own every line of code.&quot;</h3><p><strong>Claude Code or Cursor.</strong> Claude Code comes with Claude Pro ($20/month billed monthly, or $17/month with annual billing at $200 up front). It isn&#39;t on the Free plan. Cursor is a code editor with an AI agent built in; read the Cursor pricing note below before you pick a plan.</p><p class="muted">{gsrc("claude","Claude pricing")} · {gsrc("cursor","Cursor pricing")} · {GCHK}</p></article>'
+ +f'<article class="card"><h3>&quot;I can&#39;t code. I want to see my idea working this weekend.&quot;</h3><p><strong>Lovable or Bolt.</strong> You describe the app in chat and it gets built and hosted for you. Lovable Pro is $25/month (100 monthly credits, custom domains). Bolt Pro is $25/month billed monthly and includes custom domain support.</p><p class="muted">{gsrc("lovable","Lovable pricing")} · {gsrc("bolt","Bolt pricing")} · {GCHK}</p></article>'
+ +f'<article class="card"><h3>&quot;I want everything in the browser: code, database, hosting.&quot;</h3><p><strong>Replit.</strong> Core is $20/month ($18/month billed annually) and Pro is $100/month ($90/month billed annually).</p><p class="muted">{gsrc("replit")} · {GCHK}</p></article>'
+ +f'<article class="card"><h3>&quot;I mostly need a good-looking front end I can deploy to Vercel.&quot;</h3><p><strong>v0.</strong> The free plan has a 7-message-a-day limit, deploys to Vercel and syncs with GitHub. Plus is $30/user/month and Business is $100/user/month.</p><p class="muted">{gsrc("v0")} · {GCHK}</p></article>'
+ +'</section>'
+ +f'<h2 id="compare">Comparison table</h2><p class="muted">Official pricing pages only, {GCHK}. Prices exclude tax and can change. Always confirm on the official page before you buy.</p>'
+ +'<div class="tablewrap"><table class="cmp"><caption class="sr">AI coding tools for a first SaaS: free option, entry plan and next plan, from official pricing pages</caption><thead><tr><th scope="col">Tool</th><th scope="col">What it is</th><th scope="col">Free option</th><th scope="col">Entry paid plan</th><th scope="col">Next step up</th><th scope="col">Source</th></tr></thead><tbody>'
+ +"".join(f'<tr><th scope="row">{a}</th><td>{E(b)}</td><td>{E(c)}</td><td>{E(d)}</td><td>{E(e)}</td><td>{gsrc(k)}<br><span class="muted">{GCHK}</span></td></tr>' for a,b,c,d,e,k in GROWS)
+ +'</tbody></table></div>'
+ +f'<p class="muted"><strong>Cursor pricing note:</strong> Cursor&#39;s official pricing page currently lists Free, Plus, Premium, Super and Ultra plans bundled with Grok and X features, says only Grok models are available on Plus, bills third-party models (such as Claude) separately by usage on paid plans, and says subscriptions are sold through X Subscription Corp. Check {gsrc("cursor","cursor.com/pricing")} before you buy.</p>'
+ +'<h2 id="pains">The real pains, from builders who answered</h2><p class="muted">Paraphrased from public replies on X. We left out replies from people who run tool-directory or ranking sites.</p>'
+ +'<ol><li><strong>AI &quot;fixes&quot; one thing and breaks three others.</strong> Commit to git before every big AI change, and after every step that works, so you can roll back in seconds when it goes sideways.</li>'
+ +'<li><strong>App builders feel fast until you need to change something.</strong> Several builders said Lovable or Bolt can get you a clickable demo by the weekend, but login, billing, webhooks, database changes and the first strange bug are where you want your own code files.</li>'
+ +'<li><strong>&quot;It works on my computer&quot; but breaks when it goes live.</strong> One builder said most of that pain comes from setup like the site URL, secret keys and database access rules, not from the tool. Fix those before you spend money on ads.</li>'
+ +'<li><strong>Tool-hopping.</strong> Switching tools mid-build costs more than any difference between them, and whichever one you pick, you&#39;ll be tempted to switch again in two weeks.</li>'
+ +'<li><strong>Picking for day 1 instead of month 3.</strong> Choose the tool you can still live with once the app is real. One builder uses Lovable to get the first screen live and connected to a database, then moves to Cursor from day 2.</li></ol>'
+ +'<p>A solo builder said they would pick Claude Code again if they had to start over, because most of their small apps are built in it.</p>'
+ +'<h2 id="faq">FAQ</h2>'
+ +"".join(f'<h3>{E(q)}</h3><p>{E(a)}'+(f' ({gsrc(k,"source")}, {GCHK})' if k else '')+'</p>' for q,a,k in GFAQ)
+ +f'<aside class="card callout"><div><strong>Get the weekly version</strong><p>Tools and prices change every week. Loadout Weekly is a free email with the AI coding tools worth using right now, in plain English, ranked honestly and never for sale.</p></div><div><a class="btn" href="{E(GSUB)}" rel="noopener">Subscribe free →</a></div></aside>'
+ +f'<p class="muted">By Loadout Team. Prices from official pricing pages, {GCHK}. Builder advice is paraphrased from public replies on X. More picks: <a href="../categories/editors">AI editors</a> · <a href="../categories/builders">app builders</a> · <a href="../categories/agents">coding agents</a>.</p></article>')
+GURL=f"{BASE_URL}/best-ai-coding-tool-first-saas/"
+GLD={"@context":"https://schema.org","@graph":[
+ {"@type":"Article","headline":"Best AI coding tool for your first SaaS","description":"A plain-English guide to Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 for first-time builders, using official prices checked Oct 17, 2026.","datePublished":"2026-10-17","dateModified":"2026-10-17","author":{"@type":"Organization","name":"Loadout Team","url":BASE_URL+"/"},"publisher":{"@type":"Organization","name":"Loadout","url":BASE_URL+"/"},"mainEntityOfPage":GURL,"about":[{"@type":"SoftwareApplication","name":n,"applicationCategory":"DeveloperApplication","url":GSRC[k]} for n,k in [("Codex","codex"),("Claude Code","claude"),("Cursor","cursor"),("Lovable","lovable"),("Bolt","bolt"),("Replit","replit"),("v0","v0")]]},
+ {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a,k in GFAQ]},
+ {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":BASE_URL+"/"},{"@type":"ListItem","position":2,"name":"Best AI coding tool for your first SaaS","item":GURL}]}]}
+page("best-ai-coding-tool-first-saas/index.html","Best AI coding tool for your first SaaS (2026) | Loadout","Building your first SaaS? A plain-English guide to Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0, with official prices and real builder advice.",GUIDE,GLD,1,bc=[("Best AI coding tool for your first SaaS",None)])
+GUIDES=[("Best AI coding tool for your first SaaS","best-ai-coding-tool-first-saas/","Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 compared for first-time builders, with official prices checked Oct 17, 2026.")]
 # homepage static fallback list for crawlers + sitemap/llms
 FEAT_HTML='<section id="featured" class="wrap" aria-label="Featured"><h2 class="h3">Featured</h2><div class="grid">'+"".join(card(t,"") for t in FEAT)+'</div></section>' if FEAT else None
 tpl=open("index.tpl.html").read()
@@ -114,12 +178,14 @@ open("robots.txt","w").write("User-agent: *\nAllow: /\n\n# AI crawlers welcome\n
 L=[f"# Loadout\n\n> Directory of AI tools for vibe coders and builders, ranked by use case. Updated {D['updated']}. Machine-readable data: {BASE_URL}/tools.json (public, free to use with attribution).\n"]
 L.append("## Categories\n"+"".join(f"- [{n}]({BASE_URL}/categories/{c}.html)\n" for c,n in cat.items()))
 L.append("\n## Use cases\n"+"".join(f"- [{u['question']}]({BASE_URL}/use-cases/{u['slug']}.html)\n" for u in D["useCases"]))
+L.append("\n## Guides\n"+"".join(f"- [{n}]({BASE_URL}/{p}): {d}\n" for n,p,d in GUIDES))
 L.append("\n## Data\n- [tools.json]("+BASE_URL+"/tools.json): categories, tools (id, name, category, description, bestFor, pricing, url, verified), useCases, newReleases\n- [llms-full.txt]("+BASE_URL+"/llms-full.txt): full content in one file\n")
 open("llms.txt","w").write("".join(L))
 F=["# Loadout — full content\n"]
 for cid,cn in cat.items():
     F.append(f"\n## {cn}\n");F+= [f"- **{t['name']}** ({t['pricing']}) — {t['description']} Best for: {t['bestFor']}. {t['url']} (verified: {t['verified'] or 'no'})\n" for t in D["tools"] if t["category"]==cid]
 F.append("\n## Which tool should I use\n");F+=[f"- {u['question']}: "+" > ".join(by[p]["name"] for p in u["picks"])+"\n" for u in D["useCases"]]
+F.append("\n## Guides\n");F+=[f"- [{n}]({BASE_URL}/{p}): {d}\n" for n,p,d in GUIDES]
 F.append("\n## New releases\n");F+=[f"- {r['date']} **{r['name']}** — {r['summary']} Source: {r['source']}\n" for r in D["newReleases"]]
 open("llms-full.txt","w").write("".join(F))
 # Cloudflare Pages 308-redirects /x.html to /x, so absolute URLs (canonical, og:url, JSON-LD, sitemap, llms) use the clean form.
