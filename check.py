@@ -32,7 +32,8 @@ for p in pages:
     for l in x.links:
         if l.startswith(("http","mailto:","#","${","data:","/_vercel")):continue
         tgt=os.path.normpath(os.path.join(os.path.dirname(p),urllib.parse.urlparse(l).path))
-        if not os.path.exists(tgt):fails.append(f"{p}: broken link {l}")
+        # Clean URLs (no .html) are served by Cloudflare Pages: accept x -> x.html and dir/ -> dir/index.html
+        if not any(os.path.exists(c) for c in (tgt,tgt+".html",os.path.join(tgt,"index.html"))):fails.append(f"{p}: broken link {l}")
 for f in("sitemap.xml","robots.txt","llms.txt","llms-full.txt","tools.json"):
     if not os.path.exists(f):fails.append(f"missing {f}")
 ids={t["id"] for t in D["tools"]}
