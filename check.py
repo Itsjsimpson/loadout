@@ -1,4 +1,7 @@
-"""Automated checks: python3 check.py [--no-external]. Exits 1 on failure."""
+"""Automated checks: python3 check.py [--no-external] [--live]. Exits 1 on failure.
+--live (audit fix 4): fetch every sitemap <loc> and each page's canonical on production with redirects OFF;
+each must return 200 directly (any 3xx/4xx/5xx fails), canonical must equal its sitemap URL, and
+`git ls-remote origin main` must equal local HEAD. Nothing is "deployed" on the board until this passes."""
 import json,os,re,sys,glob,subprocess,urllib.parse
 from html.parser import HTMLParser
 D=json.load(open("tools.json"));fails=[];warn=[]
@@ -31,9 +34,12 @@ for p in pages:
         except Exception as e:fails.append(f"{p}: bad JSON-LD {e}")
     for l in x.links:
         if l.startswith(("http","mailto:","#","${","data:","/_vercel")):continue
-        tgt=os.path.normpath(os.path.join(os.path.dirname(p),urllib.parse.urlparse(l).path))
-        # Clean URLs (no .html) are served by Cloudflare Pages: accept x -> x.html and dir/ -> dir/index.html
-        if not any(os.path.exists(c) for c in (tgt,tgt+".html",os.path.join(tgt,"index.html"))):fails.append(f"{p}: broken link {l}")
+        lp=urllib.parse.urlparse(l).path
+        if lp.endswith(".html"):fails.append(f"{p}: internal link {l} uses .html (production 308-redirects it; use the clean URL)")
+        tgt=os.path.normpath(os.path.join(os.path.dirname(p),lp)) if lp else p
+        if lp.endswith("/") or lp in("","./","../"):tgt=os.path.join(tgt,"index.html")
+        # Clean URLs (no .html) are served by Cloudflare Pages: accept x -> x.html and dir -> dir/index.html
+        if not any(os.path.isfile(c) for c in (tgt,tgt+".html",os.path.join(tgt,"index.html"))):fails.append(f"{p}: broken link {l}")
 for f in("sitemap.xml","robots.txt","llms.txt","llms-full.txt","tools.json"):
     if not os.path.exists(f):fails.append(f"missing {f}")
 ids={t["id"] for t in D["tools"]}
@@ -47,5 +53,37 @@ if "--no-external" not in sys.argv:
         c=subprocess.run(["curl","-sL","-o","/dev/null","-m","20","-A","Mozilla/5.0 (X11; Linux x86_64) Chrome/120","-w","%{http_code}",u],capture_output=True,text=True).stdout
         if c in("403","429","503"):warn.append(f"{u}: {c} (likely bot protection)")
         elif not c.startswith(("2","3")):fails.append(f"{u}: HTTP {c}")
+if "--live" in sys.argv:
+    from concurrent.futures import ThreadPoolExecutor
+    locs=re.findall(r"<loc>([^<]+)</loc>",open("sitemap.xml").read())
+    UA="Mozilla/5.0 (X11; Linux x86_64) Chrome/120"
+    def get(u):
+        r=subprocess.run(["curl","-sS","-m","20","-A",UA,"-o","-","-w","\n%{http_code} %{redirect_url}",u],capture_output=True,text=True)
+        body,_,tail=r.stdout.rpartition("\n");code,_,loc=tail.partition(" ")
+        return code,loc.strip(),body,r.stderr.strip()
+    def live(u):
+        out=[];code,loc,body,err=get(u)
+        if code!="200":out.append(f"LIVE {u}: HTTP {code or 'no response'}{' -> '+loc if loc else ''}{' '+err if err else ''}");return out
+        m=re.search(r'<link rel="canonical" href="([^"]+)"',body)
+        if not m:out.append(f"LIVE {u}: no canonical");return out
+        c=m.group(1)
+        if c!=u:
+            out.append(f"LIVE {u}: canonical is {c} (not the sitemap URL)")
+            cc,cl,_,_=get(c)
+            if cc!="200":out.append(f"LIVE canonical {c}: HTTP {cc}{' -> '+cl if cl else ''}")
+        for h in re.findall(r'href="([^"]+)"',body):
+            if not h.startswith(("http","mailto:","#","data:","//")) and urllib.parse.urlparse(h).path.endswith(".html"):
+                out.append(f"LIVE {u}: internal link {h} uses .html (redirects)");break
+        return out
+    with ThreadPoolExecutor(8) as ex:
+        for r in ex.map(live,locs):fails+=r
+    try:
+        remote=subprocess.run(["git","ls-remote","origin","main"],capture_output=True,text=True,timeout=30).stdout.split()
+        head=subprocess.run(["git","rev-parse","HEAD"],capture_output=True,text=True).stdout.strip()
+        if not remote:fails.append("LIVE git ls-remote origin main returned nothing (push unverified)")
+        elif remote[0]!=head:fails.append(f"LIVE origin/main {remote[0][:7]} != local HEAD {head[:7]} (local work not on main, or push didn't land)")
+        else:print(f"LIVE origin/main == HEAD {head[:7]}")
+    except Exception as e:fails.append(f"LIVE git check failed: {e}")
+    print(f"LIVE: {len(locs)} sitemap URLs fetched with redirects off")
 print(f"{len(pages)} pages checked");[print("WARN",w) for w in warn];[print("FAIL",f) for f in fails]
 print("PASS" if not fails else f"{len(fails)} failures");sys.exit(1 if fails else 0)
