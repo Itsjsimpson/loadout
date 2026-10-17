@@ -1,6 +1,6 @@
 {
  "name": "Loadout",
- "updated": "2026-10-16",
+ "updated": "2026-10-17",
  "categories": [
   {
    "id": "editors",
@@ -780,6 +780,21 @@
    "job": "Browsing",
    "priceNote": "Free: 1,000 credits/mo; Hobby $19/mo ($16/mo billed yearly).",
    "pricingSource": "https://www.firecrawl.dev/pricing"
+  },
+  {
+   "id": "pomerado",
+   "name": "Pomerado",
+   "category": "agent-tools",
+   "description": "Turns websites with no API, from consumer sites to legacy portals, into tested API and MCP tools your agents can call, with sign-in (including 2FA) handled. Open source.",
+   "bestFor": "Letting an agent use websites that have no API",
+   "pricing": "freemium",
+   "url": "https://pomerado.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Browsing",
+   "priceNote": "Free: 100 tool calls/day, 10 new integrations/mo; Premium $50/mo for 1,000 calls/day; Business custom.",
+   "pricingSource": "https://pomerado.ai/#pricing"
   }
  ],
  "useCases": [
@@ -970,6 +985,55 @@
    "summary": "Assign a code scanning alert to Copilot and it explores the codebase, proposes a fix, reruns CodeQL to confirm it closes the alert, then opens a draft PR. For GitHub Code Security / Advanced Security on Enterprise Cloud.",
    "url": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability",
    "source": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability"
+  },
+  {
+   "name": "Harness by Autonomous",
+   "date": "2026-10-16",
+   "summary": "Open-source command center for coding agents: run Claude Code, Codex and others across all your machines side by side, from a desktop app, terminal or phone (with voice). Free download; optional $149 desk device. #2 on Product Hunt's Oct 16 daily leaderboard.",
+   "url": "https://www.autonomous.ai/harness",
+   "source": "https://www.producthunt.com/leaderboard/daily/2026/10/16"
+  },
+  {
+   "name": "Pomerado",
+   "date": "2026-10-16",
+   "summary": "YC-backed, open-source tool that turns any website (Google Flights, Zillow, legacy portals) into a tested API or MCP server for your agents, handling sign-in and 2FA. Free plan (100 tool calls/day); Premium $50/mo.",
+   "url": "https://pomerado.ai",
+   "source": "https://pomerado.ai"
+  },
+  {
+   "name": "Parallax by Conifer",
+   "date": "2026-10-16",
+   "summary": "Mac app (Linux daemon too) that runs Claude Code, Codex, Cursor and other coding agents in one place: a Captain splits your ask across agents, built-in code review, and auto-fallback when one subscription hits its limit. Free to start with $50 of Conifer credit on GitHub sign-up.",
+   "url": "https://www.conifer.build/parallax/",
+   "source": "https://www.conifer.build/parallax/"
+  },
+  {
+   "name": "GBrain Tools",
+   "date": "2026-10-16",
+   "summary": "From Garry Tan's YC-backed GBrain: connect Gmail, GitHub, Stripe and more once and use them in Claude, ChatGPT, Claude Code, Codex, Cursor and your terminal without any AI seeing a password. Tools $19/mo per license; team workspace $199/mo.",
+   "url": "https://gbrain.io",
+   "source": "https://gbrain.io/pricing"
+  },
+  {
+   "name": "Nemotron 3.5 Super VL",
+   "date": "2026-10-15",
+   "summary": "NVIDIA's open multimodal model for agents: 120B total / 12B active MoE, up to 1M-token context, text, image, document and video input, with tool use and coding. Open weights on Hugging Face; hosted via OpenRouter and NVIDIA NIM.",
+   "url": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/",
+   "source": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/"
+  },
+  {
+   "name": "FLUX 3 Image Klein",
+   "date": "2026-10-15",
+   "summary": "Black Forest Labs' 5.6B open-weights image model for text-to-image, editing and multi-reference generation (up to 10 images), with native 4K. Runs on GPUs with as little as 8GB VRAM (INT8); also in the BFL API.",
+   "url": "https://bfl.ai/blog/flux-3-image-klein",
+   "source": "https://bfl.ai/blog/flux-3-image-klein"
+  },
+  {
+   "name": "Lovable Growth tools",
+   "date": "2026-10-14",
+   "summary": "Lovable now helps you get users from the same chat you build in: a growth plan from your app and traffic, SEO and community posts, and Google, YouTube, Facebook and Instagram ads that only spend after you approve. On Free, Pro and Business plans; no extra Lovable fee beyond normal chat usage.",
+   "url": "https://lovable.dev/blog/introducing-growth-tools",
+   "source": "https://docs.lovable.dev/changelog"
   }
  ]
 }

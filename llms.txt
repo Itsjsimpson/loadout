@@ -1,6 +1,6 @@
 # Loadout
 
-> Directory of AI tools for vibe coders and builders, ranked by use case. Updated 2026-10-16. Machine-readable data: https://loadoutweekly.com/tools.json (public, free to use with attribution).
+> Directory of AI tools for vibe coders and builders, ranked by use case. Updated 2026-10-17. Machine-readable data: https://loadoutweekly.com/tools.json (public, free to use with attribution).
 ## Categories
 - [AI Code Editors & IDEs](https://loadoutweekly.com/categories/editors.html)
 - [App Builders (Prompt-to-App)](https://loadoutweekly.com/categories/builders.html)
