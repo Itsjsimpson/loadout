@@ -64,6 +64,8 @@ T=[
 ]
 UNV={"locofy","groq","firebase-studio"}
 tools=[dict(id=n.lower().replace(' ','-').replace('(','').replace(')','').replace('.','-'),name=n,category=c,description=d,bestFor=b,pricing=p,url=u,affiliateUrl="",featured=False,verified=None if n.lower() in UNV else "2026-10-15") for n,c,d,b,p,u in T]
+AFF={"postiz":"https://postiz.pro/jojo-simpson"} # affiliate links (labelled on page)
+for t in tools: t["affiliateUrl"]=AFF.get(t["id"],"")
 AGENT={ # job, price summary, official pricing source (checked 2026-10-17)
 "postiz":("Posting","From $29/mo (Standard, 5 channels); 7-day free trial. MCP, CLI and API on every plan.","https://postiz.com/pricing"),
 "ayrshare":("Posting","Premium $149/mo (1 profile); Launch $299/mo with 28-day free trial; Business from $599/mo.","https://www.ayrshare.com/pricing/"),
