@@ -195,3 +195,14 @@ for _f in pages+["sitemap.xml","llms.txt","llms-full.txt"]:
     _s=open(_f).read();_n=_rx.sub(lambda m:BASE_URL+"/"+m.group(1),_s)
     if _n!=_s:open(_f,"w").write(_n)
 print(len(pages),"pages")
+# Internal relative links use clean URLs too (audit fix 4): Cloudflare Pages 308s every /x.html, so a nav link to
+# x.html costs every click a redirect. Rewrite href="x.html#f" -> "x#f", "dir/index.html" -> "dir/", "index.html" -> "./".
+_href=_re.compile(r'href="(?!https?:|mailto:|#|data:|//)([^"#?]*?)(index)?\.html([#?][^"]*)?"')
+def _clean(m):
+    path,idx,frag=m.group(1),m.group(2),m.group(3) or ""
+    if idx is not None and (path=="" or path.endswith("/")): out=path or "./"
+    else: out=path+(idx or "")
+    return f'href="{out}{frag}"'
+for _f in pages:
+    _s=open(_f).read();_n=_href.sub(_clean,_s)
+    if _n!=_s:open(_f,"w").write(_n)
