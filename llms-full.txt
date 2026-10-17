@@ -64,6 +64,19 @@
 - **Magnifi** (paid) — AI video tagging and automated sports highlights platform, now part of Sportz Interactive; demo-based sales. Best for: Media teams automating highlight production. https://magnifi.ai (verified: 2026-10-15)
 - **WSC Sports** (paid) — AI platform for creating, managing and distributing sports highlights, used by 650 teams, leagues and broadcasters; demo-based sales. Best for: Leagues and broadcasters scaling highlights. https://www.wsc-sports.com (verified: 2026-10-15)
 
+## Agent Tools
+- **Postiz** (paid) — Social media scheduler with a hosted MCP server, CLI, public API and webhooks on every plan, so agents can schedule posts across X, LinkedIn, Instagram, TikTok, YouTube, Bluesky and more. Best for: Letting an agent post to social channels for you. https://postiz.com (verified: 2026-10-17)
+- **Ayrshare** (paid) — Social media API for products and AI platforms: post, schedule, pull analytics and moderate comments across 14+ networks, billed per social profile. Best for: Apps that post to social on behalf of their users. https://www.ayrshare.com (verified: 2026-10-17)
+- **Resend** (freemium) — Email API for developers with transactional and marketing email, plus inboxes your agents can send, receive and reply from via API and MCP. Best for: Giving an app or agent a reliable email API. https://resend.com (verified: 2026-10-17)
+- **AgentMail** (freemium) — Email inboxes built for AI agents, with an API, SDKs, an MCP server, threads, drafts, webhooks and custom domains. Best for: Giving each agent its own inbox. https://www.agentmail.to (verified: 2026-10-17)
+- **Stripe** (paid) — Payments platform with an MCP server, agent plugin and agent skills, plus tools to sell through agents and accept agent-initiated payments. Best for: Letting agents work with payments, billing and checkout. https://stripe.com (verified: 2026-10-17)
+- **Twilio** (paid) — Communications APIs for voice calls, SMS, WhatsApp and verification, plus Conversation Relay for plugging voice AI into calls. Best for: Phone numbers, calls and texts for an agent. https://www.twilio.com (verified: 2026-10-17)
+- **Vapi** (freemium) — Developer platform for building voice AI agents that make and take phone calls; pick your own transcriber, model and voice providers. Best for: Building custom voice agents on the phone. https://vapi.ai (verified: 2026-10-17)
+- **Bland AI** (freemium) — AI phone call platform with one per-minute rate that covers the model, transcription and voice; bring your own Twilio or SIP or use Bland's. Best for: Phone agents with simple all-in pricing. https://www.bland.ai (verified: 2026-10-17)
+- **Browserbase** (freemium) — Cloud headless browsers for agents, plus Search and Fetch APIs; makers of the open-source Stagehand browser-agent SDK. Best for: Running fleets of browsers for web agents. https://www.browserbase.com (verified: 2026-10-17)
+- **Browser Use** (paid) — Cloud browsers and browser agents that complete web tasks, billed pay-as-you-go with no subscription. Best for: Cheap pay-as-you-go browser agents. https://browser-use.com (verified: 2026-10-17)
+- **Firecrawl** (freemium) — Web data API that searches, scrapes, crawls and maps sites into LLM-ready content for agents. Best for: Turning web pages into clean data for an agent. https://www.firecrawl.dev (verified: 2026-10-17)
+
 ## Which tool should I use
 - I can't code but want to ship a web app: Lovable > Bolt.new > Replit
 - I code daily and want an AI editor: Cursor > Devin Desktop (formerly Windsurf) > GitHub Copilot

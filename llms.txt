@@ -10,6 +10,7 @@
 - [Design-to-Code](https://loadoutweekly.com/categories/design.html)
 - [AI APIs & Models](https://loadoutweekly.com/categories/models.html)
 - [Sports AI Tools](https://loadoutweekly.com/categories/sports.html)
+- [Agent Tools](https://loadoutweekly.com/categories/agent-tools.html)
 
 ## Use cases
 - [I can't code but want to ship a web app](https://loadoutweekly.com/use-cases/i-can-t-code-but-want-to-ship-a-web-app.html)
