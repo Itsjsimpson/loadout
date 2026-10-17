@@ -1,5 +1,5 @@
 import json
-C={"editors":"AI Code Editors & IDEs","builders":"App Builders (Prompt-to-App)","agents":"Coding Agents","frameworks":"Agent Frameworks","backend":"Deploy, Hosting & Backend","design":"Design-to-Code","models":"AI APIs & Models","sports":"Sports AI Tools"}
+C={"editors":"AI Code Editors & IDEs","builders":"App Builders (Prompt-to-App)","agents":"Coding Agents","frameworks":"Agent Frameworks","backend":"Deploy, Hosting & Backend","design":"Design-to-Code","models":"AI APIs & Models","sports":"Sports AI Tools","agent-tools":"Agent Tools"}
 T=[
 ("Cursor","editors","AI code editor and coding agent platform; hand off tasks to agents or code alongside them.","Day-to-day coding with an agent inside your editor","freemium","https://cursor.com"),
 ("Devin Desktop (formerly Windsurf)","editors","Cognition's IDE (Windsurf renamed June 2026) with an Agent Command Center for managing local and cloud agents.","Managing multiple agents from a full IDE","freemium","https://devin.ai/desktop"),
@@ -50,9 +50,36 @@ T=[
 ("Descript","sports","Text-based video and audio editor with multitrack podcast editing, remote recording, transcription and captions.","Editing and recording podcast episodes","freemium","https://www.descript.com"),
 ("Magnifi","sports","AI video tagging and automated sports highlights platform, now part of Sportz Interactive; demo-based sales.","Media teams automating highlight production","paid","https://magnifi.ai"),
 ("WSC Sports","sports","AI platform for creating, managing and distributing sports highlights, used by 650 teams, leagues and broadcasters; demo-based sales.","Leagues and broadcasters scaling highlights","paid","https://www.wsc-sports.com"),
+("Postiz","agent-tools","Social media scheduler with a hosted MCP server, CLI, public API and webhooks on every plan, so agents can schedule posts across X, LinkedIn, Instagram, TikTok, YouTube, Bluesky and more.","Letting an agent post to social channels for you","paid","https://postiz.com"),
+("Ayrshare","agent-tools","Social media API for products and AI platforms: post, schedule, pull analytics and moderate comments across 14+ networks, billed per social profile.","Apps that post to social on behalf of their users","paid","https://www.ayrshare.com"),
+("Resend","agent-tools","Email API for developers with transactional and marketing email, plus inboxes your agents can send, receive and reply from via API and MCP.","Giving an app or agent a reliable email API","freemium","https://resend.com"),
+("AgentMail","agent-tools","Email inboxes built for AI agents, with an API, SDKs, an MCP server, threads, drafts, webhooks and custom domains.","Giving each agent its own inbox","freemium","https://www.agentmail.to"),
+("Stripe","agent-tools","Payments platform with an MCP server, agent plugin and agent skills, plus tools to sell through agents and accept agent-initiated payments.","Letting agents work with payments, billing and checkout","paid","https://stripe.com"),
+("Twilio","agent-tools","Communications APIs for voice calls, SMS, WhatsApp and verification, plus Conversation Relay for plugging voice AI into calls.","Phone numbers, calls and texts for an agent","paid","https://www.twilio.com"),
+("Vapi","agent-tools","Developer platform for building voice AI agents that make and take phone calls; pick your own transcriber, model and voice providers.","Building custom voice agents on the phone","freemium","https://vapi.ai"),
+("Bland AI","agent-tools","AI phone call platform with one per-minute rate that covers the model, transcription and voice; bring your own Twilio or SIP or use Bland's.","Phone agents with simple all-in pricing","freemium","https://www.bland.ai"),
+("Browserbase","agent-tools","Cloud headless browsers for agents, plus Search and Fetch APIs; makers of the open-source Stagehand browser-agent SDK.","Running fleets of browsers for web agents","freemium","https://www.browserbase.com"),
+("Browser Use","agent-tools","Cloud browsers and browser agents that complete web tasks, billed pay-as-you-go with no subscription.","Cheap pay-as-you-go browser agents","paid","https://browser-use.com"),
+("Firecrawl","agent-tools","Web data API that searches, scrapes, crawls and maps sites into LLM-ready content for agents.","Turning web pages into clean data for an agent","freemium","https://www.firecrawl.dev"),
 ]
 UNV={"locofy","groq","firebase-studio"}
 tools=[dict(id=n.lower().replace(' ','-').replace('(','').replace(')','').replace('.','-'),name=n,category=c,description=d,bestFor=b,pricing=p,url=u,affiliateUrl="",featured=False,verified=None if n.lower() in UNV else "2026-10-15") for n,c,d,b,p,u in T]
+AGENT={ # job, price summary, official pricing source (checked 2026-10-17)
+"postiz":("Posting","From $29/mo (Standard, 5 channels); 7-day free trial. MCP, CLI and API on every plan.","https://postiz.com/pricing"),
+"ayrshare":("Posting","Premium $149/mo (1 profile); Launch $299/mo with 28-day free trial; Business from $599/mo.","https://www.ayrshare.com/pricing/"),
+"resend":("Email","Free: 3,000 emails/mo (100/day); Pro from $20/mo for 50,000 emails.","https://resend.com/pricing"),
+"agentmail":("Email","Free: 3 inboxes, 3,000 emails/mo; Developer $20/mo; Startup $200/mo.","https://www.agentmail.to/pricing"),
+"stripe":("Payments","2.9% + 30¢ per successful domestic card transaction; no setup or monthly fees.","https://stripe.com/pricing"),
+"twilio":("Phone","Pay as you go: calls from $0.014/min outbound, SMS from $0.0083/message.","https://www.twilio.com/en-us/pricing"),
+"vapi":("Phone","$0.05/min Vapi hosting plus provider costs; $5 free credits to start.","https://vapi.ai/pricing"),
+"bland-ai":("Phone","Start: $0.14/min, $0 platform fee, no card required; Build: $0.12/min + $299/mo.","https://www.bland.ai/pricing"),
+"browserbase":("Browsing","Free plan (1 browser hour); Developer $20/mo; Startup $99/mo.","https://www.browserbase.com/pricing"),
+"browser-use":("Browsing","Pay as you go: browsers $0.02/hour; agents at model cost + 20%; top-ups from $5.","https://browser-use.com/pricing"),
+"firecrawl":("Browsing","Free: 1,000 credits/mo; Hobby $19/mo ($16/mo billed yearly).","https://www.firecrawl.dev/pricing"),
+}
+for t in tools:
+    if t["id"] in AGENT:
+        j,p,src=AGENT[t["id"]];t.update(job=j,priceNote=p,pricingSource=src,verified="2026-10-17")
 usecases=[
 {"question":"I can't code but want to ship a web app","picks":["lovable","bolt-new","replit"]},
 {"question":"I code daily and want an AI editor","picks":["cursor","devin-desktop-formerly-windsurf","github-copilot"]},
