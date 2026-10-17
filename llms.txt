@@ -2,27 +2,27 @@
 
 > Directory of AI tools for vibe coders and builders, ranked by use case. Updated 2026-10-17. Machine-readable data: https://loadoutweekly.com/tools.json (public, free to use with attribution).
 ## Categories
-- [AI Code Editors & IDEs](https://loadoutweekly.com/categories/editors.html)
-- [App Builders (Prompt-to-App)](https://loadoutweekly.com/categories/builders.html)
-- [Coding Agents](https://loadoutweekly.com/categories/agents.html)
-- [Agent Frameworks](https://loadoutweekly.com/categories/frameworks.html)
-- [Deploy, Hosting & Backend](https://loadoutweekly.com/categories/backend.html)
-- [Design-to-Code](https://loadoutweekly.com/categories/design.html)
-- [AI APIs & Models](https://loadoutweekly.com/categories/models.html)
-- [Sports AI Tools](https://loadoutweekly.com/categories/sports.html)
-- [Agent Tools](https://loadoutweekly.com/categories/agent-tools.html)
+- [AI Code Editors & IDEs](https://loadoutweekly.com/categories/editors)
+- [App Builders (Prompt-to-App)](https://loadoutweekly.com/categories/builders)
+- [Coding Agents](https://loadoutweekly.com/categories/agents)
+- [Agent Frameworks](https://loadoutweekly.com/categories/frameworks)
+- [Deploy, Hosting & Backend](https://loadoutweekly.com/categories/backend)
+- [Design-to-Code](https://loadoutweekly.com/categories/design)
+- [AI APIs & Models](https://loadoutweekly.com/categories/models)
+- [Sports AI Tools](https://loadoutweekly.com/categories/sports)
+- [Agent Tools](https://loadoutweekly.com/categories/agent-tools)
 
 ## Use cases
-- [I can't code but want to ship a web app](https://loadoutweekly.com/use-cases/i-can-t-code-but-want-to-ship-a-web-app.html)
-- [I code daily and want an AI editor](https://loadoutweekly.com/use-cases/i-code-daily-and-want-an-ai-editor.html)
-- [I want an agent to handle big tasks in my repo](https://loadoutweekly.com/use-cases/i-want-an-agent-to-handle-big-tasks-in-my-repo.html)
-- [I want a free/open-source coding agent](https://loadoutweekly.com/use-cases/i-want-a-free-open-source-coding-agent.html)
-- [I need a backend + database fast](https://loadoutweekly.com/use-cases/i-need-a-backend--database-fast.html)
-- [I want to deploy my app](https://loadoutweekly.com/use-cases/i-want-to-deploy-my-app.html)
-- [I'm building my own AI agent](https://loadoutweekly.com/use-cases/i-m-building-my-own-ai-agent.html)
-- [I want to turn a design into code](https://loadoutweekly.com/use-cases/i-want-to-turn-a-design-into-code.html)
-- [Which model API should power my app?](https://loadoutweekly.com/use-cases/which-model-api-should-power-my-app.html)
-- [I run a sports podcast or channel](https://loadoutweekly.com/use-cases/i-run-a-sports-podcast-or-channel.html)
+- [I can't code but want to ship a web app](https://loadoutweekly.com/use-cases/i-can-t-code-but-want-to-ship-a-web-app)
+- [I code daily and want an AI editor](https://loadoutweekly.com/use-cases/i-code-daily-and-want-an-ai-editor)
+- [I want an agent to handle big tasks in my repo](https://loadoutweekly.com/use-cases/i-want-an-agent-to-handle-big-tasks-in-my-repo)
+- [I want a free/open-source coding agent](https://loadoutweekly.com/use-cases/i-want-a-free-open-source-coding-agent)
+- [I need a backend + database fast](https://loadoutweekly.com/use-cases/i-need-a-backend--database-fast)
+- [I want to deploy my app](https://loadoutweekly.com/use-cases/i-want-to-deploy-my-app)
+- [I'm building my own AI agent](https://loadoutweekly.com/use-cases/i-m-building-my-own-ai-agent)
+- [I want to turn a design into code](https://loadoutweekly.com/use-cases/i-want-to-turn-a-design-into-code)
+- [Which model API should power my app?](https://loadoutweekly.com/use-cases/which-model-api-should-power-my-app)
+- [I run a sports podcast or channel](https://loadoutweekly.com/use-cases/i-run-a-sports-podcast-or-channel)
 
 ## Data
 - [tools.json](https://loadoutweekly.com/tools.json): categories, tools (id, name, category, description, bestFor, pricing, url, verified), useCases, newReleases

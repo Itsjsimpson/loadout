@@ -122,4 +122,10 @@ for cid,cn in cat.items():
 F.append("\n## Which tool should I use\n");F+=[f"- {u['question']}: "+" > ".join(by[p]["name"] for p in u["picks"])+"\n" for u in D["useCases"]]
 F.append("\n## New releases\n");F+=[f"- {r['date']} **{r['name']}** — {r['summary']} Source: {r['source']}\n" for r in D["newReleases"]]
 open("llms-full.txt","w").write("".join(F))
+# Cloudflare Pages 308-redirects /x.html to /x, so absolute URLs (canonical, og:url, JSON-LD, sitemap, llms) use the clean form.
+import re as _re
+_rx=_re.compile(_re.escape(BASE_URL)+r'/([A-Za-z0-9_./-]*?)\.html\b')
+for _f in pages+["sitemap.xml","llms.txt","llms-full.txt"]:
+    _s=open(_f).read();_n=_rx.sub(lambda m:BASE_URL+"/"+m.group(1),_s)
+    if _n!=_s:open(_f,"w").write(_n)
 print(len(pages),"pages")
