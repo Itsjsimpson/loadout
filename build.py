@@ -206,3 +206,16 @@ def _clean(m):
 for _f in pages:
     _s=open(_f).read();_n=_href.sub(_clean,_s)
     if _n!=_s:open(_f,"w").write(_n)
+# Real 404 page (soft-404 fix). Cloudflare Pages serves /404.html with a 404 status for any missing path once it
+# exists at the output root; without it Pages falls back to SPA mode and serves index.html with 200.
+# Root-relative links so it works at any depth. noindex, no canonical, and kept out of sitemap.xml / llms.txt.
+NF_SUB="https://jojos-newsletter-38aad3.beehiiv.com/subscribe?utm_source=loadoutweekly&utm_medium=website&utm_campaign=404"
+NF=f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page not found | Loadout</title><meta name="description" content="This page doesn&#x27;t exist on Loadout. Try the homepage, the tools directory or the free newsletter."><meta name="robots" content="noindex">
+<link rel="icon" href="data:,"><link rel="stylesheet" href="/style.css"></head><body>
+{nav("/")}
+<main id="main" class="wrap page"><article class="card"><h1>Page not found</h1><p class="lead">We couldn&#39;t find that page. It may have moved, or the link may be wrong.</p>
+<ul><li><a href="/">Go to the Loadout homepage</a></li><li><a href="/#tools">Browse the tools directory</a></li><li><a href="{E(NF_SUB)}" rel="noopener">Get Loadout Weekly, the free newsletter</a></li></ul>
+<p><a class="btn" href="/">Back to home →</a></p></article></main>
+{footer("/")}<script src="/app.js" defer></script></body></html>"""
+open("404.html","w").write(_href.sub(_clean,NF))

@@ -27,7 +27,12 @@ for p in pages:
     fails+= [f"{p}: {e}" for e in x.err]
     if x.st:fails.append(f"{p}: unclosed {x.st}")
     for k in("title","desc","canon"):
+        if k=="canon" and p=="404.html":continue  # noindex error page: no canonical by design
         if not getattr(x,k):fails.append(f"{p}: missing {k}")
+    if p=="404.html":
+        if 'name="robots" content="noindex"' not in h:fails.append("404.html: missing noindex")
+        if "<title>Page not found | Loadout</title>" not in h:fails.append("404.html: wrong title")
+        if "404.html" in open("sitemap.xml").read() or "/404" in open("llms.txt").read():fails.append("404 page listed in sitemap.xml or llms.txt")
     if p!="index.html" and x.h1!=1:fails.append(f"{p}: {x.h1} h1")
     for m in re.findall(r'<script type="application/ld\+json">(.*?)</script>',h,re.S):
         try:json.loads(m)
@@ -36,7 +41,8 @@ for p in pages:
         if l.startswith(("http","mailto:","#","${","data:","/_vercel")):continue
         lp=urllib.parse.urlparse(l).path
         if lp.endswith(".html"):fails.append(f"{p}: internal link {l} uses .html (production 308-redirects it; use the clean URL)")
-        tgt=os.path.normpath(os.path.join(os.path.dirname(p),lp)) if lp else p
+        tgt=(os.path.normpath("."+lp) if lp.startswith("/") else os.path.normpath(os.path.join(os.path.dirname(p),lp))) if lp else p
+        if lp=="/":tgt="."
         if lp.endswith("/") or lp in("","./","../"):tgt=os.path.join(tgt,"index.html")
         # Clean URLs (no .html) are served by Cloudflare Pages: accept x -> x.html and dir -> dir/index.html
         if not any(os.path.isfile(c) for c in (tgt,tgt+".html",os.path.join(tgt,"index.html"))):fails.append(f"{p}: broken link {l}")
@@ -77,6 +83,13 @@ if "--live" in sys.argv:
         return out
     with ThreadPoolExecutor(8) as ex:
         for r in ex.map(live,locs):fails+=r
+    # Soft-404 guard: a random missing path must return a real 404 (not the homepage with 200).
+    import uuid
+    nf=f"https://loadoutweekly.com/this-page-does-not-exist-{uuid.uuid4().hex[:10]}"
+    code,loc,body,err=get(nf)
+    if code!="404":fails.append(f"LIVE {nf}: HTTP {code}{' -> '+loc if loc else ''} (expected 404; soft-404?)")
+    elif "<title>Page not found | Loadout</title>" not in body:fails.append(f"LIVE {nf}: 404 but not the Loadout not-found page")
+    else:print(f"LIVE 404 OK: {nf}")
     try:
         remote=subprocess.run(["git","ls-remote","origin","main"],capture_output=True,text=True,timeout=30).stdout.split()
         head=subprocess.run(["git","rev-parse","HEAD"],capture_output=True,text=True).stdout.strip()
