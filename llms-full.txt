@@ -53,6 +53,7 @@
 - **OpenAI API** (paid) — API for GPT models, embeddings, images and realtime voice. Best for: General-purpose AI features. https://platform.openai.com (verified: 2026-10-15)
 - **Google Gemini API** (freemium) — Gemini models via Google AI Studio with long context and a free tier. Best for: Long context and generous free tier. https://ai.google.dev (verified: 2026-10-15)
 - **OpenRouter** (freemium) — Single API to access hundreds of models from many providers. Best for: Swapping models behind one key. https://openrouter.ai (verified: 2026-10-15)
+- **DeepSeek API** (paid) — Low-cost DeepSeek V4 models (1M context) with OpenAI- and Anthropic-format endpoints, so it plugs into Claude Code, Codex and OpenCode; also sells per-request Search and Fetch APIs. Best for: Cheap model calls for coding agents. https://api-docs.deepseek.com (verified: 2026-10-18)
 - **Groq** (freemium) — Fast inference cloud for open models, built on its LPU hardware. Best for: Low-latency responses. https://groq.com (verified: no)
 
 ## Sports AI Tools

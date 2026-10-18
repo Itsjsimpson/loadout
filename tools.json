@@ -521,6 +521,18 @@
    "verified": "2026-10-15"
   },
   {
+   "id": "deepseek-api",
+   "name": "DeepSeek API",
+   "category": "models",
+   "description": "Low-cost DeepSeek V4 models (1M context) with OpenAI- and Anthropic-format endpoints, so it plugs into Claude Code, Codex and OpenCode; also sells per-request Search and Fetch APIs.",
+   "bestFor": "Cheap model calls for coding agents",
+   "pricing": "paid",
+   "url": "https://api-docs.deepseek.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-18"
+  },
+  {
    "id": "groq",
    "name": "Groq",
    "category": "models",
