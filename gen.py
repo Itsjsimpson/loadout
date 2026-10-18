@@ -28,6 +28,7 @@ T=[
 ("Mastra","frameworks","TypeScript framework for AI agents, workflows and RAG.","JS/TS developers building agents","free","https://mastra.ai"),
 ("Vercel AI SDK","frameworks","TypeScript toolkit for building AI apps and agents across model providers.","AI features in Next.js/React apps","free","https://ai-sdk.dev"),
 ("Agent-Native","frameworks","Builder.io's open-source TypeScript framework for agentic apps where agent and UI share actions, data and state.","Building agentic apps with a real UI","free","https://www.agent-native.com"),
+("NitroStack","frameworks","Full-stack platform for MCP servers: open-source TypeScript and Python SDK and CLI, NitroStudio for visual testing, and NitroCloud hosting with GitHub deploys and scale-to-zero.","Building, testing and hosting your own MCP server","freemium","https://nitrostack.ai"),
 ("Vercel","backend","Frontend cloud for deploying Next.js and other web apps.","Deploying frontends in one click","freemium","https://vercel.com"),
 ("Netlify","backend","Platform for deploying and hosting web apps and sites.","Static and Jamstack sites","freemium","https://www.netlify.com"),
 ("Supabase","backend","Open-source Postgres backend with auth, storage and edge functions.","Backend for vibe-coded apps","freemium","https://supabase.com"),
@@ -67,6 +68,9 @@ UNV={"locofy","groq","firebase-studio"}
 tools=[dict(id=n.lower().replace(' ','-').replace('(','').replace(')','').replace('.','-'),name=n,category=c,description=d,bestFor=b,pricing=p,url=u,affiliateUrl="",featured=False,verified=None if n.lower() in UNV else "2026-10-15") for n,c,d,b,p,u in T]
 AFF={"postiz":"https://postiz.pro/jojo-simpson"} # affiliate links (labelled on page)
 for t in tools: t["affiliateUrl"]=AFF.get(t["id"],"")
+VER={"nitrostack":"2026-10-18"} # added later; date its official page was checked
+for t in tools:
+    if t["id"] in VER: t["verified"]=VER[t["id"]]
 AGENT={ # job, price summary, official pricing source (checked 2026-10-17)
 "postiz":("Posting","From $29/mo (Standard, 5 channels); 7-day free trial. MCP, CLI and API on every plan.","https://postiz.com/pricing"),
 "ayrshare":("Posting","Premium $149/mo (1 profile); Launch $299/mo with 28-day free trial; Business from $599/mo.","https://www.ayrshare.com/pricing/"),
@@ -118,7 +122,12 @@ rel=[
 {"name": "Nemotron 3.5 Super VL", "date": "2026-10-15", "summary": "NVIDIA's open multimodal model for agents: 120B total / 12B active MoE, up to 1M-token context, text, image, document and video input, with tool use and coding. Open weights on Hugging Face; hosted via OpenRouter and NVIDIA NIM.", "url": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/", "source": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/"},
 {"name": "FLUX 3 Image Klein", "date": "2026-10-15", "summary": "Black Forest Labs' 5.6B open-weights image model for text-to-image, editing and multi-reference generation (up to 10 images), with native 4K. Runs on GPUs with as little as 8GB VRAM (INT8); also in the BFL API.", "url": "https://bfl.ai/blog/flux-3-image-klein", "source": "https://bfl.ai/blog/flux-3-image-klein"},
 {"name": "Lovable Growth tools", "date": "2026-10-14", "summary": "Lovable now helps you get users from the same chat you build in: a growth plan from your app and traffic, SEO and community posts, and Google, YouTube, Facebook and Instagram ads that only spend after you approve. On Free, Pro and Business plans; no extra Lovable fee beyond normal chat usage.", "url": "https://lovable.dev/blog/introducing-growth-tools", "source": "https://docs.lovable.dev/changelog"},
+{"name": "NitroStack", "date": "2026-10-17", "summary": "Full-stack platform for MCP servers: open-source TypeScript and Python SDK and CLI, NitroStudio to test tools visually, and NitroCloud hosting with GitHub deploys and scale-to-zero. Free Hobby plan (30k requests/mo); Pro $30/org/mo. #1 on Product Hunt's Oct 17 daily leaderboard.", "url": "https://nitrostack.ai", "source": "https://nitrostack.ai/cloud/pricing"},
+{"name": "Ultracite v8", "date": "2026-10-17", "summary": "Zero-config linter and formatter preset (Oxlint, Biome or ESLint) built to keep agent-written JS/TS consistent. v8 writes its rules once to AGENTS.md for every coding agent, and ultracite fix --claude or --codex hands leftover issues to that agent. Free and open source (MIT). On Product Hunt Oct 17.", "url": "https://www.ultracite.ai", "source": "https://www.ultracite.ai/changelog/ultracite-8-0-1"},
+{"name": "Cursor canvases and Environments API", "date": "2026-10-16", "summary": "Cursor cloud agents can now build interactive canvases you share by link, a new Environments API (beta) creates and manages agent environments in code, and environments now hold up to 300 repos and load large setups 5x faster.", "url": "https://cursor.com/changelog", "source": "https://cursor.com/changelog"},
+{"name": "Step 5 Preview (open weights)", "date": "2026-10-15", "summary": "StepFun's flagship model for long-running agent and coding work: 600B total / 27B active MoE, up to 1M-token context, text and image input. Open weights on Hugging Face under the StepFun Model License 1.0, plus StepFun's API. Self-hosting needs data-center GPUs.", "url": "https://www.stepfun.com/step-5-preview", "source": "https://huggingface.co/stepfun-ai/Step-5-Preview"},
+{"name": "Sphinx", "date": "2026-10-18", "summary": "Free, open-source Git hook that quizzes you on what your coding agent's diff actually does before a push goes through. Works with Codex, Claude Code, Cursor, OpenCode and Pi, using your agent, OpenRouter or any OpenAI-compatible model. Show HN on Oct 18.", "url": "https://sphinx-six-theta.vercel.app/", "source": "https://news.ycombinator.com/item?id=50137950"},
 ]
-json.dump({"name":"Loadout","updated":"2026-10-17","categories":[{"id":k,"name":v} for k,v in C.items()],"tools":tools,"useCases":usecases,"newReleases":rel},open("tools.json","w"),indent=1)
+json.dump({"name":"Loadout","updated":"2026-10-18","categories":[{"id":k,"name":v} for k,v in C.items()],"tools":tools,"useCases":usecases,"newReleases":rel},open("tools.json","w"),indent=1)
 ids={t["id"] for t in tools}; assert all(p in ids for u in usecases for p in u["picks"]),[p for u in usecases for p in u["picks"] if p not in ids]
 print(len(tools))
