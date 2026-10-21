@@ -545,6 +545,19 @@
    "verified": null
   },
   {
+   "id": "opper",
+   "name": "Opper",
+   "category": "models",
+   "description": "Access 700+ leading AI models through one EU-hosted API, pay-as-you-go. GDPR-compliant, with spend caps, model allowlists and zero data retention.",
+   "bestFor": "EU-hosted access to many models behind one API",
+   "pricing": "freemium",
+   "url": "https://opper.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-21",
+   "tagline": "The European AI gateway for agents"
+  },
+  {
    "id": "balldontlie",
    "name": "BALLDONTLIE",
    "category": "sports",
