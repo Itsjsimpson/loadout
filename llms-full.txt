@@ -56,6 +56,7 @@
 - **OpenRouter** (freemium) — Single API to access hundreds of models from many providers. Best for: Swapping models behind one key. https://openrouter.ai (verified: 2026-10-15)
 - **DeepSeek API** (paid) — Low-cost DeepSeek V4 models (1M context) with OpenAI- and Anthropic-format endpoints, so it plugs into Claude Code, Codex and OpenCode; also sells per-request Search and Fetch APIs. Best for: Cheap model calls for coding agents. https://api-docs.deepseek.com (verified: 2026-10-18)
 - **Groq** (freemium) — Fast inference cloud for open models, built on its LPU hardware. Best for: Low-latency responses. https://groq.com (verified: no)
+- **Opper** (freemium) — Access 700+ leading AI models through one EU-hosted API, pay-as-you-go. GDPR-compliant, with spend caps, model allowlists and zero data retention. Best for: EU-hosted access to many models behind one API. https://opper.ai (verified: 2026-10-21)
 
 ## Sports AI Tools
 - **BALLDONTLIE** (freemium) — Sports data API for 20+ leagues (NBA, NFL, MLB, NHL, soccer, esports and more) with odds, an OpenAPI spec built for AI assistants, and a free tier. Best for: Stats and odds data for sports shows and apps. https://www.balldontlie.io (verified: 2026-10-15)
