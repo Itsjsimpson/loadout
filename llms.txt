@@ -1,6 +1,6 @@
 # Loadout
 
-> Directory of AI tools for vibe coders and builders, ranked by use case. Updated 2026-10-18. Machine-readable data: https://loadoutweekly.com/tools.json (public, free to use with attribution).
+> Directory of AI tools for vibe coders and builders, ranked by use case. Updated 2026-10-22. Machine-readable data: https://loadoutweekly.com/tools.json (public, free to use with attribution).
 ## Categories
 - [AI Code Editors & IDEs](https://loadoutweekly.com/categories/editors)
 - [App Builders (Prompt-to-App)](https://loadoutweekly.com/categories/builders)
@@ -26,6 +26,9 @@
 
 ## Guides
 - [Best AI coding tool for your first SaaS](https://loadoutweekly.com/best-ai-coding-tool-first-saas/): Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 compared for first-time builders, with official prices checked Oct 17, 2026.
+
+## Comparisons
+- [Cursor vs Devin Desktop (2026)](https://loadoutweekly.com/compare/cursor-vs-devin-desktop)
 
 ## Data
 - [tools.json](https://loadoutweekly.com/tools.json): categories, tools (id, name, category, description, bestFor, pricing, url, verified), useCases, newReleases
