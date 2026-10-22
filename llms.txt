@@ -27,6 +27,9 @@
 ## Guides
 - [Best AI coding tool for your first SaaS](https://loadoutweekly.com/best-ai-coding-tool-first-saas/): Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 compared for first-time builders, with official prices checked Oct 17, 2026.
 
+## Comparisons
+- [Cursor vs Devin Desktop (2026)](https://loadoutweekly.com/compare/cursor-vs-devin-desktop)
+
 ## Data
 - [tools.json](https://loadoutweekly.com/tools.json): categories, tools (id, name, category, description, bestFor, pricing, url, verified), useCases, newReleases
 - [llms-full.txt](https://loadoutweekly.com/llms-full.txt): full content in one file
