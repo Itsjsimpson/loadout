@@ -1,5 +1,5 @@
 import json
-C={"editors":"AI Code Editors & IDEs","builders":"App Builders (Prompt-to-App)","agents":"Coding Agents","frameworks":"Agent Frameworks","backend":"Deploy, Hosting & Backend","design":"Design-to-Code","models":"AI APIs & Models","sports":"Sports AI Tools"}
+C={"editors":"AI Code Editors & IDEs","builders":"App Builders (Prompt-to-App)","agents":"Coding Agents","frameworks":"Agent Frameworks","backend":"Deploy, Hosting & Backend","design":"Design-to-Code","models":"AI APIs & Models","sports":"Sports AI Tools","agent-tools":"Agent Tools"}
 T=[
 ("Cursor","editors","AI code editor and coding agent platform; hand off tasks to agents or code alongside them.","Day-to-day coding with an agent inside your editor","freemium","https://cursor.com"),
 ("Devin Desktop (formerly Windsurf)","editors","Cognition's IDE (Windsurf renamed June 2026) with an Agent Command Center for managing local and cloud agents.","Managing multiple agents from a full IDE","freemium","https://devin.ai/desktop"),
@@ -28,6 +28,7 @@ T=[
 ("Mastra","frameworks","TypeScript framework for AI agents, workflows and RAG.","JS/TS developers building agents","free","https://mastra.ai"),
 ("Vercel AI SDK","frameworks","TypeScript toolkit for building AI apps and agents across model providers.","AI features in Next.js/React apps","free","https://ai-sdk.dev"),
 ("Agent-Native","frameworks","Builder.io's open-source TypeScript framework for agentic apps where agent and UI share actions, data and state.","Building agentic apps with a real UI","free","https://www.agent-native.com"),
+("NitroStack","frameworks","Full-stack platform for MCP servers: open-source TypeScript and Python SDK and CLI, NitroStudio for visual testing, and NitroCloud hosting with GitHub deploys and scale-to-zero.","Building, testing and hosting your own MCP server","freemium","https://nitrostack.ai"),
 ("Vercel","backend","Frontend cloud for deploying Next.js and other web apps.","Deploying frontends in one click","freemium","https://vercel.com"),
 ("Netlify","backend","Platform for deploying and hosting web apps and sites.","Static and Jamstack sites","freemium","https://www.netlify.com"),
 ("Supabase","backend","Open-source Postgres backend with auth, storage and edge functions.","Backend for vibe-coded apps","freemium","https://supabase.com"),
@@ -41,6 +42,7 @@ T=[
 ("OpenAI API","models","API for GPT models, embeddings, images and realtime voice.","General-purpose AI features","paid","https://platform.openai.com"),
 ("Google Gemini API","models","Gemini models via Google AI Studio with long context and a free tier.","Long context and generous free tier","freemium","https://ai.google.dev"),
 ("OpenRouter","models","Single API to access hundreds of models from many providers.","Swapping models behind one key","freemium","https://openrouter.ai"),
+("DeepSeek API","models","Low-cost DeepSeek V4 models (1M context) with OpenAI- and Anthropic-format endpoints, so it plugs into Claude Code, Codex and OpenCode; also sells per-request Search and Fetch APIs.","Cheap model calls for coding agents","paid","https://api-docs.deepseek.com"),
 ("Groq","models","Fast inference cloud for open models, built on its LPU hardware.","Low-latency responses","freemium","https://groq.com"),
 ("BALLDONTLIE","sports","Sports data API for 20+ leagues (NBA, NFL, MLB, NHL, soccer, esports and more) with odds, an OpenAPI spec built for AI assistants, and a free tier.","Stats and odds data for sports shows and apps","freemium","https://www.balldontlie.io"),
 ("API-Sports","sports","REST sports data APIs covering 2,000+ competitions with live scores, odds and free widgets; free plan of 100 requests/day per API, paid from $10/month.","Cheap live scores and stats across many sports","freemium","https://api-sports.io"),
@@ -50,9 +52,43 @@ T=[
 ("Descript","sports","Text-based video and audio editor with multitrack podcast editing, remote recording, transcription and captions.","Editing and recording podcast episodes","freemium","https://www.descript.com"),
 ("Magnifi","sports","AI video tagging and automated sports highlights platform, now part of Sportz Interactive; demo-based sales.","Media teams automating highlight production","paid","https://magnifi.ai"),
 ("WSC Sports","sports","AI platform for creating, managing and distributing sports highlights, used by 650 teams, leagues and broadcasters; demo-based sales.","Leagues and broadcasters scaling highlights","paid","https://www.wsc-sports.com"),
+("Postiz","agent-tools","Social media scheduler with a hosted MCP server, CLI, public API and webhooks on every plan, so agents can schedule posts across X, LinkedIn, Instagram, TikTok, YouTube, Bluesky and more.","Letting an agent post to social channels for you","paid","https://postiz.com"),
+("Ayrshare","agent-tools","Social media API for products and AI platforms: post, schedule, pull analytics and moderate comments across 14+ networks, billed per social profile.","Apps that post to social on behalf of their users","paid","https://www.ayrshare.com"),
+("Resend","agent-tools","Email API for developers with transactional and marketing email, plus inboxes your agents can send, receive and reply from via API and MCP.","Giving an app or agent a reliable email API","freemium","https://resend.com"),
+("AgentMail","agent-tools","Email inboxes built for AI agents, with an API, SDKs, an MCP server, threads, drafts, webhooks and custom domains.","Giving each agent its own inbox","freemium","https://www.agentmail.to"),
+("Stripe","agent-tools","Payments platform with an MCP server, agent plugin and agent skills, plus tools to sell through agents and accept agent-initiated payments.","Letting agents work with payments, billing and checkout","paid","https://stripe.com"),
+("Twilio","agent-tools","Communications APIs for voice calls, SMS, WhatsApp and verification, plus Conversation Relay for plugging voice AI into calls.","Phone numbers, calls and texts for an agent","paid","https://www.twilio.com"),
+("Vapi","agent-tools","Developer platform for building voice AI agents that make and take phone calls; pick your own transcriber, model and voice providers.","Building custom voice agents on the phone","freemium","https://vapi.ai"),
+("Bland AI","agent-tools","AI phone call platform with one per-minute rate that covers the model, transcription and voice; bring your own Twilio or SIP or use Bland's.","Phone agents with simple all-in pricing","freemium","https://www.bland.ai"),
+("Browserbase","agent-tools","Cloud headless browsers for agents, plus Search and Fetch APIs; makers of the open-source Stagehand browser-agent SDK.","Running fleets of browsers for web agents","freemium","https://www.browserbase.com"),
+("Browser Use","agent-tools","Cloud browsers and browser agents that complete web tasks, billed pay-as-you-go with no subscription.","Cheap pay-as-you-go browser agents","paid","https://browser-use.com"),
+("Firecrawl","agent-tools","Web data API that searches, scrapes, crawls and maps sites into LLM-ready content for agents.","Turning web pages into clean data for an agent","freemium","https://www.firecrawl.dev"),
+("Pomerado","agent-tools","Turns websites with no API, from consumer sites to legacy portals, into tested API and MCP tools your agents can call, with sign-in (including 2FA) handled. Open source.","Letting an agent use websites that have no API","freemium","https://pomerado.ai"),
 ]
 UNV={"locofy","groq","firebase-studio"}
 tools=[dict(id=n.lower().replace(' ','-').replace('(','').replace(')','').replace('.','-'),name=n,category=c,description=d,bestFor=b,pricing=p,url=u,affiliateUrl="",featured=False,verified=None if n.lower() in UNV else "2026-10-15") for n,c,d,b,p,u in T]
+AFF={"postiz":"https://postiz.pro/jojo-simpson"} # affiliate links (labelled on page)
+for t in tools: t["affiliateUrl"]=AFF.get(t["id"],"")
+VER={"nitrostack":"2026-10-18","deepseek-api":"2026-10-18"} # added later; date its official page was checked
+for t in tools:
+    if t["id"] in VER: t["verified"]=VER[t["id"]]
+AGENT={ # job, price summary, official pricing source (checked 2026-10-17)
+"postiz":("Posting","From $29/mo (Standard, 5 channels); 7-day free trial. MCP, CLI and API on every plan.","https://postiz.com/pricing"),
+"ayrshare":("Posting","Premium $149/mo (1 profile); Launch $299/mo with 28-day free trial; Business from $599/mo.","https://www.ayrshare.com/pricing/"),
+"resend":("Email","Free: 3,000 emails/mo (100/day); Pro from $20/mo for 50,000 emails.","https://resend.com/pricing"),
+"agentmail":("Email","Free: 3 inboxes, 3,000 emails/mo; Developer $20/mo; Startup $200/mo.","https://www.agentmail.to/pricing"),
+"stripe":("Payments","2.9% + 30¢ per successful domestic card transaction; no setup or monthly fees.","https://stripe.com/pricing"),
+"twilio":("Phone","Pay as you go: calls from $0.014/min outbound, SMS from $0.0083/message.","https://www.twilio.com/en-us/pricing"),
+"vapi":("Phone","$0.05/min Vapi hosting plus provider costs; $5 free credits to start.","https://vapi.ai/pricing"),
+"bland-ai":("Phone","Start: $0.14/min, $0 platform fee, no card required; Build: $0.12/min + $299/mo.","https://www.bland.ai/pricing"),
+"browserbase":("Browsing","Free plan (1 browser hour); Developer $20/mo; Startup $99/mo.","https://www.browserbase.com/pricing"),
+"browser-use":("Browsing","Pay as you go: browsers $0.02/hour; agents at model cost + 20%; top-ups from $5.","https://browser-use.com/pricing"),
+"firecrawl":("Browsing","Free: 1,000 credits/mo; Hobby $19/mo ($16/mo billed yearly).","https://www.firecrawl.dev/pricing"),
+"pomerado":("Browsing","Free: 100 tool calls/day, 10 new integrations/mo; Premium $50/mo for 1,000 calls/day; Business custom.","https://pomerado.ai/#pricing"),
+}
+for t in tools:
+    if t["id"] in AGENT:
+        j,p,src=AGENT[t["id"]];t.update(job=j,priceNote=p,pricingSource=src,verified="2026-10-17")
 usecases=[
 {"question":"I can't code but want to ship a web app","picks":["lovable","bolt-new","replit"]},
 {"question":"I code daily and want an AI editor","picks":["cursor","devin-desktop-formerly-windsurf","github-copilot"]},
@@ -80,7 +116,19 @@ rel=[
 {"name": "Figma code layers, Specs and agent GA", "date": "2026-10-15", "summary": "Figma's Build by Design launch: code-backed prototypes on the canvas (code layers, open beta on all plans), Markdown Specs for shared context (open beta, paid plans), the Figma agent now generally available, and Figma MCP updates for coding agents.", "url": "https://www.figma.com/blog/build-by-design/", "source": "https://www.figma.com/blog/build-by-design/"},
 {"name": "Kerno 1.0", "date": "2026-10-15", "summary": "AI backend QA engineer that maps your codebase and tests full user flows, security, background jobs, queues, MCP servers and AWS serverless, catching bugs inside your agent's session and again on every PR in CI. Free tier to start.", "url": "https://kerno.io", "source": "https://www.producthunt.com/leaderboard/daily/2026/10/15"},
 {"name": "GitHub agentic autofix (GA)", "date": "2026-10-15", "summary": "Assign a code scanning alert to Copilot and it explores the codebase, proposes a fix, reruns CodeQL to confirm it closes the alert, then opens a draft PR. For GitHub Code Security / Advanced Security on Enterprise Cloud.", "url": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability", "source": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability"},
+{"name": "Harness by Autonomous", "date": "2026-10-16", "summary": "Open-source command center for coding agents: run Claude Code, Codex and others across all your machines side by side, from a desktop app, terminal or phone (with voice). Free download; optional $149 desk device. #2 on Product Hunt's Oct 16 daily leaderboard.", "url": "https://www.autonomous.ai/harness", "source": "https://www.producthunt.com/leaderboard/daily/2026/10/16"},
+{"name": "Pomerado", "date": "2026-10-16", "summary": "YC-backed, open-source tool that turns any website (Google Flights, Zillow, legacy portals) into a tested API or MCP server for your agents, handling sign-in and 2FA. Free plan (100 tool calls/day); Premium $50/mo.", "url": "https://pomerado.ai", "source": "https://pomerado.ai"},
+{"name": "Parallax by Conifer", "date": "2026-10-16", "summary": "Mac app (Linux daemon too) that runs Claude Code, Codex, Cursor and other coding agents in one place: a Captain splits your ask across agents, built-in code review, and auto-fallback when one subscription hits its limit. Free to start with $50 of Conifer credit on GitHub sign-up.", "url": "https://www.conifer.build/parallax/", "source": "https://www.conifer.build/parallax/"},
+{"name": "GBrain Tools", "date": "2026-10-16", "summary": "From Garry Tan's YC-backed GBrain: connect Gmail, GitHub, Stripe and more once and use them in Claude, ChatGPT, Claude Code, Codex, Cursor and your terminal without any AI seeing a password. Tools $19/mo per license; team workspace $199/mo.", "url": "https://gbrain.io", "source": "https://gbrain.io/pricing"},
+{"name": "Nemotron 3.5 Super VL", "date": "2026-10-15", "summary": "NVIDIA's open multimodal model for agents: 120B total / 12B active MoE, up to 1M-token context, text, image, document and video input, with tool use and coding. Open weights on Hugging Face; hosted via OpenRouter and NVIDIA NIM.", "url": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/", "source": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/"},
+{"name": "FLUX 3 Image Klein", "date": "2026-10-15", "summary": "Black Forest Labs' 5.6B open-weights image model for text-to-image, editing and multi-reference generation (up to 10 images), with native 4K. Runs on GPUs with as little as 8GB VRAM (INT8); also in the BFL API.", "url": "https://bfl.ai/blog/flux-3-image-klein", "source": "https://bfl.ai/blog/flux-3-image-klein"},
+{"name": "Lovable Growth tools", "date": "2026-10-14", "summary": "Lovable now helps you get users from the same chat you build in: a growth plan from your app and traffic, SEO and community posts, and Google, YouTube, Facebook and Instagram ads that only spend after you approve. On Free, Pro and Business plans; no extra Lovable fee beyond normal chat usage.", "url": "https://lovable.dev/blog/introducing-growth-tools", "source": "https://docs.lovable.dev/changelog"},
+{"name": "NitroStack", "date": "2026-10-17", "summary": "Full-stack platform for MCP servers: open-source TypeScript and Python SDK and CLI, NitroStudio to test tools visually, and NitroCloud hosting with GitHub deploys and scale-to-zero. Free Hobby plan (30k requests/mo); Pro $30/org/mo. #1 on Product Hunt's Oct 17 daily leaderboard.", "url": "https://nitrostack.ai", "source": "https://nitrostack.ai/cloud/pricing"},
+{"name": "Ultracite v8", "date": "2026-10-17", "summary": "Zero-config linter and formatter preset (Oxlint, Biome or ESLint) built to keep agent-written JS/TS consistent. v8 writes its rules once to AGENTS.md for every coding agent, and ultracite fix --claude or --codex hands leftover issues to that agent. Free and open source (MIT). On Product Hunt Oct 17.", "url": "https://www.ultracite.ai", "source": "https://www.ultracite.ai/changelog/ultracite-8-0-1"},
+{"name": "Cursor canvases and Environments API", "date": "2026-10-16", "summary": "Cursor cloud agents can now build interactive canvases you share by link, a new Environments API (beta) creates and manages agent environments in code, and environments now hold up to 300 repos and load large setups 5x faster.", "url": "https://cursor.com/changelog", "source": "https://cursor.com/changelog"},
+{"name": "Step 5 Preview (open weights)", "date": "2026-10-15", "summary": "StepFun's flagship model for long-running agent and coding work: 600B total / 27B active MoE, up to 1M-token context, text and image input. Open weights on Hugging Face under the StepFun Model License 1.0, plus StepFun's API. Self-hosting needs data-center GPUs.", "url": "https://www.stepfun.com/step-5-preview", "source": "https://huggingface.co/stepfun-ai/Step-5-Preview"},
+{"name": "Sphinx", "date": "2026-10-18", "summary": "Free, open-source Git hook that quizzes you on what your coding agent's diff actually does before a push goes through. Works with Codex, Claude Code, Cursor, OpenCode and Pi, using your agent, OpenRouter or any OpenAI-compatible model. Show HN on Oct 18.", "url": "https://sphinx-six-theta.vercel.app/", "source": "https://news.ycombinator.com/item?id=50137950"},
 ]
-json.dump({"name":"Loadout","updated":"2026-10-16","categories":[{"id":k,"name":v} for k,v in C.items()],"tools":tools,"useCases":usecases,"newReleases":rel},open("tools.json","w"),indent=1)
+json.dump({"name":"Loadout","updated":"2026-10-18","categories":[{"id":k,"name":v} for k,v in C.items()],"tools":tools,"useCases":usecases,"newReleases":rel},open("tools.json","w"),indent=1)
 ids={t["id"] for t in tools}; assert all(p in ids for u in usecases for p in u["picks"]),[p for u in usecases for p in u["picks"] if p not in ids]
 print(len(tools))

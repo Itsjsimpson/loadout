@@ -1,6 +1,6 @@
 {
  "name": "Loadout",
- "updated": "2026-10-16",
+ "updated": "2026-10-18",
  "categories": [
   {
    "id": "editors",
@@ -33,6 +33,10 @@
   {
    "id": "sports",
    "name": "Sports AI Tools"
+  },
+  {
+   "id": "agent-tools",
+   "name": "Agent Tools"
   }
  ],
  "tools": [
@@ -349,6 +353,18 @@
    "verified": "2026-10-15"
   },
   {
+   "id": "nitrostack",
+   "name": "NitroStack",
+   "category": "frameworks",
+   "description": "Full-stack platform for MCP servers: open-source TypeScript and Python SDK and CLI, NitroStudio for visual testing, and NitroCloud hosting with GitHub deploys and scale-to-zero.",
+   "bestFor": "Building, testing and hosting your own MCP server",
+   "pricing": "freemium",
+   "url": "https://nitrostack.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-18"
+  },
+  {
    "id": "vercel",
    "name": "Vercel",
    "category": "backend",
@@ -505,6 +521,18 @@
    "verified": "2026-10-15"
   },
   {
+   "id": "deepseek-api",
+   "name": "DeepSeek API",
+   "category": "models",
+   "description": "Low-cost DeepSeek V4 models (1M context) with OpenAI- and Anthropic-format endpoints, so it plugs into Claude Code, Codex and OpenCode; also sells per-request Search and Fetch APIs.",
+   "bestFor": "Cheap model calls for coding agents",
+   "pricing": "paid",
+   "url": "https://api-docs.deepseek.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-18"
+  },
+  {
    "id": "groq",
    "name": "Groq",
    "category": "models",
@@ -611,6 +639,186 @@
    "affiliateUrl": "",
    "featured": false,
    "verified": "2026-10-15"
+  },
+  {
+   "id": "postiz",
+   "name": "Postiz",
+   "category": "agent-tools",
+   "description": "Social media scheduler with a hosted MCP server, CLI, public API and webhooks on every plan, so agents can schedule posts across X, LinkedIn, Instagram, TikTok, YouTube, Bluesky and more.",
+   "bestFor": "Letting an agent post to social channels for you",
+   "pricing": "paid",
+   "url": "https://postiz.com",
+   "affiliateUrl": "https://postiz.pro/jojo-simpson",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Posting",
+   "priceNote": "From $29/mo (Standard, 5 channels); 7-day free trial. MCP, CLI and API on every plan.",
+   "pricingSource": "https://postiz.com/pricing"
+  },
+  {
+   "id": "ayrshare",
+   "name": "Ayrshare",
+   "category": "agent-tools",
+   "description": "Social media API for products and AI platforms: post, schedule, pull analytics and moderate comments across 14+ networks, billed per social profile.",
+   "bestFor": "Apps that post to social on behalf of their users",
+   "pricing": "paid",
+   "url": "https://www.ayrshare.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Posting",
+   "priceNote": "Premium $149/mo (1 profile); Launch $299/mo with 28-day free trial; Business from $599/mo.",
+   "pricingSource": "https://www.ayrshare.com/pricing/"
+  },
+  {
+   "id": "resend",
+   "name": "Resend",
+   "category": "agent-tools",
+   "description": "Email API for developers with transactional and marketing email, plus inboxes your agents can send, receive and reply from via API and MCP.",
+   "bestFor": "Giving an app or agent a reliable email API",
+   "pricing": "freemium",
+   "url": "https://resend.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Email",
+   "priceNote": "Free: 3,000 emails/mo (100/day); Pro from $20/mo for 50,000 emails.",
+   "pricingSource": "https://resend.com/pricing"
+  },
+  {
+   "id": "agentmail",
+   "name": "AgentMail",
+   "category": "agent-tools",
+   "description": "Email inboxes built for AI agents, with an API, SDKs, an MCP server, threads, drafts, webhooks and custom domains.",
+   "bestFor": "Giving each agent its own inbox",
+   "pricing": "freemium",
+   "url": "https://www.agentmail.to",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Email",
+   "priceNote": "Free: 3 inboxes, 3,000 emails/mo; Developer $20/mo; Startup $200/mo.",
+   "pricingSource": "https://www.agentmail.to/pricing"
+  },
+  {
+   "id": "stripe",
+   "name": "Stripe",
+   "category": "agent-tools",
+   "description": "Payments platform with an MCP server, agent plugin and agent skills, plus tools to sell through agents and accept agent-initiated payments.",
+   "bestFor": "Letting agents work with payments, billing and checkout",
+   "pricing": "paid",
+   "url": "https://stripe.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Payments",
+   "priceNote": "2.9% + 30\u00a2 per successful domestic card transaction; no setup or monthly fees.",
+   "pricingSource": "https://stripe.com/pricing"
+  },
+  {
+   "id": "twilio",
+   "name": "Twilio",
+   "category": "agent-tools",
+   "description": "Communications APIs for voice calls, SMS, WhatsApp and verification, plus Conversation Relay for plugging voice AI into calls.",
+   "bestFor": "Phone numbers, calls and texts for an agent",
+   "pricing": "paid",
+   "url": "https://www.twilio.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Phone",
+   "priceNote": "Pay as you go: calls from $0.014/min outbound, SMS from $0.0083/message.",
+   "pricingSource": "https://www.twilio.com/en-us/pricing"
+  },
+  {
+   "id": "vapi",
+   "name": "Vapi",
+   "category": "agent-tools",
+   "description": "Developer platform for building voice AI agents that make and take phone calls; pick your own transcriber, model and voice providers.",
+   "bestFor": "Building custom voice agents on the phone",
+   "pricing": "freemium",
+   "url": "https://vapi.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Phone",
+   "priceNote": "$0.05/min Vapi hosting plus provider costs; $5 free credits to start.",
+   "pricingSource": "https://vapi.ai/pricing"
+  },
+  {
+   "id": "bland-ai",
+   "name": "Bland AI",
+   "category": "agent-tools",
+   "description": "AI phone call platform with one per-minute rate that covers the model, transcription and voice; bring your own Twilio or SIP or use Bland's.",
+   "bestFor": "Phone agents with simple all-in pricing",
+   "pricing": "freemium",
+   "url": "https://www.bland.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Phone",
+   "priceNote": "Start: $0.14/min, $0 platform fee, no card required; Build: $0.12/min + $299/mo.",
+   "pricingSource": "https://www.bland.ai/pricing"
+  },
+  {
+   "id": "browserbase",
+   "name": "Browserbase",
+   "category": "agent-tools",
+   "description": "Cloud headless browsers for agents, plus Search and Fetch APIs; makers of the open-source Stagehand browser-agent SDK.",
+   "bestFor": "Running fleets of browsers for web agents",
+   "pricing": "freemium",
+   "url": "https://www.browserbase.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Browsing",
+   "priceNote": "Free plan (1 browser hour); Developer $20/mo; Startup $99/mo.",
+   "pricingSource": "https://www.browserbase.com/pricing"
+  },
+  {
+   "id": "browser-use",
+   "name": "Browser Use",
+   "category": "agent-tools",
+   "description": "Cloud browsers and browser agents that complete web tasks, billed pay-as-you-go with no subscription.",
+   "bestFor": "Cheap pay-as-you-go browser agents",
+   "pricing": "paid",
+   "url": "https://browser-use.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Browsing",
+   "priceNote": "Pay as you go: browsers $0.02/hour; agents at model cost + 20%; top-ups from $5.",
+   "pricingSource": "https://browser-use.com/pricing"
+  },
+  {
+   "id": "firecrawl",
+   "name": "Firecrawl",
+   "category": "agent-tools",
+   "description": "Web data API that searches, scrapes, crawls and maps sites into LLM-ready content for agents.",
+   "bestFor": "Turning web pages into clean data for an agent",
+   "pricing": "freemium",
+   "url": "https://www.firecrawl.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Browsing",
+   "priceNote": "Free: 1,000 credits/mo; Hobby $19/mo ($16/mo billed yearly).",
+   "pricingSource": "https://www.firecrawl.dev/pricing"
+  },
+  {
+   "id": "pomerado",
+   "name": "Pomerado",
+   "category": "agent-tools",
+   "description": "Turns websites with no API, from consumer sites to legacy portals, into tested API and MCP tools your agents can call, with sign-in (including 2FA) handled. Open source.",
+   "bestFor": "Letting an agent use websites that have no API",
+   "pricing": "freemium",
+   "url": "https://pomerado.ai",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-17",
+   "job": "Browsing",
+   "priceNote": "Free: 100 tool calls/day, 10 new integrations/mo; Premium $50/mo for 1,000 calls/day; Business custom.",
+   "pricingSource": "https://pomerado.ai/#pricing"
   }
  ],
  "useCases": [
@@ -801,6 +1009,90 @@
    "summary": "Assign a code scanning alert to Copilot and it explores the codebase, proposes a fix, reruns CodeQL to confirm it closes the alert, then opens a draft PR. For GitHub Code Security / Advanced Security on Enterprise Cloud.",
    "url": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability",
    "source": "https://github.blog/changelog/2026-10-15-agentic-autofix-for-code-scanning-alerts-general-availability"
+  },
+  {
+   "name": "Harness by Autonomous",
+   "date": "2026-10-16",
+   "summary": "Open-source command center for coding agents: run Claude Code, Codex and others across all your machines side by side, from a desktop app, terminal or phone (with voice). Free download; optional $149 desk device. #2 on Product Hunt's Oct 16 daily leaderboard.",
+   "url": "https://www.autonomous.ai/harness",
+   "source": "https://www.producthunt.com/leaderboard/daily/2026/10/16"
+  },
+  {
+   "name": "Pomerado",
+   "date": "2026-10-16",
+   "summary": "YC-backed, open-source tool that turns any website (Google Flights, Zillow, legacy portals) into a tested API or MCP server for your agents, handling sign-in and 2FA. Free plan (100 tool calls/day); Premium $50/mo.",
+   "url": "https://pomerado.ai",
+   "source": "https://pomerado.ai"
+  },
+  {
+   "name": "Parallax by Conifer",
+   "date": "2026-10-16",
+   "summary": "Mac app (Linux daemon too) that runs Claude Code, Codex, Cursor and other coding agents in one place: a Captain splits your ask across agents, built-in code review, and auto-fallback when one subscription hits its limit. Free to start with $50 of Conifer credit on GitHub sign-up.",
+   "url": "https://www.conifer.build/parallax/",
+   "source": "https://www.conifer.build/parallax/"
+  },
+  {
+   "name": "GBrain Tools",
+   "date": "2026-10-16",
+   "summary": "From Garry Tan's YC-backed GBrain: connect Gmail, GitHub, Stripe and more once and use them in Claude, ChatGPT, Claude Code, Codex, Cursor and your terminal without any AI seeing a password. Tools $19/mo per license; team workspace $199/mo.",
+   "url": "https://gbrain.io",
+   "source": "https://gbrain.io/pricing"
+  },
+  {
+   "name": "Nemotron 3.5 Super VL",
+   "date": "2026-10-15",
+   "summary": "NVIDIA's open multimodal model for agents: 120B total / 12B active MoE, up to 1M-token context, text, image, document and video input, with tool use and coding. Open weights on Hugging Face; hosted via OpenRouter and NVIDIA NIM.",
+   "url": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/",
+   "source": "https://blogs.nvidia.com/blog/nemotron-3-5-super-vl/"
+  },
+  {
+   "name": "FLUX 3 Image Klein",
+   "date": "2026-10-15",
+   "summary": "Black Forest Labs' 5.6B open-weights image model for text-to-image, editing and multi-reference generation (up to 10 images), with native 4K. Runs on GPUs with as little as 8GB VRAM (INT8); also in the BFL API.",
+   "url": "https://bfl.ai/blog/flux-3-image-klein",
+   "source": "https://bfl.ai/blog/flux-3-image-klein"
+  },
+  {
+   "name": "Lovable Growth tools",
+   "date": "2026-10-14",
+   "summary": "Lovable now helps you get users from the same chat you build in: a growth plan from your app and traffic, SEO and community posts, and Google, YouTube, Facebook and Instagram ads that only spend after you approve. On Free, Pro and Business plans; no extra Lovable fee beyond normal chat usage.",
+   "url": "https://lovable.dev/blog/introducing-growth-tools",
+   "source": "https://docs.lovable.dev/changelog"
+  },
+  {
+   "name": "NitroStack",
+   "date": "2026-10-17",
+   "summary": "Full-stack platform for MCP servers: open-source TypeScript and Python SDK and CLI, NitroStudio to test tools visually, and NitroCloud hosting with GitHub deploys and scale-to-zero. Free Hobby plan (30k requests/mo); Pro $30/org/mo. #1 on Product Hunt's Oct 17 daily leaderboard.",
+   "url": "https://nitrostack.ai",
+   "source": "https://nitrostack.ai/cloud/pricing"
+  },
+  {
+   "name": "Ultracite v8",
+   "date": "2026-10-17",
+   "summary": "Zero-config linter and formatter preset (Oxlint, Biome or ESLint) built to keep agent-written JS/TS consistent. v8 writes its rules once to AGENTS.md for every coding agent, and ultracite fix --claude or --codex hands leftover issues to that agent. Free and open source (MIT). On Product Hunt Oct 17.",
+   "url": "https://www.ultracite.ai",
+   "source": "https://www.ultracite.ai/changelog/ultracite-8-0-1"
+  },
+  {
+   "name": "Cursor canvases and Environments API",
+   "date": "2026-10-16",
+   "summary": "Cursor cloud agents can now build interactive canvases you share by link, a new Environments API (beta) creates and manages agent environments in code, and environments now hold up to 300 repos and load large setups 5x faster.",
+   "url": "https://cursor.com/changelog",
+   "source": "https://cursor.com/changelog"
+  },
+  {
+   "name": "Step 5 Preview (open weights)",
+   "date": "2026-10-15",
+   "summary": "StepFun's flagship model for long-running agent and coding work: 600B total / 27B active MoE, up to 1M-token context, text and image input. Open weights on Hugging Face under the StepFun Model License 1.0, plus StepFun's API. Self-hosting needs data-center GPUs.",
+   "url": "https://www.stepfun.com/step-5-preview",
+   "source": "https://huggingface.co/stepfun-ai/Step-5-Preview"
+  },
+  {
+   "name": "Sphinx",
+   "date": "2026-10-18",
+   "summary": "Free, open-source Git hook that quizzes you on what your coding agent's diff actually does before a push goes through. Works with Codex, Claude Code, Cursor, OpenCode and Pi, using your agent, OpenRouter or any OpenAI-compatible model. Show HN on Oct 18.",
+   "url": "https://sphinx-six-theta.vercel.app/",
+   "source": "https://news.ycombinator.com/item?id=50137950"
   }
  ]
 }
