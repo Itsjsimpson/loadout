@@ -171,6 +171,12 @@ if FEAT_HTML:
     a=tpl.index('<section id="featured"');b=tpl.index('</section>',a)+10;tpl=tpl[:a]+FEAT_HTML+tpl[b:]
 BLURB={'editors': 'Editors and IDEs with built-in AI and agents.', 'builders': 'Describe an app and get a working one.', 'agents': 'Agents that take on multi-step tasks in your repo.', 'frameworks': 'Libraries for building your own agents.', 'backend': 'Hosting, databases and serverless.', 'design': 'Turn designs into front-end code.', 'models': 'Model APIs to power your app.', 'sports': 'Data, clipping and editing tools for sports shows.', 'agent-tools': 'Posting, email, payments, phone and browsing for AI agents.'}
 tpl=tpl.replace("<!--PSCALL-->",PSCALL.replace("{r}","")).replace("<!--HEADER-->",nav("")).replace("<!--FOOTER-->",footer("")).replace("<!--CATGRID-->","".join(f'<a class="catcard" href="categories/{c}.html"><strong>{E(n)}</strong><span class="muted">{E(BLURB.get(c,""))}</span><span class="count">{sum(t["category"]==c for t in D["tools"])} tools →</span></a>' for c,n in cat.items()))
+# Homepage JSON-LD (daily ship 2026-10-22): WebSite + Organization + ItemList of categories, all from existing data.
+HLD={"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","@id":BASE_URL+"/#website","name":"Loadout","url":BASE_URL+"/","description":"Loadout ranks AI tools for vibe coders and builders by use case.","publisher":{"@id":BASE_URL+"/#org"}},
+ {"@type":"Organization","@id":BASE_URL+"/#org","name":"Loadout","url":BASE_URL+"/","sameAs":["https://x.com/loadout_toolsAI"]},
+ {"@type":"ItemList","name":"Loadout categories","itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"url":f"{BASE_URL}/categories/{c}.html"} for i,(c,n) in enumerate(cat.items())]}]}
+tpl=tpl.replace("</head>",'<script type="application/ld+json">'+json.dumps(HLD)+"</script></head>",1)
 open("index.html","w").write(tpl.replace("<!--STATIC-->","".join(f'<li><a href="tools/{t["id"]}.html">{E(t["name"])}</a> — {E(t["description"])}</li>' for t in D["tools"])).replace("<!--UCLINKS-->","".join(f'<li><a href="use-cases/{u["slug"]}.html">{E(u["question"])}</a></li>' for u in D["useCases"])).replace("<!--CATLINKS-->","".join(f'<li><a href="categories/{c}.html">{E(n)}</a></li>' for c,n in cat.items())))
 pages.append("index.html")
 open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f'<url><loc>{BASE_URL}/{p.replace("index.html","")}</loc><lastmod>{D["updated"]}</lastmod></url>' for p in pages)+"</urlset>\n")
