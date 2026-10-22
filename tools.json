@@ -1096,7 +1096,7 @@
    "date": "2026-10-17",
    "summary": "Zero-config linter and formatter preset (Oxlint, Biome or ESLint) built to keep agent-written JS/TS consistent. v8 writes its rules once to AGENTS.md for every coding agent, and ultracite fix --claude or --codex hands leftover issues to that agent. Free and open source (MIT). On Product Hunt Oct 17.",
    "url": "https://www.ultracite.ai",
-   "source": "https://www.ultracite.ai/changelog/ultracite-8-0-1"
+   "source": "https://github.com/haydenbleasel/ultracite/releases/tag/ultracite%408.0.1"
   },
   {
    "name": "Cursor canvases and Environments API",
