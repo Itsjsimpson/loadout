@@ -1,6 +1,6 @@
 {
  "name": "Loadout",
- "updated": "2026-10-18",
+ "updated": "2026-10-22",
  "categories": [
   {
    "id": "editors",
@@ -363,6 +363,18 @@
    "affiliateUrl": "",
    "featured": false,
    "verified": "2026-10-18"
+  },
+  {
+   "id": "omnara",
+   "name": "Omnara",
+   "category": "frameworks",
+   "description": "Open-source managed agent platform: one API to run agents on any model and any machine, with tools, secrets, permissions and streaming built in. Self-hostable alternative to Claude Managed Agents.",
+   "bestFor": "Running agents for your users without building the infra",
+   "pricing": "freemium",
+   "url": "https://www.omnara.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-22"
   },
   {
    "id": "vercel",
@@ -1093,6 +1105,27 @@
    "summary": "Free, open-source Git hook that quizzes you on what your coding agent's diff actually does before a push goes through. Works with Codex, Claude Code, Cursor, OpenCode and Pi, using your agent, OpenRouter or any OpenAI-compatible model. Show HN on Oct 18.",
    "url": "https://sphinx-six-theta.vercel.app/",
    "source": "https://news.ycombinator.com/item?id=50137950"
+  },
+  {
+   "name": "Recursive Flint",
+   "date": "2026-10-21",
+   "summary": "Open-weights coding model built to run on your laptop: 40B total / 2.5B active MoE, up to 512k-token context. Recursive reports 125+ tokens/s on an M4 Pro MacBook Pro and top agentic coding scores for its size (vendor numbers). Apache 2.0 on Hugging Face; works with llama.cpp, Ollama, LM Studio, vLLM and SGLang.",
+   "url": "https://recursive.com/updates/introducing-recursive-flint",
+   "source": "https://huggingface.co/RecursiveSI/flint"
+  },
+  {
+   "name": "Claude Security continuous scanning",
+   "date": "2026-10-21",
+   "summary": "Claude Security now re-scans connected repos as code changes, marks findings fixed when the fix ships (and reopens them if they return), and adds an API and MCP. Public beta for Claude Enterprise only, with $25,000 a month in free usage credits for two months, through Dec 31, 2026.",
+   "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
+   "source": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes"
+  },
+  {
+   "name": "Omnara",
+   "date": "2026-10-21",
+   "summary": "Open-source managed agent platform, pitched as a self-hostable alternative to Claude Managed Agents: one API to deploy agents on any model and any machine. Apache 2.0 and free to self-host; Omnara Cloud has no platform fee, with models at provider token rates and machines billed by active time. Show HN on Oct 21.",
+   "url": "https://www.omnara.com",
+   "source": "https://www.omnara.com/pricing"
   }
  ]
 }

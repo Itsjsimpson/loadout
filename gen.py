@@ -29,6 +29,7 @@ T=[
 ("Vercel AI SDK","frameworks","TypeScript toolkit for building AI apps and agents across model providers.","AI features in Next.js/React apps","free","https://ai-sdk.dev"),
 ("Agent-Native","frameworks","Builder.io's open-source TypeScript framework for agentic apps where agent and UI share actions, data and state.","Building agentic apps with a real UI","free","https://www.agent-native.com"),
 ("NitroStack","frameworks","Full-stack platform for MCP servers: open-source TypeScript and Python SDK and CLI, NitroStudio for visual testing, and NitroCloud hosting with GitHub deploys and scale-to-zero.","Building, testing and hosting your own MCP server","freemium","https://nitrostack.ai"),
+("Omnara","frameworks","Open-source managed agent platform: one API to run agents on any model and any machine, with tools, secrets, permissions and streaming built in. Self-hostable alternative to Claude Managed Agents.","Running agents for your users without building the infra","freemium","https://www.omnara.com"),
 ("Vercel","backend","Frontend cloud for deploying Next.js and other web apps.","Deploying frontends in one click","freemium","https://vercel.com"),
 ("Netlify","backend","Platform for deploying and hosting web apps and sites.","Static and Jamstack sites","freemium","https://www.netlify.com"),
 ("Supabase","backend","Open-source Postgres backend with auth, storage and edge functions.","Backend for vibe-coded apps","freemium","https://supabase.com"),
@@ -69,7 +70,7 @@ UNV={"locofy","groq","firebase-studio"}
 tools=[dict(id=n.lower().replace(' ','-').replace('(','').replace(')','').replace('.','-'),name=n,category=c,description=d,bestFor=b,pricing=p,url=u,affiliateUrl="",featured=False,verified=None if n.lower() in UNV else "2026-10-15") for n,c,d,b,p,u in T]
 AFF={"postiz":"https://postiz.pro/jojo-simpson"} # affiliate links (labelled on page)
 for t in tools: t["affiliateUrl"]=AFF.get(t["id"],"")
-VER={"nitrostack":"2026-10-18","deepseek-api":"2026-10-18"} # added later; date its official page was checked
+VER={"nitrostack":"2026-10-18","deepseek-api":"2026-10-18","omnara":"2026-10-22"} # added later; date its official page was checked
 for t in tools:
     if t["id"] in VER: t["verified"]=VER[t["id"]]
 AGENT={ # job, price summary, official pricing source (checked 2026-10-17)
@@ -128,7 +129,10 @@ rel=[
 {"name": "Cursor canvases and Environments API", "date": "2026-10-16", "summary": "Cursor cloud agents can now build interactive canvases you share by link, a new Environments API (beta) creates and manages agent environments in code, and environments now hold up to 300 repos and load large setups 5x faster.", "url": "https://cursor.com/changelog", "source": "https://cursor.com/changelog"},
 {"name": "Step 5 Preview (open weights)", "date": "2026-10-15", "summary": "StepFun's flagship model for long-running agent and coding work: 600B total / 27B active MoE, up to 1M-token context, text and image input. Open weights on Hugging Face under the StepFun Model License 1.0, plus StepFun's API. Self-hosting needs data-center GPUs.", "url": "https://www.stepfun.com/step-5-preview", "source": "https://huggingface.co/stepfun-ai/Step-5-Preview"},
 {"name": "Sphinx", "date": "2026-10-18", "summary": "Free, open-source Git hook that quizzes you on what your coding agent's diff actually does before a push goes through. Works with Codex, Claude Code, Cursor, OpenCode and Pi, using your agent, OpenRouter or any OpenAI-compatible model. Show HN on Oct 18.", "url": "https://sphinx-six-theta.vercel.app/", "source": "https://news.ycombinator.com/item?id=50137950"},
+{"name": "Recursive Flint", "date": "2026-10-21", "summary": "Open-weights coding model built to run on your laptop: 40B total / 2.5B active MoE, up to 512k-token context. Recursive reports 125+ tokens/s on an M4 Pro MacBook Pro and top agentic coding scores for its size (vendor numbers). Apache 2.0 on Hugging Face; works with llama.cpp, Ollama, LM Studio, vLLM and SGLang.", "url": "https://recursive.com/updates/introducing-recursive-flint", "source": "https://huggingface.co/RecursiveSI/flint"},
+{"name": "Claude Security continuous scanning", "date": "2026-10-21", "summary": "Claude Security now re-scans connected repos as code changes, marks findings fixed when the fix ships (and reopens them if they return), and adds an API and MCP. Public beta for Claude Enterprise only, with $25,000 a month in free usage credits for two months, through Dec 31, 2026.", "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes", "source": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes"},
+{"name": "Omnara", "date": "2026-10-21", "summary": "Open-source managed agent platform, pitched as a self-hostable alternative to Claude Managed Agents: one API to deploy agents on any model and any machine. Apache 2.0 and free to self-host; Omnara Cloud has no platform fee, with models at provider token rates and machines billed by active time. Show HN on Oct 21.", "url": "https://www.omnara.com", "source": "https://www.omnara.com/pricing"},
 ]
-json.dump({"name":"Loadout","updated":"2026-10-18","categories":[{"id":k,"name":v} for k,v in C.items()],"tools":tools,"useCases":usecases,"newReleases":rel},open("tools.json","w"),indent=1)
+json.dump({"name":"Loadout","updated":"2026-10-22","categories":[{"id":k,"name":v} for k,v in C.items()],"tools":tools,"useCases":usecases,"newReleases":rel},open("tools.json","w"),indent=1)
 ids={t["id"] for t in tools}; assert all(p in ids for u in usecases for p in u["picks"]),[p for u in usecases for p in u["picks"] if p not in ids]
 print(len(tools))
