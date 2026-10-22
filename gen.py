@@ -44,6 +44,7 @@ T=[
 ("OpenRouter","models","Single API to access hundreds of models from many providers.","Swapping models behind one key","freemium","https://openrouter.ai"),
 ("DeepSeek API","models","Low-cost DeepSeek V4 models (1M context) with OpenAI- and Anthropic-format endpoints, so it plugs into Claude Code, Codex and OpenCode; also sells per-request Search and Fetch APIs.","Cheap model calls for coding agents","paid","https://api-docs.deepseek.com"),
 ("Groq","models","Fast inference cloud for open models, built on its LPU hardware.","Low-latency responses","freemium","https://groq.com"),
+("Opper","models","Access 700+ leading AI models through one EU-hosted API, pay-as-you-go. GDPR-compliant, with spend caps, model allowlists and zero data retention.","EU-hosted access to many models behind one API","freemium","https://opper.ai"),
 ("BALLDONTLIE","sports","Sports data API for 20+ leagues (NBA, NFL, MLB, NHL, soccer, esports and more) with odds, an OpenAPI spec built for AI assistants, and a free tier.","Stats and odds data for sports shows and apps","freemium","https://www.balldontlie.io"),
 ("API-Sports","sports","REST sports data APIs covering 2,000+ competitions with live scores, odds and free widgets; free plan of 100 requests/day per API, paid from $10/month.","Cheap live scores and stats across many sports","freemium","https://api-sports.io"),
 ("StoryStats","sports","Automated sports writer that turns game data into ready-to-publish stories for NBA, WNBA, MLB, NHL, NFL and soccer; free start, $30/month per sport.","Auto-written game previews and recaps","freemium","https://www.storystats.ai"),
@@ -69,9 +70,12 @@ UNV={"locofy","groq","firebase-studio"}
 tools=[dict(id=n.lower().replace(' ','-').replace('(','').replace(')','').replace('.','-'),name=n,category=c,description=d,bestFor=b,pricing=p,url=u,affiliateUrl="",featured=False,verified=None if n.lower() in UNV else "2026-10-15") for n,c,d,b,p,u in T]
 AFF={"postiz":"https://postiz.pro/jojo-simpson"} # affiliate links (labelled on page)
 for t in tools: t["affiliateUrl"]=AFF.get(t["id"],"")
-VER={"nitrostack":"2026-10-18","deepseek-api":"2026-10-18"} # added later; date its official page was checked
+VER={"nitrostack":"2026-10-18","deepseek-api":"2026-10-18","opper":"2026-10-21"} # added later; date its official page was checked
 for t in tools:
     if t["id"] in VER: t["verified"]=VER[t["id"]]
+TAGLINE={"opper":"The European AI gateway for agents"} # vendor-supplied heading, shown word for word (free listing, not sponsored)
+for t in tools:
+    if t["id"] in TAGLINE: t["tagline"]=TAGLINE[t["id"]]
 AGENT={ # job, price summary, official pricing source (checked 2026-10-17)
 "postiz":("Posting","From $29/mo (Standard, 5 channels); 7-day free trial. MCP, CLI and API on every plan.","https://postiz.com/pricing"),
 "ayrshare":("Posting","Premium $149/mo (1 profile); Launch $299/mo with 28-day free trial; Business from $599/mo.","https://www.ayrshare.com/pricing/"),
