@@ -100,6 +100,8 @@
 
 ## Comparisons
 - **Cursor vs Devin Desktop (2026)** — Cursor (freemium) — AI code editor and coding agent platform; hand off tasks to agents or code alongside them. Best for: Day-to-day coding with an agent inside your editor. Devin Desktop (formerly Windsurf) (freemium) — Cognition's IDE (Windsurf renamed June 2026) with an Agent Command Center for managing local and cloud agents. Best for: Managing multiple agents from a full IDE. Editorial comparison; rankings and picks are never sold. https://loadoutweekly.com/compare/cursor-vs-devin-desktop
+- **Claude Code vs OpenAI Codex (2026)** — Claude Code (paid) — Anthropic's agentic coding tool for the terminal and IDEs. Best for: Large, multi-step coding tasks from the terminal. OpenAI Codex (paid) — OpenAI's coding agent across ChatGPT, CLI, IDE extension and cloud; included in ChatGPT plans. Best for: Delegating tasks and automated PR review. Editorial comparison; rankings and picks are never sold. https://loadoutweekly.com/compare/claude-code-vs-openai-codex
+- **Lovable vs Bolt.new (2026)** — Lovable (freemium) — Build full-stack web apps by chatting, with Supabase integration. Best for: Non-coders shipping a real web app. Bolt.new (freemium) — StackBlitz's in-browser prompt-to-app builder that runs code in WebContainers. Best for: Fast prototypes in the browser. Editorial comparison; rankings and picks are never sold. https://loadoutweekly.com/compare/lovable-vs-bolt-new
 
 ## New releases
 - 2026-10-13 **OpenCode 2.0** — Open-source, model-agnostic coding agent with native TUI and multi-session support. #2 on Product Hunt's Oct 13 daily leaderboard (313 upvotes when checked). Source: https://www.producthunt.com/leaderboard/daily/2026/10/13
