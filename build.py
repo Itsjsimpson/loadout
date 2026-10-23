@@ -1,5 +1,6 @@
 """Build static SEO pages from tools.json. Run: python3 gen.py && python3 build.py"""
 import json,os,html,shutil,datetime
+import seo
 BASE_URL=os.environ.get("LOADOUT_BASE_URL","https://loadoutweekly.com")  # Vercel production
 D=json.load(open("tools.json"));E=html.escape
 cat={c["id"]:c["name"] for c in D["categories"]};by={t["id"]:t for t in D["tools"]}
@@ -66,7 +67,8 @@ def emit_compares():
               f'<p class="muted">Editorial comparison. Rankings and picks on Loadout are never sold.</p></section>'
               f'<section><h2>Questions</h2>{faq_html}</section>'
               f'<p>See <a href="../categories/{a["category"]}.html">{E(cat[a["category"]])}</a> and the use case <a href="../use-cases/{uc["slug"]}.html">{E(uc["question"])}</a>.</p>')
-        page(path,title,desc,body,ld,1,bc=[(cat[a["category"]],f"../categories/{a['category']}.html"),(h1,None)])
+        rel=[cmp_link(o) for o in COMPARES if o is not c]+([GUIDE_LINK] if a["id"] in GUIDE_TOOLS and b["id"] in GUIDE_TOOLS else [])
+        page(path,title,desc,body,ld,1,bc=[(cat[a["category"]],f"../categories/{a['category']}.html"),(h1,None)],related=rel)
         COMP_OUT.append((h1,path,f"{a['name']} ({a['pricing']}) — {a['description']} Best for: {a['bestFor']}. {b['name']} ({b['pricing']}) — {b['description']} Best for: {b['bestFor']}. Editorial comparison; rankings and picks are never sold."))
 TODAY=datetime.date.today().isoformat()
 # Paste Whop checkout links here once products are live; empty = "coming soon".
@@ -119,8 +121,30 @@ def signup_card(campaign,title="Loadout Weekly: the free new-tools email",text="
            if BEEHIIV_EMBED_ID else f'<!--BEEHIIV_EMBED campaign={campaign}--><a class="btn" href="{E(href)}" target="_blank" rel="noopener">Subscribe free →</a>')
     return (f'<aside class="card nlcard"{f" id={chr(34)}{id_}{chr(34)}" if id_ else ""} aria-label="Newsletter signup" data-campaign="{E(campaign)}"><div class="nltext"><strong>{E(title)}</strong>'
             f'<p class="muted">{E(text)} Unsubscribe anytime.</p></div><div class="nlcta">{embed}</div></aside>')
-def page(path,title,desc,body,ld=None,depth=0,foot="",bc=None):
+# AI-search cleanup (2026-10-23): every page gets a short summary, a visible "Last updated" date + author,
+# dateModified/author in JSON-LD and a "Related on Loadout" link block. __LASTMOD__ placeholders are filled from
+# git history after all pages are built (seo.page_dates), so no date is invented.
+AUTHOR={"@type":"Organization","name":"Loadout Team","url":BASE_URL+"/"}
+PUBLISHER={"@type":"Organization","name":"Loadout","url":BASE_URL+"/"}
+def pagemeta(summary=None,author=True):
+    return ('<div class="pagemeta">'+(f'<p class="summary">{summary}</p>' if summary else '')
+            +'<p class="updated muted">Last updated <time datetime="__LASTMOD__">__LASTMOD_H__</time>'+(' · By Loadout Team' if author else '')+'</p></div><!--/pagemeta-->')
+def relnav(links):
+    seen=[];[seen.append(l) for l in links if l not in seen]
+    return (f'<nav class="relnav card" aria-label="Related pages"><h2 class="h3">Related on Loadout</h2><ul>'+"".join(f'<li><a href="{h}">{E(n)}</a></li>' for n,h in seen)+'</ul></nav><!--/relnav-->') if seen else ''
+def page_ld(ld,url,title,desc):
+    meta={"dateModified":"__LASTMOD__","author":AUTHOR,"publisher":PUBLISHER}
+    if ld and "@graph" in ld:
+        node=next((n for n in ld["@graph"] if n.get("@type") in("WebPage","Article")),None)
+        if node is None:node={"@type":"WebPage","name":title,"description":meta_desc(desc),"url":url};ld["@graph"].insert(0,node)
+        node.update(meta);return ld
+    wp={"@type":"WebPage","name":title,"description":meta_desc(desc),"url":url,**meta}
+    if ld:wp["mainEntity"]={k:v for k,v in ld.items() if k!="@context"}
+    return {"@context":"https://schema.org","@graph":[wp]}
+def page(path,title,desc,body,ld=None,depth=0,foot="",bc=None,summary=None,related=(),author=True,meta_after="</h1>"):
     r="../"*depth;url=f"{BASE_URL}/{path}".replace("index.html","")
+    i=body.index(meta_after)+len(meta_after);body=body[:i]+pagemeta(summary,author)+body[i:]+relnav(related)
+    ld=page_ld(ld,url,title,desc)
     h=f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(title)}</title><meta name="description" content="{E(meta_desc(desc))}"><link rel="canonical" href="{url}">
 <meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(meta_desc(desc))}"><meta property="og:url" content="{url}"><meta property="og:site_name" content="Loadout"><meta name="twitter:card" content="summary">
@@ -146,19 +170,33 @@ JOBS=[("Posting","Social posting"),("Email","Email"),("Payments","Payments"),("P
 def agent_sections(ts):
     return "".join(f'<section><h2 id="{j.lower()}">{E(n)}</h2><div class="grid">{"".join(card(t) for t in ts if t.get("job")==j)}</div></section>' for j,n in JOBS if any(t.get("job")==j for t in ts))
 for d in("tools","categories","use-cases","compare"):shutil.rmtree(d,ignore_errors=True)
+for u in D["useCases"]:u["slug"]=slug(u["question"])
+GUIDE_TOOLS=["openai-codex","claude-code","cursor","lovable","bolt-new","replit","v0"]  # tools covered by the first-SaaS guide
+GUIDE_LINK=("Guide: Best AI coding tool for your first SaaS","../best-ai-coding-tool-first-saas/")
+def uc_link(u):return (f"Use case: {u['question']}",f"../use-cases/{u['slug']}.html")
+def cat_link(c):return (f"Category: {cat[c]}",f"../categories/{c}.html")
+def cmp_link(c):return (compare_label(c),f"../compare/{compare_slug(c)}.html")
 for t in D["tools"]:
     rel=t.get("affiliateUrl") and ' rel="sponsored noopener"' or ' rel="noopener"'
     ld={"@context":"https://schema.org","@type":"SoftwareApplication","name":t["name"],"description":t["description"],"applicationCategory":"DeveloperApplication","url":t["url"],"offers":{"@type":"Offer","description":t["pricing"]}}
+    tsum=f'{E(t["name"])} is listed in {E(cat[t["category"]])} on Loadout as {E(t["pricing"])}. Best for: {E(t["bestFor"])}.'
+    trel=[cat_link(t["category"])]+[uc_link(u) for u in D["useCases"] if t["id"] in u["picks"]]+([GUIDE_LINK] if t["id"] in GUIDE_TOOLS else [])
     page(f"tools/{t['id']}.html",f"{t['name']} — {cat[t['category']]} | Loadout",f"{t['name']}: {t['description']} Best for: {t['bestFor']}. Pricing: {t['pricing']}.",
-     f'<article class="detail card">{'<span class="tag sponsored">Featured · Sponsored</span>' if is_featured(t) else ''}<h1>{E(t["name"])}</h1>{'<span class="tag sponsored">Affiliate</span>' if t.get("affiliateUrl") else ''}{('<p class="tagline"><strong>'+E(t["tagline"])+'</strong></p>') if t.get("tagline") else ""}<p class="lead">{E(t["description"])}</p><dl><dt>Category</dt><dd><a href="../categories/{t["category"]}.html">{E(cat[t["category"]])}</a></dd><dt>Best for</dt><dd>{E(t["bestFor"])}</dd><dt>Pricing</dt><dd>{t["pricing"]}{(" · "+E(t["priceNote"])+f' (<a href="{E(t["pricingSource"])}" rel="noopener">official pricing</a>)') if t.get("priceNote") else ""}</dd><dt>Last verified</dt><dd>{t["verified"] or "not yet verified"}</dd></dl><p><a class="btn" href="{E(t["affiliateUrl"] or t["url"])}"{rel}>Visit {E(t["name"])} →</a></p>{tool_compare_link(t["id"])}</article>'+related(t),ld,1,bc=[(cat[t["category"]],f"../categories/{t['category']}.html"),(t["name"],None)])
+     f'<article class="detail card">{'<span class="tag sponsored">Featured · Sponsored</span>' if is_featured(t) else ''}<h1>{E(t["name"])}</h1>{'<span class="tag sponsored">Affiliate</span>' if t.get("affiliateUrl") else ''}{('<p class="tagline"><strong>'+E(t["tagline"])+'</strong></p>') if t.get("tagline") else ""}<p class="lead">{E(t["description"])}</p><dl><dt>Category</dt><dd><a href="../categories/{t["category"]}.html">{E(cat[t["category"]])}</a></dd><dt>Best for</dt><dd>{E(t["bestFor"])}</dd><dt>Pricing</dt><dd>{t["pricing"]}{(" · "+E(t["priceNote"])+f' (<a href="{E(t["pricingSource"])}" rel="noopener">official pricing</a>)') if t.get("priceNote") else ""}</dd><dt>Last verified</dt><dd>{t["verified"] or "not yet verified"}</dd></dl><p><a class="btn" href="{E(t["affiliateUrl"] or t["url"])}"{rel}>Visit {E(t["name"])} →</a></p>{tool_compare_link(t["id"])}</article>'+related(t),ld,1,bc=[(cat[t["category"]],f"../categories/{t['category']}.html"),(t["name"],None)],summary=tsum,related=trel)
 for cid,cn in cat.items():
     ts=sorted([t for t in D["tools"] if t["category"]==cid],key=lambda t:not is_featured(t))
     ld={"@context":"https://schema.org","@type":"ItemList","name":cn,"itemListElement":[{"@type":"ListItem","position":i+1,"name":t["name"],"url":f"{BASE_URL}/tools/{t['id']}.html"} for i,t in enumerate(ts)]}
-    page(f"categories/{cid}.html",f"Best {cn} for vibe coders (2026) | Loadout",f"{len(ts)} {cn.lower()} for vibe coders and builders, with pricing and what each is best for.",f'<h1>{E(cn)}</h1>'+(AGENT_TOP if cid=="agent-tools" else f'<p class="lead">{len(ts)} tools, with pricing and what each is best for.</p>')+cat_compare_links(cid)+chips(cid)+(PSCALL.replace("{r}","../") if cid=="sports" else "")+f'<div class="filterbar"><label class="sr" for="cf">Filter tools in this category</label><input id="cf" type="search" data-filter=".grid > article" placeholder="Filter {len(ts)} tools…"><span class="muted" data-count></span></div>'+(agent_sections(ts) if cid=="agent-tools" else f'<section class="grid">{"".join(card(t) for t in ts)}</section>')+'',ld,1,bc=[("Categories","../index.html#categories"),(cn,None)])
+    pc=[f'{sum(t["pricing"]==p for t in ts)} {p}' for p in ("free","freemium","paid") if any(t["pricing"]==p for t in ts)]
+    names=", ".join(E(t["name"]) for t in ts[:3])+(f" and {len(ts)-3} more" if len(ts)>3 else "")
+    csum=f'Loadout lists {len(ts)} tools in {E(cn)}: {names}. Pricing mix: {", ".join(pc)}; each listing shows what the tool is best for.'
+    crel=[uc_link(u) for u in D["useCases"] if any(by[p]["category"]==cid for p in u["picks"])]+([GUIDE_LINK] if any(by[g]["category"]==cid for g in GUIDE_TOOLS) else [])+([("PrepSheet: daily show prep for sports podcasters","../prepsheet/")] if cid=="sports" else [])
+    page(f"categories/{cid}.html",f"Best {cn} for vibe coders (2026) | Loadout",f"{len(ts)} {cn.lower()} for vibe coders and builders, with pricing and what each is best for.",f'<h1>{E(cn)}</h1>'+(AGENT_TOP if cid=="agent-tools" else f'<p class="lead">{len(ts)} tools, with pricing and what each is best for.</p>')+cat_compare_links(cid)+chips(cid)+(PSCALL.replace("{r}","../") if cid=="sports" else "")+f'<div class="filterbar"><label class="sr" for="cf">Filter tools in this category</label><input id="cf" type="search" data-filter=".grid > article" placeholder="Filter {len(ts)} tools…"><span class="muted" data-count></span></div>'+(agent_sections(ts) if cid=="agent-tools" else f'<section class="grid">{"".join(card(t) for t in ts)}</section>')+'',ld,1,bc=[("Categories","../index.html#categories"),(cn,None)],summary=csum,related=crel)
 for u in D["useCases"]:
     s=slug(u["question"]);u["slug"]=s;ts=[by[p] for p in u["picks"]]
+    usum=f'Loadout\'s ranked picks for &quot;{E(u["question"])}&quot;: '+", ".join(f"{i+1}. {E(t['name'])}" for i,t in enumerate(ts))+'. Rankings are editorial and never sold.'
+    urel=[cat_link(c) for c in dict.fromkeys(t["category"] for t in ts)]+[cmp_link(c) for c in COMPARES if c["use_case"]==u["question"]]+([GUIDE_LINK] if set(u["picks"])&set(GUIDE_TOOLS) else [])
     ld={"@context":"https://schema.org","@type":"ItemList","name":u["question"],"itemListOrder":"https://schema.org/ItemListOrderAscending","itemListElement":[{"@type":"ListItem","position":i+1,"name":t["name"],"url":f"{BASE_URL}/tools/{t['id']}.html"} for i,t in enumerate(ts)]}
-    page(f"use-cases/{s}.html",f"{u['question']} — top picks | Loadout",f"Ranked picks for \"{u['question']}\": "+", ".join(t["name"] for t in ts)+".",f'<h1>{E(u["question"])}</h1><ol class="ranked">'+"".join(f'<li>{card(dict(t,featured=False))}</li>' for t in ts)+'</ol>'+'<p class="muted">Rankings are editorial and never sold. <a href="../index.html#picks">See all use cases →</a></p>',ld,1,bc=[("Use cases","../index.html#picks"),(u["question"],None)])
+    page(f"use-cases/{s}.html",f"{u['question']} — top picks | Loadout",f"Ranked picks for \"{u['question']}\": "+", ".join(t["name"] for t in ts)+".",f'<h1>{E(u["question"])}</h1><ol class="ranked">'+"".join(f'<li>{card(dict(t,featured=False))}</li>' for t in ts)+'</ol>'+'<p class="muted">Rankings are editorial and never sold. <a href="../index.html#picks">See all use cases →</a></p>',ld,1,bc=[("Use cases","../index.html#picks"),(u["question"],None)],summary=usum,related=urel)
 emit_compares()
 HUB_CHECKOUT=[("Standard hub",os.environ.get("HUB_STANDARD_CHECKOUT","https://whop.com/checkout/plan_wnhElC4Sjff7d")),("Coding Agents hub",os.environ.get("HUB_CODING_CHECKOUT","https://whop.com/checkout/plan_3SUe1fdbB7mQ4")),("Deploy & Backend hub",os.environ.get("HUB_DEPLOY_CHECKOUT","https://whop.com/checkout/plan_SkJgqwSdHPqUT"))]
 ADV=('<h1>Advertise on Loadout</h1><p class="lead">Put your tool in front of vibe coders and builders. Launch pricing while we grow; early sponsors keep their rate.</p><section class="grid">'
@@ -183,7 +221,7 @@ PS=('<h1>PrepSheet: show prep for sports podcasters</h1><p class="lead">A one-pa
  +'<p><strong>Odds moves</strong></p><ul><li>Line moved from Hawks −3.5 to −2 since yesterday (example) [source link]</li></ul>'
  +'<p><strong>Talking points</strong></p><ul><li>Is the Hawks\' win streak real or a soft schedule?</li><li>What the questionable tag means for the rotation tonight.</li></ul></article>'
  +'<h2>Questions</h2><p>Email <a href="mailto:loadout@loadoutweekly.com?subject=PrepSheet">loadout@loadoutweekly.com</a>. PrepSheet is a project from Loadout.</p>')
-page("prepsheet/index.html","PrepSheet: daily show prep for sports podcasters | Loadout","PrepSheet presale: a daily one-page brief for sports podcasters with sourced stats, injuries, odds moves and talking points. $9 founding member, full refund if it doesn't launch.",PS,None,1,bc=[("Sports AI Tools","../categories/sports.html"),("PrepSheet",None)])
+page("prepsheet/index.html","PrepSheet: daily show prep for sports podcasters | Loadout","PrepSheet presale: a daily one-page brief for sports podcasters with sourced stats, injuries, odds moves and talking points. $9 founding member, full refund if it doesn't launch.",PS,None,1,bc=[("Sports AI Tools","../categories/sports.html"),("PrepSheet",None)],related=[cat_link("sports")]+[uc_link(u) for u in D["useCases"] if all(by[p]["category"]=="sports" for p in u["picks"])])
 # Guide: Best AI coding tool for your first SaaS. Prices only from official pricing pages, checked Oct 17, 2026.
 # Public X replies are paraphrased without handles or names. Body internal links are clean (no .html).
 GCHK="checked Oct 17, 2026"
@@ -242,10 +280,11 @@ GUIDE=('<article class="guide"><h1>Best AI coding tool for your first SaaS</h1>'
  +f'<p class="muted">By Loadout Team. Prices from official pricing pages, {GCHK}. Builder advice is paraphrased from public replies on X. More picks: <a href="../categories/editors">AI editors</a> · <a href="../categories/builders">app builders</a> · <a href="../categories/agents">coding agents</a>.</p></article>')
 GURL=f"{BASE_URL}/best-ai-coding-tool-first-saas/"
 GLD={"@context":"https://schema.org","@graph":[
- {"@type":"Article","headline":"Best AI coding tool for your first SaaS","description":"A plain-English guide to Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 for first-time builders, using official prices checked Oct 17, 2026.","datePublished":"2026-10-17","dateModified":"2026-10-17","author":{"@type":"Organization","name":"Loadout Team","url":BASE_URL+"/"},"publisher":{"@type":"Organization","name":"Loadout","url":BASE_URL+"/"},"mainEntityOfPage":GURL,"about":[{"@type":"SoftwareApplication","name":n,"applicationCategory":"DeveloperApplication","url":GSRC[k]} for n,k in [("Codex","codex"),("Claude Code","claude"),("Cursor","cursor"),("Lovable","lovable"),("Bolt","bolt"),("Replit","replit"),("v0","v0")]]},
+ {"@type":"Article","headline":"Best AI coding tool for your first SaaS","description":"A plain-English guide to Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 for first-time builders, using official prices checked Oct 17, 2026.","datePublished":"2026-10-17","author":{"@type":"Organization","name":"Loadout Team","url":BASE_URL+"/"},"publisher":{"@type":"Organization","name":"Loadout","url":BASE_URL+"/"},"mainEntityOfPage":GURL,"about":[{"@type":"SoftwareApplication","name":n,"applicationCategory":"DeveloperApplication","url":GSRC[k]} for n,k in [("Codex","codex"),("Claude Code","claude"),("Cursor","cursor"),("Lovable","lovable"),("Bolt","bolt"),("Replit","replit"),("v0","v0")]]},
  {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a,k in GFAQ]},
  {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":BASE_URL+"/"},{"@type":"ListItem","position":2,"name":"Best AI coding tool for your first SaaS","item":GURL}]}]}
-page("best-ai-coding-tool-first-saas/index.html","Best AI coding tool for your first SaaS (2026) | Loadout","Building your first SaaS? A plain-English guide to Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0, with official prices and real builder advice.",GUIDE,GLD,1,bc=[("Best AI coding tool for your first SaaS",None)])
+page("best-ai-coding-tool-first-saas/index.html","Best AI coding tool for your first SaaS (2026) | Loadout","Building your first SaaS? A plain-English guide to Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0, with official prices and real builder advice.",GUIDE,GLD,1,bc=[("Best AI coding tool for your first SaaS",None)],author=False,meta_after="from official pricing pages</p>",
+     related=[cmp_link(c) for c in COMPARES]+[uc_link(u) for u in D["useCases"] if set(u["picks"])&set(GUIDE_TOOLS)])
 GUIDES=[("Best AI coding tool for your first SaaS","best-ai-coding-tool-first-saas/","Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 compared for first-time builders, with official prices checked Oct 17, 2026.")]
 # homepage static fallback list for crawlers + sitemap/llms
 FEAT_HTML='<section id="featured" class="wrap" aria-label="Featured"><h2 class="h3">Featured</h2><div class="grid">'+"".join(card(t,"") for t in FEAT)+'</div></section>' if FEAT else None
@@ -258,11 +297,23 @@ tpl=tpl.replace("<!--SIGNUP-->",signup_card("home",id_="signup")).replace("<!--P
 HLD={"@context":"https://schema.org","@graph":[
  {"@type":"WebSite","@id":BASE_URL+"/#website","name":"Loadout","url":BASE_URL+"/","description":"Loadout ranks AI tools for vibe coders and builders by use case.","publisher":{"@id":BASE_URL+"/#org"}},
  {"@type":"Organization","@id":BASE_URL+"/#org","name":"Loadout","url":BASE_URL+"/","sameAs":["https://x.com/loadout_toolsAI"]},
+ {"@type":"WebPage","name":"Loadout: AI tools for vibe coders and builders","url":BASE_URL+"/","isPartOf":{"@id":BASE_URL+"/#website"},"dateModified":"__LASTMOD__","author":AUTHOR,"publisher":{"@id":BASE_URL+"/#org"}},
  {"@type":"ItemList","name":"Loadout categories","itemListElement":[{"@type":"ListItem","position":i+1,"name":n,"url":f"{BASE_URL}/categories/{c}.html"} for i,(c,n) in enumerate(cat.items())]}]}
-tpl=tpl.replace("</head>",'<script type="application/ld+json">'+json.dumps(HLD)+"</script></head>",1)
+# Search-engine ownership tags (homepage only). Empty = no tag. To verify: paste the content value Bing Webmaster Tools
+# (meta tag option, msvalidate.01) or Google Search Console (HTML tag option) shows you, rebuild, and ship via PR.
+BING_SITE_VERIFY=""
+GOOGLE_SITE_VERIFY=""
+VERIFY=(f'<meta name="msvalidate.01" content="{E(BING_SITE_VERIFY)}">' if BING_SITE_VERIFY else '')+(f'<meta name="google-site-verification" content="{E(GOOGLE_SITE_VERIFY)}">' if GOOGLE_SITE_VERIFY else '')
+HOME_SUM=f'Loadout lists {len(D["tools"])} AI tools across {len(cat)} categories, with ranked picks for {len(D["useCases"])} use cases. Rankings are editorial and never sold.'
+tpl=tpl.replace("<!--PAGEMETA-->",pagemeta(HOME_SUM)).replace("</head>",VERIFY+'<script type="application/ld+json">'+json.dumps(HLD)+"</script></head>",1)
 open("index.html","w").write(tpl.replace("<!--STATIC-->","".join(f'<li><a href="tools/{t["id"]}.html">{E(t["name"])}</a> — {E(t["description"])}</li>' for t in D["tools"])).replace("<!--UCLINKS-->","".join(f'<li><a href="use-cases/{u["slug"]}.html">{E(u["question"])}</a></li>' for u in D["useCases"])).replace("<!--CATLINKS-->","".join(f'<li><a href="categories/{c}.html">{E(n)}</a></li>' for c,n in cat.items())))
 pages.append("index.html")
-open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f'<url><loc>{BASE_URL}/{p.replace("index.html","")}</loc><lastmod>{D["updated"]}</lastmod></url>' for p in pages)+"</urlset>\n")
+# Real per-page dates from git history (seo.page_dates); fills the "Last updated" line, JSON-LD dateModified and sitemap lastmod.
+LASTMOD=seo.page_dates(pages,TODAY,D["updated"])
+for p in pages:
+    h=open(p).read();n=h.replace("__LASTMOD_H__",seo.human(LASTMOD[p])).replace("__LASTMOD__",LASTMOD[p])
+    if n!=h:open(p,"w").write(n)
+open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+"".join(f'<url><loc>{BASE_URL}/{p.replace("index.html","")}</loc><lastmod>{LASTMOD[p]}</lastmod></url>' for p in pages)+"</urlset>\n")
 open("robots.txt","w").write("User-agent: *\nAllow: /\n\n# AI crawlers welcome\n"+"".join(f"User-agent: {b}\nAllow: /\n" for b in["GPTBot","OAI-SearchBot","ChatGPT-User","ClaudeBot","Claude-User","PerplexityBot","Google-Extended","Applebot-Extended","CCBot"])+f"\nSitemap: {BASE_URL}/sitemap.xml\n")
 L=[f"# Loadout\n\n> Directory of AI tools for vibe coders and builders, ranked by use case. Updated {D['updated']}. Machine-readable data: {BASE_URL}/tools.json (public, free to use with attribution).\n"]
 L.append("## Categories\n"+"".join(f"- [{n}]({BASE_URL}/categories/{c}.html)\n" for c,n in cat.items()))

@@ -48,6 +48,28 @@ for p in pages:
         if not any(os.path.isfile(c) for c in (tgt,tgt+".html",os.path.join(tgt,"index.html"))):fails.append(f"{p}: broken link {l}")
 for f in("sitemap.xml","robots.txt","llms.txt","llms-full.txt","tools.json"):
     if not os.path.exists(f):fails.append(f"missing {f}")
+# AI-search cleanup (2026-10-23): sitemap <-> pages, canonicals, real dates, robots, IndexNow key file.
+BASE="https://loadoutweekly.com"
+def clean_url(p):return BASE+"/"+(p[:-10] if p.endswith("index.html") else p[:-5])
+sm=dict(re.findall(r"<loc>([^<]+)</loc><lastmod>([^<]+)</lastmod>",open("sitemap.xml").read()))
+want={clean_url(p):p for p in pages if p!="404.html"}
+fails+=[f"sitemap.xml: missing {u}" for u in want if u not in sm]+[f"sitemap.xml: {u} has no page" for u in sm if u not in want]
+for u,p in want.items():
+    h=open(p).read();lm=sm.get(u,"")
+    m=re.search(r'<link rel="canonical" href="([^"]+)"',h)
+    if m and m.group(1)!=u:fails.append(f"{p}: canonical {m.group(1)} != sitemap URL {u}")
+    if 'name="robots" content="noindex' in h:fails.append(f"{p}: noindex page listed in sitemap")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}",lm):fails.append(f"sitemap.xml: bad lastmod '{lm}' for {u}");continue
+    if f'Last updated <time datetime="{lm}">' not in h:fails.append(f"{p}: visible 'Last updated' missing or != lastmod {lm}")
+    if f'"dateModified": "{lm}"' not in h:fails.append(f"{p}: JSON-LD dateModified missing or != lastmod {lm}")
+    if '"author": {' not in h:fails.append(f"{p}: JSON-LD author missing")
+    if "__LASTMOD" in h:fails.append(f"{p}: unfilled date placeholder")
+rb=open("robots.txt").read()
+if f"Sitemap: {BASE}/sitemap.xml" not in rb:fails.append("robots.txt: no Sitemap line")
+if re.search(r"(?m)^Disallow:\s*/\s*$",rb):fails.append("robots.txt: Disallow: / blocks the site")
+kf=[f for f in glob.glob("*.txt") if re.fullmatch(r"[0-9a-f]{32}\.txt",f)]
+if len(kf)!=1:fails.append(f"IndexNow: expected exactly one <key>.txt at the root, found {kf}")
+elif open(kf[0]).read().strip()!=kf[0][:-4]:fails.append(f"IndexNow: {kf[0]} content != key")
 ids={t["id"] for t in D["tools"]}
 for u in D["useCases"]:fails+=[f"useCase pick {p} unknown" for p in u["picks"] if p not in ids]
 for t in D["tools"]:
