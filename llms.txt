@@ -29,6 +29,8 @@
 
 ## Comparisons
 - [Cursor vs Devin Desktop (2026)](https://loadoutweekly.com/compare/cursor-vs-devin-desktop)
+- [Claude Code vs OpenAI Codex (2026)](https://loadoutweekly.com/compare/claude-code-vs-openai-codex)
+- [Lovable vs Bolt.new (2026)](https://loadoutweekly.com/compare/lovable-vs-bolt-new)
 
 ## Data
 - [tools.json](https://loadoutweekly.com/tools.json): categories, tools (id, name, category, description, bestFor, pricing, url, verified), useCases, newReleases

@@ -6,7 +6,9 @@ cat={c["id"]:c["name"] for c in D["categories"]};by={t["id"]:t for t in D["tools
 def slug(s):return "".join(ch if ch.isalnum() else "-" for ch in s.lower()).strip("-").replace("--","-")
 pages=[]
 # Editorial comparisons. Sentences are assembled only from tools.json fields.
-COMPARES=[{"a":"cursor","b":"devin-desktop-formerly-windsurf","year":"2026","kind":"AI IDE","use_case":"I code daily and want an AI editor"}]
+COMPARES=[{"a":"cursor","b":"devin-desktop-formerly-windsurf","year":"2026","kind":"AI IDE","use_case":"I code daily and want an AI editor"},
+          {"a":"claude-code","b":"openai-codex","year":"2026","kind":"coding agent","use_case":"I want an agent to handle big tasks in my repo"},
+          {"a":"lovable","b":"bolt-new","year":"2026","kind":"AI app builder","use_case":"I can't code but want to ship a web app"}]
 COMP_OUT=[]
 def short_name(t):
     n=t["name"];i=n.find(" (");return n[:i] if i!=-1 else n
