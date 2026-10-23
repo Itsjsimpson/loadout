@@ -97,6 +97,26 @@ def footer(r,extra=""):
      f'<div><h4>Categories</h4><ul>{cl}</ul></div><div><h4>Popular use cases</h4><ul>{ul}</ul></div>'
      f'<div><h4>Loadout</h4><ul><li><a href="{r}index.html#tools">Full directory</a></li><li><a href="{r}prepsheet/">PrepSheet</a></li><li><a href="{r}advertise.html">Advertise</a></li><li><a href="{r}tools.json">tools.json</a></li><li><a href="{r}llms.txt">llms.txt</a></li><li><a href="mailto:loadout@loadoutweekly.com">loadout@loadoutweekly.com</a></li></ul></div></div>'
      f'<div class="wrap fbase muted">Loadout · data updated {D["updated"]}{extra}</div></footer>')
+# Shared newsletter signup card (fix #1, signup audit 2026-10-23). One component on every page, own utm_campaign per page type.
+# Inline embed: set BEEHIIV_EMBED_ID to a Beehiiv subscribe-form embed id (embeds.beehiiv.com/<id>) and rebuild; until then the card links out.
+NL_SUB="https://jojos-newsletter-38aad3.beehiiv.com/subscribe"
+BEEHIIV_EMBED_ID=os.environ.get("BEEHIIV_EMBED_ID","").strip()
+def nl_utm(campaign):return f"utm_source=loadoutweekly.com&utm_medium=signup-card&utm_campaign={campaign}"
+def nl_campaign(path):
+    p=path.replace("\\","/")
+    if p.startswith("tools/"):return "tool-"+p[6:].replace(".html","")
+    if p.startswith("categories/"):return "category-"+p[11:].replace(".html","")
+    if p.startswith("compare/"):return "compare"
+    if p.startswith("use-cases/"):return "use-case"
+    if p.startswith("prepsheet/"):return "prepsheet"
+    if p.startswith("best-"):return "guide"
+    return slug(p.replace("/index.html","").replace(".html","")) or "home"
+def signup_card(campaign,title="Loadout Weekly: the free new-tools email",text="New AI tools worth using, plus one honest pick, once a week. Never for sale.",id_=""):
+    q=nl_utm(campaign);href=f"{NL_SUB}?{q}"
+    embed=(f'<iframe class="nlembed" src="https://embeds.beehiiv.com/{E(BEEHIIV_EMBED_ID)}?slim=true&amp;{E(q)}" data-test-id="beehiiv-embed" title="Subscribe to Loadout Weekly" loading="lazy" height="52" frameborder="0" scrolling="no"></iframe>'
+           if BEEHIIV_EMBED_ID else f'<!--BEEHIIV_EMBED campaign={campaign}--><a class="btn" href="{E(href)}" target="_blank" rel="noopener">Subscribe free →</a>')
+    return (f'<aside class="card nlcard"{f" id={chr(34)}{id_}{chr(34)}" if id_ else ""} aria-label="Newsletter signup" data-campaign="{E(campaign)}"><div class="nltext"><strong>{E(title)}</strong>'
+            f'<p class="muted">{E(text)} Unsubscribe anytime.</p></div><div class="nlcta">{embed}</div></aside>')
 def page(path,title,desc,body,ld=None,depth=0,foot="",bc=None):
     r="../"*depth;url=f"{BASE_URL}/{path}".replace("index.html","")
     h=f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -104,7 +124,7 @@ def page(path,title,desc,body,ld=None,depth=0,foot="",bc=None):
 <meta property="og:type" content="website"><meta property="og:title" content="{E(title)}"><meta property="og:description" content="{E(meta_desc(desc))}"><meta property="og:url" content="{url}"><meta property="og:site_name" content="Loadout"><meta name="twitter:card" content="summary">
 <link rel="icon" href="data:,"><link rel="stylesheet" href="{r}style.css">{'<script type="application/ld+json">'+json.dumps(ld)+'</script>' if ld else ''}</head><body>
 {nav(r)}
-<main id="main" class="wrap page">{crumbs(r,bc)}{body}</main>
+<main id="main" class="wrap page">{crumbs(r,bc)}{body}{"" if "nlcard" in body else signup_card(nl_campaign(path))}</main>
 {footer(r,foot)}<script src="{r}app.js" defer></script></body></html>"""
     os.makedirs(os.path.dirname(path) or ".",exist_ok=True);open(path,"w").write(h);pages.append(path)
 PSCALL='<aside class="card callout"><div><span class="tag sponsored">Presale</span><strong>PrepSheet: daily show-prep brief for sports podcasters</strong><p>A one-page brief every morning before you record: stats, injuries, odds moves and talking points for the teams you cover, every item sourced. $9 founding member presale; full refund if it doesn\'t launch.</p></div><div class="psbtns"><a class="btn" href="'+os.environ.get("PREPSHEET_CHECKOUT","https://whop.com/checkout/plan_HesQSWaUF81Cq")+'" rel="noopener">Join for $9 →</a> <a href="{r}prepsheet/">See PrepSheet</a></div></aside>'
@@ -166,7 +186,6 @@ page("prepsheet/index.html","PrepSheet: daily show prep for sports podcasters | 
 # Public X replies are paraphrased without handles or names. Body internal links are clean (no .html).
 GCHK="checked Oct 17, 2026"
 GSRC={"codex":"https://learn.chatgpt.com/docs/pricing","claude":"https://claude.com/pricing","cursor":"https://cursor.com/pricing","lovable":"https://lovable.dev/pricing","bolt":"https://bolt.new/pricing","replit":"https://replit.com/pricing","v0":"https://v0.app/pricing"}
-GSUB="https://jojos-newsletter-38aad3.beehiiv.com/subscribe?utm_source=loadoutweekly&utm_medium=website&utm_campaign=first-saas-page"
 def gsrc(k,label="official pricing"):return f'<a href="{GSRC[k]}" rel="noopener">{label}</a>'
 def gtool(tid,label=None):return f'<a href="../tools/{tid}">{E(label or by[tid]["name"])}</a>'
 GROWS=[  # tool, what it is, free option, entry paid, next step, source key
@@ -217,7 +236,7 @@ GUIDE=('<article class="guide"><h1>Best AI coding tool for your first SaaS</h1>'
  +'<p>A solo builder said they would pick Claude Code again if they had to start over, because most of their small apps are built in it.</p>'
  +'<h2 id="faq">FAQ</h2>'
  +"".join(f'<h3>{E(q)}</h3><p>{E(a)}'+(f' ({gsrc(k,"source")}, {GCHK})' if k else '')+'</p>' for q,a,k in GFAQ)
- +f'<aside class="card callout"><div><strong>Get the weekly version</strong><p>Tools and prices change every week. Loadout Weekly is a free email with the AI coding tools worth using right now, in plain English, ranked honestly and never for sale.</p></div><div><a class="btn" href="{E(GSUB)}" rel="noopener">Subscribe free →</a></div></aside>'
+ +signup_card("guide","Get the weekly version","Tools and prices change every week. Loadout Weekly is a free email with the AI coding tools worth using right now, in plain English, ranked honestly and never for sale.")
  +f'<p class="muted">By Loadout Team. Prices from official pricing pages, {GCHK}. Builder advice is paraphrased from public replies on X. More picks: <a href="../categories/editors">AI editors</a> · <a href="../categories/builders">app builders</a> · <a href="../categories/agents">coding agents</a>.</p></article>')
 GURL=f"{BASE_URL}/best-ai-coding-tool-first-saas/"
 GLD={"@context":"https://schema.org","@graph":[
@@ -232,7 +251,7 @@ tpl=open("index.tpl.html").read()
 if FEAT_HTML:
     a=tpl.index('<section id="featured"');b=tpl.index('</section>',a)+10;tpl=tpl[:a]+FEAT_HTML+tpl[b:]
 BLURB={'editors': 'Editors and IDEs with built-in AI and agents.', 'builders': 'Describe an app and get a working one.', 'agents': 'Agents that take on multi-step tasks in your repo.', 'frameworks': 'Libraries for building your own agents.', 'backend': 'Hosting, databases and serverless.', 'design': 'Turn designs into front-end code.', 'models': 'Model APIs to power your app.', 'sports': 'Data, clipping and editing tools for sports shows.', 'agent-tools': 'Posting, email, payments, phone and browsing for AI agents.'}
-tpl=tpl.replace("<!--PSCALL-->",PSCALL.replace("{r}","")).replace("<!--HEADER-->",nav("")).replace("<!--FOOTER-->",footer("")).replace("<!--CATGRID-->","".join(f'<a class="catcard" href="categories/{c}.html"><strong>{E(n)}</strong><span class="muted">{E(BLURB.get(c,""))}</span><span class="count">{sum(t["category"]==c for t in D["tools"])} tools →</span></a>' for c,n in cat.items()))
+tpl=tpl.replace("<!--SIGNUP-->",signup_card("home",id_="signup")).replace("<!--PSCALL-->",PSCALL.replace("{r}","")).replace("<!--HEADER-->",nav("")).replace("<!--FOOTER-->",footer("")).replace("<!--CATGRID-->","".join(f'<a class="catcard" href="categories/{c}.html"><strong>{E(n)}</strong><span class="muted">{E(BLURB.get(c,""))}</span><span class="count">{sum(t["category"]==c for t in D["tools"])} tools →</span></a>' for c,n in cat.items()))
 # Homepage JSON-LD (daily ship 2026-10-22): WebSite + Organization + ItemList of categories, all from existing data.
 HLD={"@context":"https://schema.org","@graph":[
  {"@type":"WebSite","@id":BASE_URL+"/#website","name":"Loadout","url":BASE_URL+"/","description":"Loadout ranks AI tools for vibe coders and builders by use case.","publisher":{"@id":BASE_URL+"/#org"}},
@@ -280,13 +299,12 @@ for _f in pages:
 # Real 404 page (soft-404 fix). Cloudflare Pages serves /404.html with a 404 status for any missing path once it
 # exists at the output root; without it Pages falls back to SPA mode and serves index.html with 200.
 # Root-relative links so it works at any depth. noindex, no canonical, and kept out of sitemap.xml / llms.txt.
-NF_SUB="https://jojos-newsletter-38aad3.beehiiv.com/subscribe?utm_source=loadoutweekly&utm_medium=website&utm_campaign=404"
 NF=f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Page not found | Loadout</title><meta name="description" content="This page doesn&#x27;t exist on Loadout. Try the homepage, the tools directory or the free newsletter."><meta name="robots" content="noindex">
 <link rel="icon" href="data:,"><link rel="stylesheet" href="/style.css"></head><body>
 {nav("/")}
 <main id="main" class="wrap page"><article class="card"><h1>Page not found</h1><p class="lead">We couldn&#39;t find that page. It may have moved, or the link may be wrong.</p>
-<ul><li><a href="/">Go to the Loadout homepage</a></li><li><a href="/#tools">Browse the tools directory</a></li><li><a href="{E(NF_SUB)}" rel="noopener">Get Loadout Weekly, the free newsletter</a></li></ul>
-<p><a class="btn" href="/">Back to home →</a></p></article></main>
+<ul><li><a href="/">Go to the Loadout homepage</a></li><li><a href="/#tools">Browse the tools directory</a></li></ul>
+<p><a class="btn" href="/">Back to home →</a></p></article>{signup_card("404")}</main>
 {footer("/")}<script src="/app.js" defer></script></body></html>"""
 open("404.html","w").write(_href.sub(_clean,NF))
