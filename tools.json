@@ -1,6 +1,6 @@
 {
  "name": "Loadout",
- "updated": "2026-10-22",
+ "updated": "2026-10-23",
  "categories": [
   {
    "id": "editors",
@@ -267,6 +267,18 @@
    "affiliateUrl": "",
    "featured": false,
    "verified": "2026-10-15"
+  },
+  {
+   "id": "heal-dev",
+   "name": "heal.dev",
+   "category": "agents",
+   "description": "Bug-hunting agent that learns to run your app in a production-like sandbox, then finds bugs, runtime vulnerabilities and performance issues, each filed with a failing test that proves it. Free during the beta.",
+   "bestFor": "Catching runtime bugs that code review misses",
+   "pricing": "free",
+   "url": "https://heal.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-23"
   },
   {
    "id": "reason",
@@ -1139,6 +1151,27 @@
    "summary": "Open-source managed agent platform, pitched as a self-hostable alternative to Claude Managed Agents: one API to deploy agents on any model and any machine. Apache 2.0 and free to self-host; Omnara Cloud has no platform fee, with models at provider token rates and machines billed by active time. Show HN on Oct 21.",
    "url": "https://www.omnara.com",
    "source": "https://www.omnara.com/pricing"
+  },
+  {
+   "name": "heal.dev",
+   "date": "2026-10-22",
+   "summary": "Bug-hunting agent that learns how to run your app, builds a production-like sandbox with outside services mocked, and hunts for bugs, runtime vulnerabilities and performance issues. It only files what a failing test reproduces, and your coding agent can pull findings over MCP. Free during the beta, per the makers. #4 on Product Hunt Oct 22.",
+   "url": "https://heal.dev",
+   "source": "https://www.producthunt.com/products/heal-dev"
+  },
+  {
+   "name": "Resend Inboxes",
+   "date": "2026-10-22",
+   "summary": "API-first shared inboxes on your own domain for people and agents: threads, search, labels, drafts, webhooks and a configurable built-in agent, with Claude Code, Cursor and Codex connecting through MCP or skills. Free for up to 3 inboxes, then $1 per inbox on paid plans. On Product Hunt Oct 22.",
+   "url": "https://resend.com/blog/announcing-inboxes",
+   "source": "https://resend.com/blog/announcing-inboxes"
+  },
+  {
+   "name": "Mercury 3",
+   "date": "2026-10-19",
+   "summary": "Inception's diffusion LLM, 40x+ larger than Mercury 1, at 1,000+ tokens/s with a 1M-token context. OpenAI API compatible and on OpenRouter, Baseten and Vercel. $0.20/M input and $0.70/M output (50% off at launch), with 100M free tokens on a new API key.",
+   "url": "https://www.inceptionlabs.ai/blog/introducing-mercury-3",
+   "source": "https://www.inceptionlabs.ai/blog/introducing-mercury-3"
   }
  ]
 }
