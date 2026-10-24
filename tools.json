@@ -1,6 +1,6 @@
 {
  "name": "Loadout",
- "updated": "2026-10-23",
+ "updated": "2026-10-24",
  "categories": [
   {
    "id": "editors",
@@ -279,6 +279,18 @@
    "affiliateUrl": "",
    "featured": false,
    "verified": "2026-10-23"
+  },
+  {
+   "id": "corgi",
+   "name": "Corgi",
+   "category": "agents",
+   "description": "Terminal multiplexer for running coding agents: tabs for Claude Code, Codex, OpenCode and Pi with live status (working, needs you, finished), token usage, file-change replay and worktrees, and sessions keep running in the background like tmux. macOS, Linux and WSL.",
+   "bestFor": "Watching several coding agents at once",
+   "pricing": "free",
+   "url": "https://corgi.computer",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-24"
   },
   {
    "id": "reason",
@@ -1172,6 +1184,34 @@
    "summary": "Inception's diffusion LLM, 40x+ larger than Mercury 1, at 1,000+ tokens/s with a 1M-token context. OpenAI API compatible and on OpenRouter, Baseten and Vercel. $0.20/M input and $0.70/M output (50% off at launch), with 100M free tokens on a new API key.",
    "url": "https://www.inceptionlabs.ai/blog/introducing-mercury-3",
    "source": "https://www.inceptionlabs.ai/blog/introducing-mercury-3"
+  },
+  {
+   "name": "Kimi K3.1 Pro",
+   "date": "2026-10-23",
+   "summary": "Moonshot AI's new open-weight 3T-class model with a 1M-token context, post-trained for coding and agent work. Kimi reports 65.7% on Terminal-Bench 4.0 (vendor numbers). A 2-3x faster Highspeed version ships too. Available now in Kimi.ai, Kimi Code and the Kimi API; full weights due by Nov 4.",
+   "url": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+   "source": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+  },
+  {
+   "name": "Corgi",
+   "date": "2026-10-23",
+   "summary": "Terminal multiplexer built for coding agents: run Claude Code, Codex, OpenCode and Pi in tabs that show which agent is working, needs you or is done, plus token tracking, file-change replay and worktrees. Free and open source (MIT); macOS, Linux and WSL. Show HN on Oct 23.",
+   "url": "https://corgi.computer/",
+   "source": "https://github.com/tals/corgi"
+  },
+  {
+   "name": "Peras",
+   "date": "2026-10-22",
+   "summary": "Set a usage line for your Claude Code or Codex plan and Peras warns, asks, or pauses the agent's tool calls once you cross it, so one long task can't burn your week. CLI and hooks are free and MIT; the native Mac menu bar app is a one-time 4.99 euros. On Product Hunt Oct 22.",
+   "url": "https://peras.vertias.eu",
+   "source": "https://www.producthunt.com/products/peras"
+  },
+  {
+   "name": "1Password for Agents",
+   "date": "2026-10-22",
+   "summary": "Lets supported AI agents (Claude, ChatGPT Work, Meta's Muse and others) sign in to your accounts without seeing passwords: you approve each login on your device and 1Password fills the password or one-time code. Included in 1Password Individual and Family plans, rolling out by agent.",
+   "url": "https://1password.com/personal-ai-agent-integrations",
+   "source": "https://1password.com/personal-ai-agent-integrations"
   }
  ]
 }
