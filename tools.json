@@ -1,6 +1,6 @@
 {
  "name": "Loadout",
- "updated": "2026-10-24",
+ "updated": "2026-10-25",
  "categories": [
   {
    "id": "editors",
@@ -720,6 +720,18 @@
    "pricingSource": "https://www.ayrshare.com/pricing/"
   },
   {
+   "id": "agentvalley",
+   "name": "AgentValley",
+   "category": "agent-tools",
+   "description": "Free, open-source Mac app that lives in your MacBook's notch and shows every Claude Code session and sub-agent at a glance: which model it's on, its latest step, and a red count when one is waiting on you. macOS 15+, Claude Code only.",
+   "bestFor": "Keeping tabs on several Claude Code sessions at once",
+   "pricing": "free",
+   "url": "https://agentvalley.app",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-25"
+  },
+  {
    "id": "resend",
    "name": "Resend",
    "category": "agent-tools",
@@ -1212,6 +1224,27 @@
    "summary": "Lets supported AI agents (Claude, ChatGPT Work, Meta's Muse and others) sign in to your accounts without seeing passwords: you approve each login on your device and 1Password fills the password or one-time code. Included in 1Password Individual and Family plans, rolling out by agent.",
    "url": "https://1password.com/personal-ai-agent-integrations",
    "source": "https://1password.com/personal-ai-agent-integrations"
+  },
+  {
+   "name": "AgentValley",
+   "date": "2026-10-24",
+   "summary": "Free, open-source (MIT) Mac app that puts every Claude Code session and sub-agent in your MacBook's notch, each with its own pixel programmer, so you see who's working, on which model, and who's waiting on you. macOS 15+, Claude Code only. #4 on Product Hunt Oct 24.",
+   "url": "https://agentvalley.app",
+   "source": "https://www.producthunt.com/products/agentvalley"
+  },
+  {
+   "name": "farol",
+   "date": "2026-10-25",
+   "summary": "Free, open-source (MIT) CLI and GitHub Action that runs after your AI code review and tells the human approver how risky a PR is: a 0-100 risk score, what the change reaches, untested lines and contract breaks, riskiest files first. Static analysis, never runs or uploads your code. TypeScript/React, Go, Python. Show HN Oct 25.",
+   "url": "https://winnin.github.io/farol/",
+   "source": "https://github.com/winnin/farol"
+  },
+  {
+   "name": "Framer MCP",
+   "date": "2026-10-22",
+   "summary": "Framer's official MCP server: connect Claude Code, Codex and other AI tools to Framer so your agent can work on the canvas, manage CMS content and publish your site, through a remote server with no local bridge needed.",
+   "url": "https://www.framer.com/updates",
+   "source": "https://www.framer.com/updates"
   }
  ]
 }
