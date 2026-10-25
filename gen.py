@@ -150,6 +150,8 @@ rel=[
 {"name": "farol", "date": "2026-10-25", "summary": "Free, open-source (MIT) CLI and GitHub Action that runs after your AI code review and tells the human approver how risky a PR is: a 0-100 risk score, what the change reaches, untested lines and contract breaks, riskiest files first. Static analysis, never runs or uploads your code. TypeScript/React, Go, Python. Show HN Oct 25.", "url": "https://winnin.github.io/farol/", "source": "https://github.com/winnin/farol"},
 {"name": "Framer MCP", "date": "2026-10-22", "summary": "Framer's official MCP server: connect Claude Code, Codex and other AI tools to Framer so your agent can work on the canvas, manage CMS content and publish your site, through a remote server with no local bridge needed.", "url": "https://www.framer.com/updates", "source": "https://www.framer.com/updates"},
 ]
+# New Releases newest first; same-day entries keep latest-added first (reverse, then stable sort by date)
+rel=sorted(rel[::-1],key=lambda r:r["date"],reverse=True)
 json.dump({"name":"Loadout","updated":"2026-10-25","categories":[{"id":k,"name":v} for k,v in C.items()],"tools":tools,"useCases":usecases,"newReleases":rel},open("tools.json","w"),indent=1)
 ids={t["id"] for t in tools}; assert all(p in ids for u in usecases for p in u["picks"]),[p for u in usecases for p in u["picks"] if p not in ids]
 print(len(tools))
