@@ -1,7 +1,7 @@
 let D,cat='all';const $=s=>document.querySelector(s);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 if($('#list'))fetch('tools.json').then(r=>r.json()).then(d=>{D=d;$('#upd').textContent=d.updated;const by=Object.fromEntries(d.tools.map(t=>[t.id,t]));
-$('#uc').innerHTML=d.useCases.map(u=>`<div class="card uc"><h3>${esc(u.question)}</h3><ol>${u.picks.map(p=>`<li><a href="tools/${p}">${esc(by[p].name)}</a></li>`).join('')}</ol></div>`).join('');
+$('#uc').innerHTML=d.useCases.map(u=>`<div class="card uc"><h3>${esc(u.question)}</h3><${u.unranked?'ul':'ol'}>${u.picks.map(p=>`<li><a href="tools/${p}">${esc(by[p].name)}</a></li>`).join('')}</${u.unranked?'ul':'ol'}></div>`).join('');
 $('#rel').innerHTML=d.newReleases.map(r=>`<div class="card"><span class="tag">${esc(r.date)}</span><h3><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a></h3><p>${esc(r.summary)}</p><a class="muted" href="${esc(r.source)}" target="_blank" rel="noopener">source</a></div>`).join('');
 const n=c=>c=='all'?d.tools.length:d.tools.filter(t=>t.category==c).length;
 $('#cats').innerHTML=[{id:'all',name:'All'},...d.categories].map(c=>`<button type="button" data-c="${c.id}" class="chip ${c.id=='all'?'on':''}" aria-pressed="${c.id=='all'}">${esc(c.name)} <span>${n(c.id)}</span></button>`).join('');

@@ -192,10 +192,20 @@ for cid,cn in cat.items():
     csum=f'Loadout lists {len(ts)} tools in {E(cn)}: {names}. Pricing mix: {", ".join(pc)}; each listing shows what the tool is best for.'
     crel=[uc_link(u) for u in D["useCases"] if any(by[p]["category"]==cid for p in u["picks"])]+([GUIDE_LINK] if any(by[g]["category"]==cid for g in GUIDE_TOOLS) else [])+([("PrepSheet: daily show prep for sports podcasters","../prepsheet/")] if cid=="sports" else [])
     page(f"categories/{cid}.html",f"Best {cn} for vibe coders (2026) | Loadout",f"{len(ts)} {cn.lower()} for vibe coders and builders, with pricing and what each is best for.",f'<h1>{E(cn)}</h1>'+(AGENT_TOP if cid=="agent-tools" else f'<p class="lead">{len(ts)} tools, with pricing and what each is best for.</p>')+cat_compare_links(cid)+chips(cid)+(PSCALL.replace("{r}","../") if cid=="sports" else "")+f'<div class="filterbar"><label class="sr" for="cf">Filter tools in this category</label><input id="cf" type="search" data-filter=".grid > article" placeholder="Filter {len(ts)} tools…"><span class="muted" data-count></span></div>'+(agent_sections(ts) if cid=="agent-tools" else f'<section class="grid">{"".join(card(t) for t in ts)}</section>')+'',ld,1,bc=[("Categories","../index.html#categories"),(cn,None)],summary=csum,related=crel)
+def uc_unranked(u,s,ts,urel):
+    # Unranked use case (e.g. cross-agent context): alphabetical list, each tool with one sourced fact from its own docs.
+    F=u["facts"];n=len(ts)
+    usum=f'{n} coding tools that read shared instruction files such as AGENTS.md, so your rules and project context carry over when you switch between Claude Code, Cursor, Codex and others. Listed alphabetically, not ranked; every fact links to the tool&#39;s own docs.'
+    ld={"@context":"https://schema.org","@type":"ItemList","name":u["question"],"itemListOrder":"https://schema.org/ItemListUnordered","itemListElement":[{"@type":"ListItem","position":i+1,"name":t["name"],"url":f"{BASE_URL}/tools/{t['id']}.html"} for i,t in enumerate(ts)]}
+    items="".join(f'<li>{card(dict(t,featured=False))}<p class="fact"><strong>Shares context via:</strong> {E(F[t["id"]][0])} <a href="{E(F[t["id"]][1])}" rel="noopener">Official docs</a></p></li>' for t in ts)
+    body=(f'<h1>{E(u["question"])}</h1><p class="lead">Tired of re-explaining your project every time you switch agents? Many coding agents now read a shared instructions file, usually <code>AGENTS.md</code>, so one file in your repo can carry the same rules to each of them.</p>'
+          f'<ul class="unranked">{items}</ul><p class="muted">Listed alphabetically, not ranked. Facts come from each tool&#39;s official docs; tool behavior changes, so check the linked page. <a href="../index.html#picks">See all use cases →</a></p>')
+    page(f"use-cases/{s}.html",f"{u['question']}: tools that read AGENTS.md | Loadout",f"{n} coding tools that share rules and context across agents via AGENTS.md and compatible files: "+", ".join(t["name"] for t in ts)+".",body,ld,1,bc=[("Use cases","../index.html#picks"),(u["question"],None)],summary=usum,related=urel)
 for u in D["useCases"]:
     s=slug(u["question"]);u["slug"]=s;ts=[by[p] for p in u["picks"]]
     usum=f'Loadout\'s ranked picks for &quot;{E(u["question"])}&quot;: '+", ".join(f"{i+1}. {E(t['name'])}" for i,t in enumerate(ts))+'. Rankings are editorial and never sold.'
     urel=[cat_link(c) for c in dict.fromkeys(t["category"] for t in ts)]+[cmp_link(c) for c in COMPARES if c["use_case"]==u["question"]]+([GUIDE_LINK] if set(u["picks"])&set(GUIDE_TOOLS) else [])
+    if u.get("unranked"):uc_unranked(u,s,ts,urel);continue
     ld={"@context":"https://schema.org","@type":"ItemList","name":u["question"],"itemListOrder":"https://schema.org/ItemListOrderAscending","itemListElement":[{"@type":"ListItem","position":i+1,"name":t["name"],"url":f"{BASE_URL}/tools/{t['id']}.html"} for i,t in enumerate(ts)]}
     page(f"use-cases/{s}.html",f"{u['question']} — top picks | Loadout",f"Ranked picks for \"{u['question']}\": "+", ".join(t["name"] for t in ts)+".",f'<h1>{E(u["question"])}</h1><ol class="ranked">'+"".join(f'<li>{card(dict(t,featured=False))}</li>' for t in ts)+'</ol>'+'<p class="muted">Rankings are editorial and never sold. <a href="../index.html#picks">See all use cases →</a></p>',ld,1,bc=[("Use cases","../index.html#picks"),(u["question"],None)],summary=usum,related=urel)
 emit_compares()
@@ -326,7 +336,7 @@ open("llms.txt","w").write("".join(L))
 F=["# Loadout — full content\n"]
 for cid,cn in cat.items():
     F.append(f"\n## {cn}\n");F+= [f"- **{t['name']}** ({t['pricing']}) — {t['description']} Best for: {t['bestFor']}. {t['url']} (verified: {t['verified'] or 'no'})\n" for t in D["tools"] if t["category"]==cid]
-F.append("\n## Which tool should I use\n");F+=[f"- {u['question']}: "+" > ".join(by[p]["name"] for p in u["picks"])+"\n" for u in D["useCases"]]
+F.append("\n## Which tool should I use\n");F+=[f"- {u['question']}: "+(", " if u.get("unranked") else " > ").join(by[p]["name"] for p in u["picks"])+(" (unranked)" if u.get("unranked") else "")+"\n" for u in D["useCases"]]
 F.append("\n## Guides\n");F+=[f"- [{n}]({BASE_URL}/{p}): {d}\n" for n,p,d in GUIDES]
 if COMP_OUT:
     F.append("\n## Comparisons\n");F+=[f"- **{h}** — {s} {BASE_URL}/{p}\n" for h,p,s in COMP_OUT]

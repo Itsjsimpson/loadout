@@ -98,6 +98,7 @@
 - I want to turn a design into code: Figma Make > Builder.io > Locofy
 - Which model API should power my app?: Anthropic API (Claude) > OpenAI API > Google Gemini API
 - I run a sports podcast or channel: Descript > OpusClip > Castmagic > BALLDONTLIE
+- Share context and rules across coding agents: Claude Code, Cline, Cursor, GitHub Copilot, OpenAI Codex, OpenCode, Zed (unranked)
 
 ## Guides
 - [Best AI coding tool for your first SaaS](https://loadoutweekly.com/best-ai-coding-tool-first-saas/): Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 compared for first-time builders, with official prices checked Oct 17, 2026.
