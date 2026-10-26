@@ -50,7 +50,9 @@
    "url": "https://cursor.com",
    "affiliateUrl": "",
    "featured": false,
-   "verified": "2026-10-15"
+   "verified": "2026-10-26",
+   "priceNote": "Free $0 (limited agent requests); Plus $8/mo (Grok models only); Premium $30/mo; Super $100/mo; Ultra $200/mo. Third-party models billed separately by usage.",
+   "pricingSource": "https://cursor.com/pricing"
   },
   {
    "id": "devin-desktop-formerly-windsurf",
@@ -74,7 +76,9 @@
    "url": "https://github.com/features/copilot",
    "affiliateUrl": "",
    "featured": false,
-   "verified": "2026-10-15"
+   "verified": "2026-10-26",
+   "priceNote": "Free $0 (limited chat and agent use); Pro $10/mo; Pro+ $39/mo; Max $100/mo.",
+   "pricingSource": "https://github.com/features/copilot/plans"
   },
   {
    "id": "zed",
@@ -134,7 +138,9 @@
    "url": "https://lovable.dev",
    "affiliateUrl": "",
    "featured": false,
-   "verified": "2026-10-15"
+   "verified": "2026-10-26",
+   "priceNote": "Free: 5 build credits a day (up to 30 a month) plus 20 Cloud credits a month. Paid plan prices: see the official page.",
+   "pricingSource": "https://lovable.dev/pricing"
   },
   {
    "id": "bolt-new",
@@ -146,7 +152,9 @@
    "url": "https://bolt.new",
    "affiliateUrl": "",
    "featured": false,
-   "verified": "2026-10-15"
+   "verified": "2026-10-26",
+   "priceNote": "Free: 1M tokens/mo with daily limits; Pro $25/mo billed monthly ($18/mo billed annually) with 10M tokens/mo; Teams $30/member/mo ($27 billed annually).",
+   "pricingSource": "https://bolt.new/pricing"
   },
   {
    "id": "v0",
@@ -158,7 +166,9 @@
    "url": "https://v0.app",
    "affiliateUrl": "",
    "featured": false,
-   "verified": "2026-10-15"
+   "verified": "2026-10-26",
+   "priceNote": "Free $0 (7 messages a day); Plus $30/user/mo; Business $100/user/mo.",
+   "pricingSource": "https://v0.app/pricing"
   },
   {
    "id": "replit",
@@ -170,7 +180,9 @@
    "url": "https://replit.com",
    "affiliateUrl": "",
    "featured": false,
-   "verified": "2026-10-15"
+   "verified": "2026-10-26",
+   "priceNote": "Core $20/mo ($18/mo billed annually); Pro $100/mo ($90/mo billed annually).",
+   "pricingSource": "https://replit.com/pricing"
   },
   {
    "id": "base44",
@@ -194,7 +206,9 @@
    "url": "https://www.anthropic.com/claude-code",
    "affiliateUrl": "",
    "featured": false,
-   "verified": "2026-10-15"
+   "verified": "2026-10-26",
+   "priceNote": "Not on Claude's Free plan. Included in Pro: $20/mo billed monthly ($17/mo billed annually); Max from $100/mo.",
+   "pricingSource": "https://claude.com/pricing"
   },
   {
    "id": "openai-codex",
@@ -202,11 +216,13 @@
    "category": "agents",
    "description": "OpenAI's coding agent across ChatGPT, CLI, IDE extension and cloud; included in ChatGPT plans.",
    "bestFor": "Delegating tasks and automated PR review",
-   "pricing": "paid",
+   "pricing": "freemium",
    "url": "https://openai.com/codex/",
    "affiliateUrl": "",
    "featured": false,
-   "verified": "2026-10-15"
+   "verified": "2026-10-26",
+   "priceNote": "Free plan includes Codex ($0); Go $8/mo; Plus $20/mo; Pro from $100/mo ($100, $200 or $500 plans).",
+   "pricingSource": "https://learn.chatgpt.com/docs/pricing"
   },
   {
    "id": "opencode",

@@ -24,7 +24,8 @@ def compare_card(t):
     return (f'<article class="card"><h3><a href="../tools/{t["id"]}.html">{E(t["name"])}</a></h3>'
      f'<span class="tag">{E(cat[t["category"]])}</span><span class="tag {t["pricing"]}">{t["pricing"]}</span>'
      f'<p>{E(t["description"])}</p><p class="muted">Best for: {E(t["bestFor"])}</p>'
-     f'<p class="muted">Last verified: {E(t["verified"] or "not yet verified")}</p>'
+     +(f'<p class="muted"><strong>Pricing:</strong> {E(t["priceNote"])} <a href="{E(t["pricingSource"])}" rel="noopener">Official pricing</a></p>' if t.get("priceNote") else '')
+     +f'<p class="muted">Last verified: {E(t["verified"] or "not yet verified")}</p>'
      f'<p><a class="btn" href="{E(t["url"])}" rel="noopener">Visit {E(t["name"])} →</a></p></article>')
 def emit_compares():
     for c in COMPARES:
@@ -163,7 +164,7 @@ def card(t,r="../"):
     v=t["verified"] or "unverified";u=t["affiliateUrl"] or t["url"]
     sp=is_featured(t);badge='<span class="tag sponsored">Featured · Sponsored</span>' if sp else ''
     aff='<span class="tag sponsored">Affiliate</span>' if t.get("affiliateUrl") else ''
-    return f'<article class="card{" sponsor" if sp else ""}">{badge}<h3><a href="{r}tools/{t["id"]}.html">{E(t["name"])}</a></h3>{aff}<span class="tag">{E(cat[t["category"]])}</span><span class="tag {t["pricing"]}">{t["pricing"]}</span>'+(f'<p class="tagline"><strong>{E(t["tagline"])}</strong></p>' if t.get("tagline") else '')+f'<p>{E(t["description"])}</p><p class="muted">Best for: {E(t["bestFor"])}</p>'+(f'<p class="muted"><strong>Pricing:</strong> {E(t["priceNote"])} <a href="{E(t["pricingSource"])}" rel="noopener">Source</a></p>' if t.get("priceNote") else '')+(f'<p><a href="{E(t["affiliateUrl"])}" rel="sponsored noopener">Visit {E(t["name"])} →</a> <span class="muted">(affiliate link)</span></p>' if t.get("affiliateUrl") else '')+'</article>'
+    return f'<article class="card{" sponsor" if sp else ""}">{badge}<h3><a href="{r}tools/{t["id"]}.html">{E(t["name"])}</a></h3>{aff}<span class="tag">{E(cat[t["category"]])}</span><span class="tag {t["pricing"]}">{t["pricing"]}</span>'+(f'<p class="tagline"><strong>{E(t["tagline"])}</strong></p>' if t.get("tagline") else '')+f'<p>{E(t["description"])}</p><p class="muted">Best for: {E(t["bestFor"])}</p>'+(f'<p class="muted"><strong>Pricing:</strong> {E(t["priceNote"])} <a href="{E(t["pricingSource"])}" rel="noopener">Source</a>'+(f' <span class="checked">· checked {t["verified"]}</span>' if t.get("verified") else '')+'</p>' if t.get("priceNote") else '')+(f'<p><a href="{E(t["affiliateUrl"])}" rel="sponsored noopener">Visit {E(t["name"])} →</a> <span class="muted">(affiliate link)</span></p>' if t.get("affiliateUrl") else '')+'</article>'
 AGENT_TOP=('<aside class="card callout disclosure" role="note" aria-label="Affiliate disclosure"><div><strong>Disclosure</strong><p>Rankings and listings on Loadout are editorial and <strong>never sold</strong>. This page contains one affiliate link: <strong>Postiz</strong>. If you sign up through it, Loadout may earn a commission at no extra cost to you. It does not affect the order or rankings on this page. The affiliate link is labelled &quot;Affiliate&quot; right next to it.</p></div></aside>'
  +'<p class="lead">The tools AI agents use to act in the real world: post to social, send and receive email, take payments, make phone calls and browse the web. Pricing is taken from each tool\'s official pricing page (checked Oct 17, 2026).</p>')
 JOBS=[("Posting","Social posting"),("Email","Email"),("Payments","Payments"),("Phone","Phone and voice"),("Browsing","Browsing and web data")]
