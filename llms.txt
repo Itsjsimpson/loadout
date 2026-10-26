@@ -23,6 +23,7 @@
 - [I want to turn a design into code](https://loadoutweekly.com/use-cases/i-want-to-turn-a-design-into-code)
 - [Which model API should power my app?](https://loadoutweekly.com/use-cases/which-model-api-should-power-my-app)
 - [I run a sports podcast or channel](https://loadoutweekly.com/use-cases/i-run-a-sports-podcast-or-channel)
+- [Share context and rules across coding agents](https://loadoutweekly.com/use-cases/share-context-and-rules-across-coding-agents)
 
 ## Guides
 - [Best AI coding tool for your first SaaS](https://loadoutweekly.com/best-ai-coding-tool-first-saas/): Codex, Claude Code, Cursor, Lovable, Bolt, Replit and v0 compared for first-time builders, with official prices checked Oct 17, 2026.

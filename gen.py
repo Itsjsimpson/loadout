@@ -123,7 +123,18 @@ usecases=[
 {"question":"I'm building my own AI agent","picks":["agent-native","vercel-ai-sdk","mastra"]},
 {"question":"I want to turn a design into code","picks":["figma-make","builder-io","locofy"]},
 {"question":"Which model API should power my app?","picks":["anthropic-api-claude","openai-api","google-gemini-api"]},
-{"question":"I run a sports podcast or channel","picks":["descript","opusclip","castmagic","balldontlie"]}]
+{"question":"I run a sports podcast or channel","picks":["descript","opusclip","castmagic","balldontlie"]},
+# Cross-agent context (VP, 2026-10-26; week-2 feedback theme, 5 of 11 rows in research/feedback-log.csv). Not ranked:
+# listed alphabetically, one fact per tool from its own docs (each link returned 200 on 2026-10-26).
+{"question":"Share context and rules across coding agents","unranked":True,"picks":["claude-code","cline","cursor","github-copilot","openai-codex","opencode","zed"],
+ "facts":{
+  "claude-code":["Reads AGENTS.md when there is no CLAUDE.md. If you keep both, Anthropic's docs suggest an @AGENTS.md import in CLAUDE.md so AGENTS.md stays \"the one file every tool shares\". Auto memory also carries notes across sessions.","https://code.claude.com/docs/en/memory"],
+  "cline":["Recognizes rules from other tools: .cursorrules and .windsurfrules are automatically detected, and AGENTS.md is supported as the \"standard format for cross-tool compatibility\".","https://docs.cline.bot/features/cline-rules"],
+  "cursor":["Supports AGENTS.md in the project root and subdirectories as a plain-markdown alternative to Cursor Project Rules; nested files combine with their parents.","https://cursor.com/docs/context/rules"],
+  "github-copilot":["Reads AGENTS.md files anywhere in the repo (the nearest one takes precedence), or a single CLAUDE.md or GEMINI.md at the repo root.","https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions"],
+  "openai-codex":["\"Codex reads AGENTS.md files before doing any work\", layering a global ~/.codex/AGENTS.md with project files; extra file names can be added via project_doc_fallback_filenames.","https://learn.chatgpt.com/docs/agent-configuration/agents-md"],
+  "opencode":["Uses AGENTS.md for rules and, for users coming from Claude Code, falls back to CLAUDE.md, ~/.claude/CLAUDE.md and ~/.claude/skills/.","https://opencode.ai/docs/rules/"],
+  "zed":["Zed's agent picks up the first project file it finds from .rules, .cursorrules, .windsurfrules, .clinerules, .github/copilot-instructions.md, AGENT.md, AGENTS.md, CLAUDE.md or GEMINI.md.","https://zed.dev/docs/ai/instructions"]}}]
 rel=[
 {"name":"OpenCode 2.0","date":"2026-10-13","summary":"Open-source, model-agnostic coding agent with native TUI and multi-session support. #2 on Product Hunt's Oct 13 daily leaderboard (313 upvotes when checked).","url":"https://opencode.ai","source":"https://www.producthunt.com/leaderboard/daily/2026/10/13"},
 {"name":"Tiden","date":"2026-10-14","summary":"Verifies coding agents built what you asked for by checking changes against requirements and tests. Works with Claude Code, Cursor, Codex, Copilot.","url":"https://tiden.ai","source":"https://www.producthunt.com/leaderboard/daily/2026/10/14"},
