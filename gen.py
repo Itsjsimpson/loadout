@@ -99,6 +99,20 @@ AGENT={ # job, price summary, official pricing source (checked 2026-10-17)
 for t in tools:
     if t["id"] in AGENT:
         j,p,src=AGENT[t["id"]];t.update(job=j,priceNote=p,pricingSource=src,verified="2026-10-17")
+CORE={ # official pricing pages, checked 2026-10-26 (VP; competitor gap vs TierLoot). Only what the page showed; "see official page" where it didn't.
+"openai-codex":("Free plan includes Codex ($0); Go $8/mo; Plus $20/mo; Pro from $100/mo ($100, $200 or $500 plans).","https://learn.chatgpt.com/docs/pricing"),
+"claude-code":("Not on Claude's Free plan. Included in Pro: $20/mo billed monthly ($17/mo billed annually); Max from $100/mo.","https://claude.com/pricing"),
+"cursor":("Free $0 (limited agent requests); Plus $8/mo (Grok models only); Premium $30/mo; Super $100/mo; Ultra $200/mo. Third-party models billed separately by usage.","https://cursor.com/pricing"),
+"github-copilot":("Free $0 (limited chat and agent use); Pro $10/mo; Pro+ $39/mo; Max $100/mo.","https://github.com/features/copilot/plans"),
+"lovable":("Free: 5 build credits a day (up to 30 a month) plus 20 Cloud credits a month. Paid plan prices: see the official page.","https://lovable.dev/pricing"),
+"bolt-new":("Free: 1M tokens/mo with daily limits; Pro $25/mo billed monthly ($18/mo billed annually) with 10M tokens/mo; Teams $30/member/mo ($27 billed annually).","https://bolt.new/pricing"),
+"replit":("Core $20/mo ($18/mo billed annually); Pro $100/mo ($90/mo billed annually).","https://replit.com/pricing"),
+"v0":("Free $0 (7 messages a day); Plus $30/user/mo; Business $100/user/mo.","https://v0.app/pricing"),
+}
+for t in tools:
+    if t["id"] in CORE:
+        p,src=CORE[t["id"]];t.update(priceNote=p,pricingSource=src,verified="2026-10-26")
+        if t["id"]=="openai-codex": t["pricing"]="freemium" # official page: Codex is included in the $0 Free plan
 usecases=[
 {"question":"I can't code but want to ship a web app","picks":["lovable","bolt-new","replit"]},
 {"question":"I code daily and want an AI editor","picks":["cursor","devin-desktop-formerly-windsurf","github-copilot"]},

@@ -1,24 +1,24 @@
 # Loadout — full content
 
 ## AI Code Editors & IDEs
-- **Cursor** (freemium) — AI code editor and coding agent platform; hand off tasks to agents or code alongside them. Best for: Day-to-day coding with an agent inside your editor. https://cursor.com (verified: 2026-10-15)
+- **Cursor** (freemium) — AI code editor and coding agent platform; hand off tasks to agents or code alongside them. Best for: Day-to-day coding with an agent inside your editor. https://cursor.com (verified: 2026-10-26)
 - **Devin Desktop (formerly Windsurf)** (freemium) — Cognition's IDE (Windsurf renamed June 2026) with an Agent Command Center for managing local and cloud agents. Best for: Managing multiple agents from a full IDE. https://devin.ai/desktop (verified: 2026-10-15)
-- **GitHub Copilot** (freemium) — AI pair programmer in VS Code, JetBrains and GitHub, with chat and agent mode. Best for: Teams already living on GitHub. https://github.com/features/copilot (verified: 2026-10-15)
+- **GitHub Copilot** (freemium) — AI pair programmer in VS Code, JetBrains and GitHub, with chat and agent mode. Best for: Teams already living on GitHub. https://github.com/features/copilot (verified: 2026-10-26)
 - **Zed** (freemium) — Fast, Rust-built collaborative code editor with built-in AI assistance. Best for: Speed-focused devs who want AI without bloat. https://zed.dev (verified: 2026-10-15)
 - **JetBrains Air** (freemium) — JetBrains' agentic development environment for running Claude Agent, Codex, Junie, Copilot and ACP agents, in IDEs, browser or CLI. Best for: JetBrains users orchestrating coding agents. https://www.jetbrains.com/air/ (verified: 2026-10-15)
 - **Kiro** (freemium) — AWS's agentic IDE built around spec-driven development. Best for: Turning a spec into structured code. https://kiro.dev (verified: 2026-10-15)
 - **ThinkRail** (free) — JetBrains' free, open-source agentic IDE for the Pi coding agent, with git-worktree workspaces, editor tabs, terminals, diffs and living SPEC.md files the agent maintains. Best for: Running parallel Pi agent tasks in isolated worktrees. https://thinkrail.ai (verified: 2026-10-15)
 
 ## App Builders (Prompt-to-App)
-- **Lovable** (freemium) — Build full-stack web apps by chatting, with Supabase integration. Best for: Non-coders shipping a real web app. https://lovable.dev (verified: 2026-10-15)
-- **Bolt.new** (freemium) — StackBlitz's in-browser prompt-to-app builder that runs code in WebContainers. Best for: Fast prototypes in the browser. https://bolt.new (verified: 2026-10-15)
-- **v0** (freemium) — Vercel's generative UI and app builder producing React/Next.js code. Best for: Next.js UIs you can deploy to Vercel. https://v0.app (verified: 2026-10-15)
-- **Replit** (freemium) — Cloud IDE with Replit Agent that builds and deploys apps from prompts. Best for: Build-and-host in one place. https://replit.com (verified: 2026-10-15)
+- **Lovable** (freemium) — Build full-stack web apps by chatting, with Supabase integration. Best for: Non-coders shipping a real web app. https://lovable.dev (verified: 2026-10-26)
+- **Bolt.new** (freemium) — StackBlitz's in-browser prompt-to-app builder that runs code in WebContainers. Best for: Fast prototypes in the browser. https://bolt.new (verified: 2026-10-26)
+- **v0** (freemium) — Vercel's generative UI and app builder producing React/Next.js code. Best for: Next.js UIs you can deploy to Vercel. https://v0.app (verified: 2026-10-26)
+- **Replit** (freemium) — Cloud IDE with Replit Agent that builds and deploys apps from prompts. Best for: Build-and-host in one place. https://replit.com (verified: 2026-10-26)
 - **Base44** (freemium) — No-code AI app builder that generates apps with built-in backend. Best for: Internal tools and simple apps, no setup. https://base44.com (verified: 2026-10-15)
 
 ## Coding Agents
-- **Claude Code** (paid) — Anthropic's agentic coding tool for the terminal and IDEs. Best for: Large, multi-step coding tasks from the terminal. https://www.anthropic.com/claude-code (verified: 2026-10-15)
-- **OpenAI Codex** (paid) — OpenAI's coding agent across ChatGPT, CLI, IDE extension and cloud; included in ChatGPT plans. Best for: Delegating tasks and automated PR review. https://openai.com/codex/ (verified: 2026-10-15)
+- **Claude Code** (paid) — Anthropic's agentic coding tool for the terminal and IDEs. Best for: Large, multi-step coding tasks from the terminal. https://www.anthropic.com/claude-code (verified: 2026-10-26)
+- **OpenAI Codex** (freemium) — OpenAI's coding agent across ChatGPT, CLI, IDE extension and cloud; included in ChatGPT plans. Best for: Delegating tasks and automated PR review. https://openai.com/codex/ (verified: 2026-10-26)
 - **OpenCode** (free) — Open-source, model-agnostic coding agent with terminal, desktop and web apps. Best for: Open-source agent with any model. https://opencode.ai (verified: 2026-10-15)
 - **Cline** (free) — Open-source autonomous coding agent for VS Code; bring your own model. Best for: Transparent agent inside VS Code. https://cline.bot (verified: 2026-10-15)
 - **Aider** (free) — Open-source AI pair programming in your terminal with git integration. Best for: Git-native terminal pair programming. https://aider.chat (verified: 2026-10-15)
@@ -104,7 +104,7 @@
 
 ## Comparisons
 - **Cursor vs Devin Desktop (2026)** — Cursor (freemium) — AI code editor and coding agent platform; hand off tasks to agents or code alongside them. Best for: Day-to-day coding with an agent inside your editor. Devin Desktop (formerly Windsurf) (freemium) — Cognition's IDE (Windsurf renamed June 2026) with an Agent Command Center for managing local and cloud agents. Best for: Managing multiple agents from a full IDE. Editorial comparison; rankings and picks are never sold. https://loadoutweekly.com/compare/cursor-vs-devin-desktop
-- **Claude Code vs OpenAI Codex (2026)** — Claude Code (paid) — Anthropic's agentic coding tool for the terminal and IDEs. Best for: Large, multi-step coding tasks from the terminal. OpenAI Codex (paid) — OpenAI's coding agent across ChatGPT, CLI, IDE extension and cloud; included in ChatGPT plans. Best for: Delegating tasks and automated PR review. Editorial comparison; rankings and picks are never sold. https://loadoutweekly.com/compare/claude-code-vs-openai-codex
+- **Claude Code vs OpenAI Codex (2026)** — Claude Code (paid) — Anthropic's agentic coding tool for the terminal and IDEs. Best for: Large, multi-step coding tasks from the terminal. OpenAI Codex (freemium) — OpenAI's coding agent across ChatGPT, CLI, IDE extension and cloud; included in ChatGPT plans. Best for: Delegating tasks and automated PR review. Editorial comparison; rankings and picks are never sold. https://loadoutweekly.com/compare/claude-code-vs-openai-codex
 - **Lovable vs Bolt.new (2026)** — Lovable (freemium) — Build full-stack web apps by chatting, with Supabase integration. Best for: Non-coders shipping a real web app. Bolt.new (freemium) — StackBlitz's in-browser prompt-to-app builder that runs code in WebContainers. Best for: Fast prototypes in the browser. Editorial comparison; rankings and picks are never sold. https://loadoutweekly.com/compare/lovable-vs-bolt-new
 
 ## New releases
