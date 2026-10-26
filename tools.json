@@ -1,6 +1,6 @@
 {
  "name": "Loadout",
- "updated": "2026-10-25",
+ "updated": "2026-10-26",
  "categories": [
   {
    "id": "editors",
@@ -108,6 +108,18 @@
    "bestFor": "Turning a spec into structured code",
    "pricing": "freemium",
    "url": "https://kiro.dev",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
+   "id": "thinkrail",
+   "name": "ThinkRail",
+   "category": "editors",
+   "description": "JetBrains' free, open-source agentic IDE for the Pi coding agent, with git-worktree workspaces, editor tabs, terminals, diffs and living SPEC.md files the agent maintains.",
+   "bestFor": "Running parallel Pi agent tasks in isolated worktrees",
+   "pricing": "free",
+   "url": "https://thinkrail.ai",
    "affiliateUrl": "",
    "featured": false,
    "verified": "2026-10-15"
@@ -837,6 +849,18 @@
    "pricingSource": "https://www.browserbase.com/pricing"
   },
   {
+   "id": "lexmount-browser-moli",
+   "name": "Lexmount Browser (Moli)",
+   "category": "agent-tools",
+   "description": "Cloud browsers for AI agents running Lexmount's own Moli engine, plus Web Fetch, Web Search and browser-agent APIs, with isolated sessions and proxies.",
+   "bestFor": "Cheap, fast cloud browsers for web agents",
+   "pricing": "freemium",
+   "url": "https://browser.lexmount.com",
+   "affiliateUrl": "",
+   "featured": false,
+   "verified": "2026-10-15"
+  },
+  {
    "id": "browser-use",
    "name": "Browser Use",
    "category": "agent-tools",
@@ -966,6 +990,34 @@
   }
  ],
  "newReleases": [
+  {
+   "name": "ThinkRail",
+   "date": "2026-10-25",
+   "summary": "JetBrains' free, open-source (Apache 2.0) agentic IDE built around the Pi coding agent: each task gets its own git-worktree workspace, with Monaco editor tabs, terminals, diffs, PR and CI controls, and a graph of SPEC.md files the agent keeps up to date. macOS, Windows and Linux. Version 0.2.0 shipped Oct 18; trending on Hacker News Oct 25.",
+   "url": "https://thinkrail.ai/",
+   "source": "https://github.com/JetBrains/thinkrail"
+  },
+  {
+   "name": "Openstatus Incident Management",
+   "date": "2026-10-25",
+   "summary": "Open-source incident management that sits next to openstatus monitors and status pages: declare an incident from Slack or the dashboard, run it in its own channel, keep one timeline and leave with a postmortem an agent drafts. Free to start; paid plans from $30/mo. On Product Hunt Oct 25.",
+   "url": "https://www.openstatus.dev/incident-management",
+   "source": "https://www.openstatus.dev/pricing"
+  },
+  {
+   "name": "AgentGrid.io",
+   "date": "2026-10-25",
+   "summary": "Shared drive where people and their agents (Claude, ChatGPT, Cursor, Codex, OpenClaw and others) work on the same live docs, reports, slides and apps, with shared context, access control and version history. From Anima; free to start, with unlimited agent seats on every plan. #3 on Product Hunt Oct 25.",
+   "url": "https://agentgrid.io/",
+   "source": "https://www.producthunt.com/products/agentgrid-io"
+  },
+  {
+   "name": "Moli by Lexmount",
+   "date": "2026-10-25",
+   "summary": "Headless browser engine built from scratch for AI agents that starts faster and uses less memory than Chrome, per Lexmount. Use it through Lexmount's cloud browser platform (isolated sessions, proxies, Web Fetch and Search APIs, SDK). Free plan with 10 browser hours a month; Pro is $12 a month. #1 on Product Hunt Oct 25.",
+   "url": "https://browser.lexmount.com/",
+   "source": "https://www.producthunt.com/products/lexmount-browser"
+  },
   {
    "name": "farol",
    "date": "2026-10-25",
